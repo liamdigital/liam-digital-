@@ -1469,79 +1469,145 @@ footer::before {
 
 
 /* ══════════════════════════════════════
-   FINAL FIX — Liam Digital alignment + contact icons
-   - מרווח מבצע השקה מהלוגו
-   - אייקון אינסטגרם ממורכז
-   - כרטיסי שירותים באותה שורה וגובה כפתורים אחיד
+   FINAL FIX — service result boxes + clean alignment
 ══════════════════════════════════════ */
-.hpill{
-  margin-top:22px!important;
-  margin-bottom:30px!important;
+.srv-grid{align-items:stretch!important}
+.scard{height:100%!important;min-height:560px!important}
+.scard .sc-line{margin-top:auto!important}
+.sc-result{
+  direction:rtl!important;
+  text-align:right!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  gap:10px!important;
+  background:linear-gradient(135deg,rgba(124,58,237,.14),rgba(168,85,247,.06))!important;
+  border:1px solid rgba(168,85,247,.24)!important;
+  border-radius:14px!important;
+  padding:15px 16px!important;
+  color:rgba(255,255,255,.72)!important;
+  font-size:13.2px!important;
+  line-height:1.75!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)!important;
 }
+.sc-result::before{
+  content:'תוצאה'!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-shrink:0!important;
+  padding:4px 10px!important;
+  border-radius:999px!important;
+  background:rgba(168,85,247,.16)!important;
+  border:1px solid rgba(168,85,247,.30)!important;
+  color:#c4b5fd!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  line-height:1.2!important;
+  margin-top:2px!important;
+}
+.sc-result::after{
+  content:'✦'!important;
+  flex-shrink:0!important;
+  color:#c4b5fd!important;
+  font-size:13px!important;
+  line-height:1.75!important;
+  order:-1!important;
+  opacity:.9!important;
+}
+.price-num{white-space:nowrap!important}
+.sc-wa,.sc-buy{min-height:58px!important}
+
+/* Instagram contact icon — perfectly centered */
+.ct-ico{display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;line-height:1!important}
+.ct-ico svg{width:22px!important;height:22px!important;display:block!important;margin:auto!important;transform:none!important}
+.ct-link[href*="instagram"] .ct-ico svg{width:21px!important;height:21px!important;position:relative!important;top:0!important;left:0!important}
+
+/* Hero launch badge spacing under logo on mobile */
+.hpill{margin-top:18px!important;margin-bottom:30px!important}
 @media(max-width:768px){
-  .hpill{
-    margin-top:34px!important;
-    margin-bottom:28px!important;
-  }
+  .hpill{margin-top:30px!important;margin-bottom:28px!important}
+  .scard{min-height:auto!important}
+  .sc-result{font-size:12.8px!important;padding:14px!important;gap:8px!important}
+  .sc-result::before{font-size:10.5px!important;padding:4px 9px!important}
+  .sc-wa,.sc-buy{min-height:52px!important}
 }
 
-/* Services cards: keep buttons and prices aligned inside each row */
-.srv-grid{
+
+
+/* ══════════════════════════════════════
+   FINAL ALIGN FIX — service cards pixel aligned
+══════════════════════════════════════ */
+#services .srv-grid{
   align-items:stretch!important;
 }
-.srv-grid .scard{
-  height:100%!important;
+#services .scard{
   display:flex!important;
   flex-direction:column!important;
+  height:100%!important;
+  min-height:0!important;
 }
-.srv-grid .scard > div:first-child{
-  min-height:142px!important;
+#services .scard > div:first-child{
+  min-height:190px!important;
+  display:block!important;
 }
-.srv-grid .scard .sc-result{
-  min-height:74px!important;
+#services .sc-name{
+  min-height:58px!important;
+  display:flex!important;
+  align-items:flex-end!important;
+}
+#services .sc-desc{
+  min-height:78px!important;
+  display:block!important;
+}
+#services .sc-result{
+  height:110px!important;
+  min-height:110px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  box-sizing:border-box!important;
+  margin-top:0!important;
+}
+#services .sc-result::before{
+  align-self:center!important;
+  margin-top:0!important;
+}
+#services .sc-result::after{
+  align-self:center!important;
+  line-height:1!important;
+}
+#services .sc-line{
+  margin-top:28px!important;
+  margin-bottom:26px!important;
+  flex:0 0 auto!important;
+}
+#services .scard > div:nth-of-type(2){
+  min-height:122px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  align-items:flex-start!important;
+}
+#services .price-num{
+  min-height:42px!important;
   display:flex!important;
   align-items:center!important;
 }
-.srv-grid .scard .sc-line{
+#services .price-save{
+  min-height:28px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+#services .sc-wa{
   margin-top:auto!important;
 }
-.srv-grid .scard .price-num{
-  white-space:nowrap!important;
-}
-.srv-grid .scard .sc-wa,
-.srv-grid .scard .sc-buy{
-  min-height:56px!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  line-height:1.2!important;
-}
-
-/* Contact icons: Instagram and all contact icons perfectly centered */
-#contact .ct-ico{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  padding:0!important;
-  overflow:hidden!important;
-}
-#contact .ct-ico svg{
-  width:24px!important;
-  height:24px!important;
-  display:block!important;
-  margin:0!important;
-  flex:0 0 auto!important;
-  transform:none!important;
-  position:static!important;
-  color:#fff!important;
-}
-#contact .ct-link:nth-child(3) .ct-ico svg{
-  width:25px!important;
-  height:25px!important;
-}
-@media(max-width:560px){
-  #contact .ct-ico svg{width:22px!important;height:22px!important;}
-  #contact .ct-link:nth-child(3) .ct-ico svg{width:23px!important;height:23px!important;}
+@media(max-width:1100px){
+  #services .scard > div:first-child{min-height:auto!important}
+  #services .sc-name,#services .sc-desc{min-height:auto!important}
+  #services .sc-result{height:auto!important;min-height:96px!important}
+  #services .sc-line{margin-top:22px!important;margin-bottom:22px!important}
+  #services .scard > div:nth-of-type(2){min-height:auto!important}
 }
 </style>
 </head>
