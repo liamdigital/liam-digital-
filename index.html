@@ -4727,332 +4727,111 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 
-<!-- LIAM REAL FINAL LEFT MENU + FULL LOGO MOBILE FIX -->
-<style id="liam-real-final-left-menu-full-logo-fix">
-@media (max-width: 768px){
-  /* MENU MUST OPEN FROM THE LEFT HAMBURGER, NOT CENTER */
+
+<!-- LIAM FINAL PATCH — left side mobile menu + full logo, without changing portfolio buttons -->
+<style id="liam-left-menu-full-logo-no-button-change">
+@media (max-width: 900px){
+  /* התפריט נפתח בצד שמאל, צמוד לכפתור ההמבורגר — לא באמצע */
   #nav .nlinks,
   #nav.s .nlinks{
     display:none!important;
-    position:fixed!important;
-    top:86px!important;
-    left:12px!important;
-    right:auto!important;
-    bottom:auto!important;
-    width:min(292px, calc(100vw - 24px))!important;
-    max-width:min(292px, calc(100vw - 24px))!important;
-    min-width:0!important;
-    height:auto!important;
-    max-height:calc(100svh - 104px)!important;
-    overflow-y:auto!important;
-    overflow-x:hidden!important;
-    transform:none!important;
-    margin:0!important;
-    padding:14px!important;
-    list-style:none!important;
-    flex-direction:column!important;
-    align-items:stretch!important;
-    justify-content:flex-start!important;
-    gap:10px!important;
-    border-radius:24px!important;
-    background:rgba(7,5,15,.985)!important;
-    border:1px solid rgba(168,85,247,.36)!important;
-    box-shadow:0 28px 80px rgba(0,0,0,.75), 0 0 50px rgba(124,58,237,.20)!important;
-    backdrop-filter:blur(22px)!important;
-    -webkit-backdrop-filter:blur(22px)!important;
-    z-index:2147483640!important;
-    direction:rtl!important;
-    inset-inline:auto!important;
   }
-
   #nav .nlinks.open,
   #nav.menu-open .nlinks,
   #nav.s .nlinks.open,
   #nav.s.menu-open .nlinks{
     display:flex!important;
-    left:12px!important;
+    position:fixed!important;
+    top:86px!important;
+    left:10px!important;
     right:auto!important;
+    bottom:auto!important;
+    width:260px!important;
+    max-width:calc(100vw - 20px)!important;
+    height:auto!important;
+    max-height:calc(100svh - 105px)!important;
+    overflow-y:auto!important;
     transform:none!important;
-    inset-inline:auto!important;
+    margin:0!important;
+    padding:14px!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    gap:10px!important;
+    border-radius:24px!important;
+    background:rgba(6,5,13,.96)!important;
+    border:1px solid rgba(168,85,247,.34)!important;
+    box-shadow:0 22px 60px rgba(0,0,0,.58),0 0 34px rgba(124,58,237,.18)!important;
+    z-index:2147483646!important;
+    backdrop-filter:blur(18px) saturate(160%)!important;
+    -webkit-backdrop-filter:blur(18px) saturate(160%)!important;
   }
-
   #nav .nlinks.open li,
   #nav.menu-open .nlinks li{
     width:100%!important;
-    display:block!important;
     margin:0!important;
     padding:0!important;
   }
-
   #nav .nlinks.open a,
   #nav.menu-open .nlinks a{
     display:flex!important;
+    width:100%!important;
+    min-height:54px!important;
     align-items:center!important;
     justify-content:center!important;
-    width:100%!important;
-    min-height:52px!important;
-    padding:13px 12px!important;
-    margin:0!important;
     border-radius:16px!important;
-    background:rgba(255,255,255,.052)!important;
+    padding:12px 10px!important;
+    background:rgba(255,255,255,.055)!important;
     border:1px solid rgba(255,255,255,.09)!important;
     color:#fff!important;
-    text-align:center!important;
-    font-size:17px!important;
+    font-size:18px!important;
     font-weight:900!important;
-    line-height:1.2!important;
-    white-space:normal!important;
+    text-align:center!important;
+    line-height:1.1!important;
   }
 
-  /* KEEP HEADER EXACTLY: hamburger left, socials center, logo right */
-  #nav,#nav.s{
-    grid-template-columns:64px minmax(0,1fr) 64px!important;
-    grid-template-areas:"menu socials logo"!important;
-    overflow:visible!important;
+  /* שיראו את כל הלוגו/התמונה בכרטיסי העבודות — בלי להזיז/לשנות את הכפתורים והטקסט */
+  .portfolio-v9 .demo-preview{
+    overflow:hidden!important;
   }
-  #nav .hbg{grid-area:menu!important;justify-self:start!important;}
-  #nav .nright,#nav .brand-icons{grid-area:socials!important;justify-self:center!important;}
-  #nav .nlogo{grid-area:logo!important;justify-self:end!important;}
-
-  /* FULL LOGO / IMAGE VISIBILITY IN MOBILE PORTFOLIO CARDS */
-  .demo-card,
-  .demo-preview,
-  .demo-img-wrap,
-  .pc,
-  .pc-thumb,
-  .brow,
-  .brow-b,
-  .brow-hero,
-  .clean-project,
-  .clean-shot,
-  .project-shot,
-  .portfolio-card,
-  .portfolio-image,
-  .work-card,
-  .work-image{
-    overflow:visible!important;
-  }
-
-  .demo-grid-v9,
-  .demo-card{
-    display:grid!important;
-    grid-template-columns:1fr!important;
-    justify-items:center!important;
-    align-items:center!important;
-    width:100%!important;
-  }
-
-  .demo-card{
-    min-height:auto!important;
-    padding:18px!important;
-    gap:18px!important;
-  }
-
-  .demo-preview{
-    width:100%!important;
-    max-width:100%!important;
-    margin:0!important;
-    border-radius:24px!important;
-  }
-
-  .browser-top{
-    flex-shrink:0!important;
-  }
-
-  .demo-img-wrap{
-    width:100%!important;
-    height:auto!important;
-    min-height:300px!important;
-    max-height:none!important;
-    padding:18px!important;
+  .portfolio-v9 .demo-img-wrap,
+  .portfolio-v9 .demo-1 .demo-img-wrap{
+    overflow:hidden!important;
     display:flex!important;
     align-items:center!important;
     justify-content:center!important;
+    background:#05030a!important;
   }
-
-  .demo-img-wrap img{
+  .portfolio-v9 .demo-img-wrap img{
     width:100%!important;
-    height:auto!important;
-    max-height:none!important;
+    height:100%!important;
     object-fit:contain!important;
     object-position:center center!important;
     display:block!important;
-  }
-
-  .pc-thumb{
-    aspect-ratio:auto!important;
-    min-height:280px!important;
-    height:auto!important;
-    padding:20px!important;
-  }
-
-  .brow{
-    width:100%!important;
-    max-width:100%!important;
-    height:auto!important;
-  }
-
-  .brow-b{
-    min-height:230px!important;
-    height:auto!important;
-    display:flex!important;
-    flex-direction:column!important;
-    align-items:center!important;
-    justify-content:center!important;
-    padding:18px!important;
-  }
-
-  .brow-hero{
-    height:auto!important;
-    min-height:150px!important;
-    padding:18px!important;
-    overflow:visible!important;
-  }
-
-  .bring{
-    width:122px!important;
-    height:122px!important;
-    min-width:122px!important;
-    min-height:122px!important;
-    transform:none!important;
-    margin:0 auto 12px!important;
-  }
-
-  .screen-logo,
-  .alogo,
-  .nlogo img,
-  .ft-logo{
-    object-fit:contain!important;
-  }
-
-  /* HERO LAPTOP/LIAM DIGITAL ANIMATION: keep complete and not cropped */
-  #hero{
-    overflow:visible!important;
-  }
-
-  #hero .hero-device,
-  .hero-device{
-    display:flex!important;
-    order:-5!important;
-    width:100%!important;
-    max-width:360px!important;
-    min-height:260px!important;
-    height:auto!important;
-    margin:0 auto 22px!important;
-    align-items:center!important;
-    justify-content:center!important;
-    overflow:visible!important;
-    transform:none!important;
-  }
-
-  .laptop-scene{
-    width:100%!important;
-    max-width:340px!important;
-    height:245px!important;
-    min-height:245px!important;
-    overflow:visible!important;
-    transform:none!important;
-  }
-
-  .screen{
-    inset:8px 10px 70px!important;
-    border-radius:18px!important;
-    overflow:hidden!important;
-  }
-
-  .screen-logo{
-    width:82px!important;
-    height:82px!important;
-    max-width:82px!important;
-    max-height:82px!important;
-  }
-
-  .screen-title{font-size:19px!important;margin-top:8px!important;}
-  .screen-sub{font-size:12px!important;}
-  .keyboard{
-    bottom:32px!important;
-    height:58px!important;
-    left:1%!important;
-    right:7%!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:#05030a!important;
   }
 }
 
-@media (max-width:420px){
+@media (max-width: 430px){
   #nav .nlinks.open,
-  #nav.menu-open .nlinks{
-    top:84px!important;
+  #nav.menu-open .nlinks,
+  #nav.s .nlinks.open,
+  #nav.s.menu-open .nlinks{
+    top:82px!important;
     left:10px!important;
-    right:auto!important;
-    width:min(276px, calc(100vw - 20px))!important;
-    max-width:min(276px, calc(100vw - 20px))!important;
+    width:246px!important;
+    padding:12px!important;
+    gap:9px!important;
   }
-
-  .demo-img-wrap{min-height:260px!important;padding:16px!important;}
-  .pc-thumb{min-height:250px!important;padding:16px!important;}
-  .brow-b{min-height:210px!important;}
+  #nav .nlinks.open a,
+  #nav.menu-open .nlinks a{
+    min-height:50px!important;
+    font-size:17px!important;
+  }
 }
 </style>
-<script id="liam-real-final-left-menu-js">
-(function(){
-  function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
-  ready(function(){
-    var nav = document.getElementById('nav');
-    if(!nav) return;
-    var btn = nav.querySelector('.hbg');
-    var links = nav.querySelector('.nlinks');
-    if(!btn || !links) return;
-
-    links.classList.remove('open');
-    nav.classList.remove('menu-open');
-    btn.classList.remove('open');
-    btn.setAttribute('aria-expanded','false');
-
-    function closeMenu(){
-      links.classList.remove('open');
-      nav.classList.remove('menu-open');
-      btn.classList.remove('open');
-      btn.setAttribute('aria-expanded','false');
-    }
-
-    function openMenu(){
-      links.classList.add('open');
-      nav.classList.add('menu-open');
-      btn.classList.add('open');
-      btn.setAttribute('aria-expanded','true');
-
-      /* force menu to be glued to left hamburger */
-      if(window.matchMedia('(max-width:768px)').matches){
-        links.style.left = '12px';
-        links.style.right = 'auto';
-        links.style.transform = 'none';
-        links.style.width = 'min(292px, calc(100vw - 24px))';
-        links.style.maxWidth = 'min(292px, calc(100vw - 24px))';
-      }else{
-        links.style.left = '';
-        links.style.right = '';
-        links.style.width = '';
-        links.style.maxWidth = '';
-      }
-    }
-
-    btn.onclick = function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      links.classList.contains('open') ? closeMenu() : openMenu();
-    };
-
-    links.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
-
-    document.addEventListener('click', function(e){
-      if(!nav.contains(e.target)) closeMenu();
-    });
-
-    window.addEventListener('resize', function(){
-      if(window.innerWidth > 768) closeMenu();
-    }, {passive:true});
-  });
-})();
-</script>
 
 </body>
 </html>
