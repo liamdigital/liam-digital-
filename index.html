@@ -2734,6 +2734,113 @@ img,svg,video,canvas{max-width:100%!important;height:auto;}
   #hero{padding-top:108px!important;}
 }
 </style>
+
+<style id="liam-final-2026-mobile-menu-animation-contact-fix">
+/* === LIAM DIGITAL FINAL MOBILE FIX — header/menu + hero animation + contact text === */
+html,body{max-width:100%!important;overflow-x:hidden!important;background:#03030a!important;}
+#nav{box-sizing:border-box!important;opacity:1!important;visibility:visible!important;transform:none!important;will-change:auto!important;}
+#nav *{box-sizing:border-box!important;}
+
+@media (min-width:769px){
+  #nav .hbg{display:none!important;}
+  #nav .nlinks{position:static!important;transform:none!important;}
+}
+
+@media (max-width:768px){
+  body{padding-top:0!important;}
+
+  /* Header stable from first paint — no weird jump */
+  #nav{
+    position:fixed!important;top:0!important;left:0!important;right:0!important;inset-inline:0!important;
+    height:82px!important;min-height:82px!important;max-height:82px!important;
+    padding:10px 20px!important;margin:0!important;
+    display:grid!important;grid-template-columns:78px 1fr 78px!important;align-items:center!important;
+    background:rgba(3,3,10,.985)!important;backdrop-filter:blur(18px) saturate(170%)!important;-webkit-backdrop-filter:blur(18px) saturate(170%)!important;
+    border-bottom:1px solid rgba(168,85,247,.22)!important;z-index:99999!important;
+    transition:none!important;transform:none!important;overflow:visible!important;
+  }
+  #nav.s{height:82px!important;min-height:82px!important;max-height:82px!important;padding:10px 20px!important;}
+
+  /* Logo right */
+  #nav .nlogo{grid-column:3!important;justify-self:end!important;align-self:center!important;position:relative!important;z-index:3!important;width:70px!important;height:70px!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+  #nav .nlogo img,#nav.s .nlogo img{width:64px!important;height:64px!important;min-width:64px!important;min-height:64px!important;max-width:64px!important;max-height:64px!important;border-radius:50%!important;display:block!important;}
+
+  /* Social exactly center */
+  #nav .nright,#nav .brand-icons{grid-column:2!important;justify-self:center!important;align-self:center!important;position:static!important;left:auto!important;right:auto!important;top:auto!important;transform:none!important;margin:0!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:10px!important;width:auto!important;max-width:100%!important;z-index:3!important;}
+  #nav .nright a,#nav .brand-icons a,#nav .nsoc,#nav .app-icon{display:flex!important;align-items:center!important;justify-content:center!important;width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;max-width:48px!important;max-height:48px!important;border-radius:14px!important;margin:0!important;opacity:1!important;visibility:visible!important;}
+  #nav .ncta{display:none!important;}
+
+  /* Burger left */
+  #nav .hbg{grid-column:1!important;justify-self:start!important;align-self:center!important;position:relative!important;left:auto!important;right:auto!important;top:auto!important;transform:none!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:center!important;width:58px!important;height:58px!important;border-radius:18px!important;border:1px solid rgba(168,85,247,.45)!important;background:rgba(124,58,237,.10)!important;box-shadow:0 0 22px rgba(124,58,237,.18)!important;z-index:100001!important;padding:0!important;}
+  #nav .hbg span{display:block!important;width:28px!important;height:3px!important;border-radius:999px!important;background:#d8b4fe!important;margin:0!important;}
+  #nav .hbg{gap:6px!important;}
+  #nav .hbg.open span:nth-child(1),#nav.menu-open .hbg span:nth-child(1){transform:translateY(9px) rotate(45deg)!important;}
+  #nav .hbg.open span:nth-child(2),#nav.menu-open .hbg span:nth-child(2){opacity:0!important;}
+  #nav .hbg.open span:nth-child(3),#nav.menu-open .hbg span:nth-child(3){transform:translateY(-9px) rotate(-45deg)!important;}
+
+  /* Menu opens from the burger side, not in the middle */
+  #nav .nlinks{display:none!important;list-style:none!important;}
+  #nav .nlinks.open,#nav.menu-open .nlinks{
+    display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:10px!important;
+    position:absolute!important;top:88px!important;left:12px!important;right:auto!important;bottom:auto!important;
+    width:245px!important;max-width:calc(100vw - 24px)!important;height:auto!important;max-height:calc(100svh - 106px)!important;overflow:auto!important;
+    padding:14px!important;margin:0!important;border-radius:24px!important;
+    background:rgba(5,5,12,.98)!important;border:1px solid rgba(168,85,247,.35)!important;box-shadow:0 24px 70px rgba(0,0,0,.64),0 0 0 1px rgba(255,255,255,.035) inset!important;
+    transform:none!important;translate:none!important;z-index:100000!important;text-align:center!important;
+  }
+  #nav .nlinks.open li,#nav.menu-open .nlinks li{display:block!important;width:100%!important;margin:0!important;padding:0!important;}
+  #nav .nlinks.open a,#nav.menu-open .nlinks a{display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:58px!important;padding:13px 12px!important;border-radius:16px!important;background:rgba(255,255,255,.055)!important;border:1px solid rgba(255,255,255,.08)!important;color:#fff!important;font-size:19px!important;font-weight:900!important;line-height:1.1!important;text-align:center!important;letter-spacing:-.2px!important;}
+  #nav .nlinks.open a.active,#nav.menu-open .nlinks a.active{background:rgba(124,58,237,.18)!important;border-color:rgba(168,85,247,.30)!important;color:#fff!important;}
+  #nav .nlinks.open a.active::after,#nav.menu-open .nlinks a.active::after{display:none!important;}
+
+  /* Hero mobile layout: animation ABOVE text */
+  #hero{
+    display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:18px!important;
+    width:100%!important;max-width:100%!important;min-height:auto!important;padding:102px 18px 58px!important;overflow:hidden!important;text-align:center!important;
+  }
+  #hero .hinner{order:2!important;width:100%!important;max-width:680px!important;margin:0 auto!important;text-align:center!important;display:flex!important;flex-direction:column!important;align-items:center!important;z-index:2!important;}
+  #hero .hero-device{order:1!important;display:flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:center!important;width:100%!important;max-width:390px!important;min-height:215px!important;height:215px!important;margin:4px auto 8px!important;padding:0!important;position:relative!important;z-index:1!important;transform:none!important;}
+  #hero .laptop-scene{display:block!important;visibility:visible!important;opacity:1!important;width:min(100%,360px)!important;height:215px!important;max-height:215px!important;margin:0 auto!important;transform:none!important;filter:drop-shadow(0 18px 26px rgba(0,0,0,.48))!important;}
+  #hero .device-glow{display:block!important;inset:8% 2%!important;opacity:.78!important;filter:blur(32px)!important;}
+  #hero .screen{display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;inset:7px 18px 58px!important;border-radius:18px!important;overflow:hidden!important;}
+  #hero .screen-logo{display:block!important;width:72px!important;height:72px!important;min-width:72px!important;min-height:72px!important;margin:0 auto 10px!important;border-radius:50%!important;}
+  #hero .screen-title{display:block!important;font-size:22px!important;font-weight:900!important;line-height:1!important;margin:0 0 6px!important;color:#fff!important;letter-spacing:.5px!important;}
+  #hero .screen-sub{display:block!important;font-size:14px!important;font-weight:700!important;line-height:1!important;color:rgba(255,255,255,.75)!important;}
+  #hero .keyboard{display:block!important;left:10px!important;right:10px!important;bottom:26px!important;height:48px!important;border-radius:14px!important;transform:perspective(320px) rotateX(55deg)!important;}
+  #hero .hpill{margin:0 auto 18px!important;justify-content:center!important;text-align:center!important;}
+  #hero .htitle{margin:0 auto 18px!important;text-align:center!important;font-size:clamp(36px,11vw,58px)!important;line-height:1.08!important;letter-spacing:-1.1px!important;max-width:100%!important;}
+  #hero .hsub{margin:0 auto 24px!important;text-align:center!important;max-width:610px!important;font-size:17px!important;line-height:1.72!important;}
+  #hero .hbtns{width:100%!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:12px!important;margin:0 auto 22px!important;}
+  #hero .hbtns a,#hero .hbtns button{width:100%!important;min-height:58px!important;justify-content:center!important;text-align:center!important;}
+  #hero .htrust,#hero .hero-benefits{width:100%!important;display:grid!important;grid-template-columns:1fr!important;gap:10px!important;margin:0 auto!important;padding-top:0!important;border-top:0!important;}
+  #hero .hti{width:100%!important;min-height:54px!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;padding:12px 14px!important;border-radius:16px!important;background:rgba(255,255,255,.045)!important;border:1px solid rgba(255,255,255,.09)!important;font-size:14.5px!important;font-weight:800!important;color:rgba(255,255,255,.78)!important;}
+  #hero .hti::before{display:none!important;}
+
+  /* Services/cards centered */
+  #services,#services *{text-align:center!important;}
+  #services .srv-grid,#services .services-grid{display:grid!important;grid-template-columns:1fr!important;gap:16px!important;justify-items:center!important;}
+  #services .scard{width:100%!important;max-width:420px!important;margin:0 auto!important;align-items:center!important;text-align:center!important;}
+  #services .sc-top{width:100%!important;justify-content:center!important;}
+  #services .sc-result,#services .sc-desc{text-align:center!important;}
+
+  /* Contact section text and cards cleaner */
+  #contact .sp,#contact p{max-width:680px!important;margin-left:auto!important;margin-right:auto!important;text-align:center!important;}
+  .contact-simple p{font-size:18px!important;line-height:1.65!important;color:rgba(255,255,255,.72)!important;}
+}
+
+@media (max-width:390px){
+  #nav{grid-template-columns:64px 1fr 64px!important;padding:10px 12px!important;}
+  #nav .nlogo img,#nav.s .nlogo img{width:58px!important;height:58px!important;min-width:58px!important;min-height:58px!important;}
+  #nav .nright,#nav .brand-icons{gap:7px!important;}
+  #nav .nright a,#nav .brand-icons a,#nav .nsoc,#nav .app-icon{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;border-radius:13px!important;}
+  #nav .hbg{width:54px!important;height:54px!important;border-radius:16px!important;}
+  #nav .nlinks.open,#nav.menu-open .nlinks{width:232px!important;left:10px!important;top:86px!important;}
+  #hero{padding-left:14px!important;padding-right:14px!important;}
+  #hero .hero-device{max-width:340px!important;height:202px!important;min-height:202px!important;}
+  #hero .laptop-scene{height:202px!important;}
+}
+</style>
+
 </head>
 <body>
 
@@ -4012,7 +4119,7 @@ document.addEventListener('DOMContentLoaded', function(){
           <div class="contact-simple-inner">
             ${logo?`<img class="contact-mini-logo" src="${logo}" alt="LIAM DIGITAL">`:''}
             <h2>יצירת קשר<br><em>מהירה ונקייה.</em></h2>
-            <p>כמו שביקשת — בלי עומס ובלי אייקונים מיותרים. רק טלפון ואימייל, בצורה נקייה ומקצועית.</p>
+            <p>בלי עומס ובלי בלגן — רק דרך מהירה וברורה ליצור קשר. אפשר להתקשר, לשלוח וואטסאפ או לשלוח אימייל להצעת מחיר מסודרת.</p>
             <div class="contact-only-grid" aria-label="פרטי יצירת קשר">
               <a class="contact-only-card" href="tel:0527003976">
                 <span class="contact-only-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.49c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.19 2.2Z"/></svg></span>
@@ -4569,6 +4676,56 @@ document.addEventListener('DOMContentLoaded', function(){
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
 </script>
+
+<script id="liam-final-2026-menu-position-fix">
+(function(){
+  function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var nav = document.getElementById('nav');
+    var btn = document.getElementById('hbg') || (nav && nav.querySelector('.hbg'));
+    var menu = document.getElementById('nl') || (nav && nav.querySelector('.nlinks'));
+    var hero = document.getElementById('hero');
+    var device = hero && hero.querySelector('.hero-device');
+    var inner = hero && hero.querySelector('.hinner');
+
+    // Put the LIAM DIGITAL animation before the text in mobile DOM too, not only CSS.
+    function placeHeroDevice(){
+      if(!hero || !device || !inner) return;
+      if(window.matchMedia('(max-width: 768px)').matches){
+        if(hero.firstElementChild !== device){ hero.insertBefore(device, inner); }
+      }else{
+        if(inner.nextElementSibling !== device){ inner.after(device); }
+      }
+    }
+    placeHeroDevice();
+    window.addEventListener('resize', placeHeroDevice, {passive:true});
+
+    if(!nav || !btn || !menu) return;
+    function closeMenu(){
+      menu.classList.remove('open');
+      nav.classList.remove('menu-open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    }
+    function openMenu(){
+      menu.classList.add('open');
+      nav.classList.add('menu-open');
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+    }
+    btn.onclick = function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(menu.classList.contains('open')) closeMenu(); else openMenu();
+    };
+    menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+    document.addEventListener('click', function(e){
+      if(!nav.contains(e.target)) closeMenu();
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
 
