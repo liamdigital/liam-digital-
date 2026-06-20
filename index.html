@@ -2639,7 +2639,7 @@ document.addEventListener('DOMContentLoaded', function(){
   document.body.style.overflowX='hidden';
   document.querySelectorAll('*').forEach(function(el){
     if(el.childNodes && el.childNodes.length){
-      el.childNodes.forEach(function(n){ if(n.nodeType===3){ n.nodeValue=n.nodeValue.replace(/Signature by Liam/gi,''); } });
+      el.childNodes.forEach(function(n){ if(n.nodeType===3){ n.nodeValue=n.nodeValue.replace(//gi,''); } });
     }
   });
   var nav=document.getElementById('nav');
@@ -3971,6 +3971,280 @@ document.addEventListener('DOMContentLoaded', function(){
   window.addEventListener('resize', () => { if(window.innerWidth > 900) closeMenu(); }, {passive:true});
   window.addEventListener('scroll', () => nav.classList.toggle('s', window.scrollY > 8), {passive:true});
 })();
+</script>
+
+
+
+<!-- LIAM FINAL MOBILE LOCK FIX -->
+<style id="liam-final-mobile-lock-fix">
+/* hard reset for bad mobile overflow */
+html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important;}
+body{position:relative!important;}
+*,*::before,*::after{box-sizing:border-box!important;}
+img,svg,video,canvas{max-width:100%!important;}
+
+/* desktop remains normal */
+#nav{box-sizing:border-box!important;}
+
+@media (max-width: 768px){
+  :root{--nav-h:82px;}
+  body{padding-top:0!important;}
+
+  /* HEADER: logo right, socials center, hamburger left */
+  #nav,
+  #nav.s{
+    position:fixed!important;
+    top:0!important;right:0!important;left:0!important;
+    width:100%!important;
+    height:var(--nav-h)!important;
+    min-height:var(--nav-h)!important;
+    padding:10px 14px!important;
+    margin:0!important;
+    display:grid!important;
+    grid-template-columns:64px minmax(0,1fr) 64px!important;
+    grid-template-areas:"menu socials logo"!important;
+    align-items:center!important;
+    justify-items:center!important;
+    gap:0!important;
+    background:rgba(5,5,13,.96)!important;
+    border-bottom:1px solid rgba(168,85,247,.22)!important;
+    box-shadow:0 10px 32px rgba(0,0,0,.35)!important;
+    backdrop-filter:blur(18px)!important;
+    -webkit-backdrop-filter:blur(18px)!important;
+    z-index:2147483000!important;
+    overflow:visible!important;
+    transform:none!important;
+  }
+
+  #nav .nlogo{
+    grid-area:logo!important;
+    justify-self:end!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:58px!important;height:58px!important;
+    margin:0!important;padding:0!important;
+    position:relative!important;
+    z-index:3!important;
+  }
+  #nav .nlogo img,
+  #nav.s .nlogo img{
+    width:56px!important;height:56px!important;
+    min-width:56px!important;min-height:56px!important;
+    max-width:56px!important;max-height:56px!important;
+    object-fit:cover!important;border-radius:50%!important;
+  }
+
+  #nav .nright,
+  #nav .brand-icons{
+    grid-area:socials!important;
+    justify-self:center!important;
+    align-self:center!important;
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:8px!important;
+    width:auto!important;
+    max-width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:0!important;
+    position:static!important;
+    inset:auto!important;
+    transform:none!important;
+    z-index:3!important;
+    overflow:visible!important;
+    direction:ltr!important;
+  }
+
+  #nav .nright a,
+  #nav .brand-icons a,
+  #nav .nsoc,
+  #nav .app-icon{
+    display:inline-flex!important;
+    width:44px!important;height:44px!important;
+    min-width:44px!important;min-height:44px!important;
+    max-width:44px!important;max-height:44px!important;
+    border-radius:14px!important;
+    align-items:center!important;justify-content:center!important;
+    margin:0!important;padding:0!important;
+    flex:0 0 44px!important;
+    opacity:1!important;
+    visibility:visible!important;
+    position:relative!important;
+    transform:none!important;
+  }
+  #nav .nright svg,#nav .brand-icons svg,#nav .nsoc svg,#nav .app-icon svg{
+    width:22px!important;height:22px!important;
+  }
+  #nav .ncta{display:none!important;}
+
+  #nav .hbg{
+    grid-area:menu!important;
+    justify-self:start!important;
+    align-self:center!important;
+    display:flex!important;
+    width:52px!important;height:52px!important;
+    min-width:52px!important;min-height:52px!important;
+    border-radius:17px!important;
+    align-items:center!important;justify-content:center!important;
+    flex-direction:column!important;
+    gap:6px!important;
+    margin:0!important;padding:0!important;
+    background:rgba(124,58,237,.16)!important;
+    border:1px solid rgba(168,85,247,.42)!important;
+    box-shadow:0 0 22px rgba(168,85,247,.18)!important;
+    position:relative!important;
+    inset:auto!important;
+    transform:none!important;
+    z-index:4!important;
+  }
+  #nav .hbg span{display:block!important;width:25px!important;height:3px!important;border-radius:99px!important;background:#d8b4fe!important;}
+
+  /* menu closed by default — never cover hero unless user taps */
+  #nav .nlinks{
+    display:none!important;
+    position:fixed!important;
+    top:calc(var(--nav-h) + 10px)!important;
+    left:14px!important;right:14px!important;
+    width:auto!important;
+    max-width:none!important;
+    max-height:calc(100svh - var(--nav-h) - 26px)!important;
+    overflow:auto!important;
+    margin:0!important;
+    padding:14px!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    gap:8px!important;
+    list-style:none!important;
+    border-radius:24px!important;
+    background:rgba(7,5,15,.985)!important;
+    border:1px solid rgba(168,85,247,.28)!important;
+    box-shadow:0 28px 80px rgba(0,0,0,.72)!important;
+    z-index:2147482999!important;
+    direction:rtl!important;
+    transform:none!important;
+  }
+  #nav .nlinks.open{display:flex!important;}
+  #nav .nlinks li{width:100%!important;margin:0!important;padding:0!important;display:block!important;}
+  #nav .nlinks a{
+    display:flex!important;align-items:center!important;justify-content:center!important;
+    width:100%!important;min-height:48px!important;
+    border-radius:16px!important;
+    background:rgba(255,255,255,.045)!important;
+    border:1px solid rgba(255,255,255,.075)!important;
+    color:#fff!important;text-align:center!important;
+    font-size:16px!important;font-weight:900!important;line-height:1.2!important;
+    padding:12px!important;white-space:normal!important;
+  }
+  #nav .nlinks a.active::after,#nav .nlinks a::after{display:none!important;}
+
+  /* content starts under fixed header, centered and no side-cut */
+  #hero{
+    padding-top:calc(var(--nav-h) + 34px)!important;
+    padding-left:16px!important;padding-right:16px!important;
+    text-align:center!important;
+    overflow:hidden!important;
+    min-height:auto!important;
+  }
+  #hero .hinner,.hinner,.hero-content{
+    width:100%!important;max-width:620px!important;margin-inline:auto!important;
+    text-align:center!important;align-items:center!important;justify-content:center!important;
+  }
+  #hero .hpill,#hero .sec-eye{margin-inline:auto!important;justify-content:center!important;}
+  #hero .htitle,.htitle{
+    max-width:100%!important;text-align:center!important;margin-inline:auto!important;
+    font-size:clamp(34px,11vw,54px)!important;line-height:1.08!important;letter-spacing:-1px!important;
+    word-break:normal!important;overflow-wrap:normal!important;
+  }
+  #hero .hsub,.hsub{max-width:100%!important;text-align:center!important;margin-inline:auto!important;font-size:16px!important;line-height:1.75!important;}
+  #hero .hbtns,.hero-cta-row{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:center!important;width:100%!important;max-width:420px!important;margin-inline:auto!important;gap:12px!important;}
+  #hero .btn-prime,#hero .btn-wa,#hero .btn-out,#hero .hero-main-cta,#hero .hero-secondary-cta{width:100%!important;max-width:100%!important;justify-content:center!important;text-align:center!important;}
+  #hero .htrust,.hero-benefits{display:grid!important;grid-template-columns:1fr!important;width:100%!important;max-width:420px!important;margin-inline:auto!important;gap:10px!important;}
+  #hero .hti,.hero-benefit{justify-content:center!important;text-align:center!important;width:100%!important;}
+
+  /* sections/cards global mobile centering */
+  .sec,section,footer{max-width:100%!important;overflow:hidden!important;}
+  .sec{padding-left:16px!important;padding-right:16px!important;text-align:center!important;}
+  .shd,.sec-center,.sh,.sp,.sec-eye{margin-inline:auto!important;text-align:center!important;justify-content:center!important;}
+  .srv-grid,.trust-grid,.skills-grid,.proc-grid,.about-grid,.ct-grid,.ft-grid,.bento,
+  .service-showcase,.service-carousel-shell{
+    display:grid!important;grid-template-columns:1fr!important;width:100%!important;max-width:430px!important;margin-inline:auto!important;gap:16px!important;justify-items:center!important;
+  }
+  .scard,.tc,.skc,.pstep,.acard,.ct-form,.pc,.service-tile,
+  #services .service-tile{
+    width:100%!important;max-width:420px!important;min-width:0!important;margin-inline:auto!important;text-align:center!important;align-items:center!important;justify-content:center!important;transform:none!important;
+  }
+  .pc.w7,.pc.w5,.pc.w6,.pc.w4,.pc.w8{grid-column:auto!important;}
+  .pc-thumb{width:100%!important;min-height:180px!important;aspect-ratio:16/10!important;}
+
+  /* services specifically: card in middle, arrows fixed and not pushing card */
+  #services,#prices{padding-left:16px!important;padding-right:16px!important;text-align:center!important;overflow:hidden!important;}
+  #services .services-head,#services .shd{max-width:430px!important;margin-inline:auto!important;text-align:center!important;}
+  #services .service-showcase,#services .service-carousel-shell{position:relative!important;display:block!important;max-width:420px!important;overflow:visible!important;padding:0!important;}
+  #services .service-tile{display:flex!important;flex-direction:column!important;padding:26px 18px!important;border-radius:24px!important;}
+  #services .service-copy,#services .service-meta,#services .service-copy h3,#services .service-copy p,#services .service-meta *{text-align:center!important;align-items:center!important;margin-inline:auto!important;}
+  #services .service-orb,.sc-icon{margin-inline:auto!important;}
+  #services .service-cta,.sc-wa,.sc-buy{width:100%!important;justify-content:center!important;text-align:center!important;}
+  #services .service-arrow{position:absolute!important;top:50%!important;transform:translateY(-50%)!important;z-index:5!important;}
+  #services .service-arrow.prev{right:-4px!important;}
+  #services .service-arrow.next{left:-4px!important;}
+
+  /* about/signature: remove English caption */
+  .about-v61-signature::before,.about-v61-signature::after,.signature-title,.signature-label{content:none!important;display:none!important;}
+  .about-v61-signature{font-size:0!important;line-height:0!important;}
+
+  .fwa{width:56px!important;height:56px!important;left:16px!important;bottom:16px!important;z-index:2147482990!important;}
+}
+
+@media (max-width:420px){
+  @media (max-width:768px){
+    :root{--nav-h:76px;}
+    #nav,#nav.s{grid-template-columns:58px minmax(0,1fr) 58px!important;padding:9px 10px!important;}
+    #nav .nlogo,#nav .nlogo img,#nav.s .nlogo img{width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;max-width:52px!important;max-height:52px!important;}
+    #nav .hbg{width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;}
+    #nav .nright,#nav .brand-icons{gap:6px!important;}
+    #nav .nright a,#nav .brand-icons a,#nav .nsoc,#nav .app-icon{width:39px!important;height:39px!important;min-width:39px!important;min-height:39px!important;max-width:39px!important;max-height:39px!important;flex-basis:39px!important;border-radius:13px!important;}
+    #nav .nright svg,#nav .brand-icons svg,#nav .nsoc svg,#nav .app-icon svg{width:19px!important;height:19px!important;}
+    #hero{padding-top:calc(var(--nav-h) + 28px)!important;}
+  }
+}
+</style>
+<script id="liam-final-mobile-lock-js">
+document.addEventListener('DOMContentLoaded', function(){
+  document.documentElement.style.overflowX = 'hidden';
+  document.body.style.overflowX = 'hidden';
+
+  // remove the English signature caption everywhere, keep the actual signature image
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const bad = [];
+  while(walker.nextNode()){
+    const t = walker.currentNode;
+    if(/Signature\s+by\s+Liam/i.test(t.nodeValue)) bad.push(t);
+  }
+  bad.forEach(t => t.nodeValue = t.nodeValue.replace(/Signature\s+by\s+Liam/ig,''));
+
+  const nav = document.getElementById('nav');
+  if(!nav) return;
+  nav.classList.add('s');
+  const links = nav.querySelector('.nlinks');
+  const btn = nav.querySelector('.hbg');
+  if(links){ links.classList.remove('open'); }
+  if(btn && links){
+    btn.setAttribute('aria-expanded','false');
+    btn.onclick = function(e){
+      e.preventDefault();
+      const isOpen = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    }));
+  }
+});
 </script>
 
 </body>
