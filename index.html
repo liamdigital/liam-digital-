@@ -6,6 +6,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>LIAM DIGITAL | מערכות AI לעסקים</title>
 <meta content="LIAM DIGITAL — מערכות AI מותאמות אישית לעסקים: סוכני מכירות, שירות, שיווק, קמפיינים, דוחות ותפעול." name="description"/>
+<link rel="icon" type="image/png" href="favicon1.png"/>
+<link rel="shortcut icon" type="image/png" href="favicon1.png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&amp;family=Rubik:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/>
@@ -2386,6 +2388,452 @@ footer{padding:34px 0 26px!important;}
   #about .profile-frame,.about-premium .profile-frame{height:350px!important;}
 }
 
+
+
+/* ══════════════════════════════════════════════════════
+   FINAL PERFECT HEADER + FOOTER FIX
+   Mobile header: logo | social icons | hamburger in one clean row
+   Footer: compact centered card, no huge broken copyright/text
+   ══════════════════════════════════════════════════════ */
+
+@media (max-width: 800px){
+  body{padding-top:0!important;}
+
+  header.nav,
+  .nav{
+    position:sticky!important;
+    top:0!important;
+    height:72px!important;
+    min-height:72px!important;
+    padding:0!important;
+    overflow:visible!important;
+    background:rgba(4,3,10,.96)!important;
+    border-bottom:1px solid rgba(177,95,255,.28)!important;
+    box-shadow:0 12px 40px rgba(0,0,0,.42)!important;
+    backdrop-filter:blur(18px)!important;
+    -webkit-backdrop-filter:blur(18px)!important;
+    z-index:99999!important;
+  }
+
+  .nav .container{
+    width:calc(100% - 24px)!important;
+    height:72px!important;
+    min-height:72px!important;
+    padding:0!important;
+    margin-inline:auto!important;
+    display:grid!important;
+    grid-template-columns:54px minmax(0,1fr) 48px!important;
+    align-items:center!important;
+    gap:8px!important;
+  }
+
+  .nav .logo{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:54px!important;
+    height:54px!important;
+    min-width:54px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    margin:0!important;
+    padding:0!important;
+  }
+
+  .nav .logo .logo-img,
+  .nav .logo-img{
+    width:50px!important;
+    height:50px!important;
+    min-width:50px!important;
+    border-radius:15px!important;
+    object-fit:cover!important;
+    display:block!important;
+    box-shadow:0 0 0 1px rgba(255,255,255,.16),0 0 28px rgba(168,85,247,.50)!important;
+  }
+
+  header.nav nav,
+  .nav nav{
+    display:contents!important;
+  }
+
+  .hamb,
+  #hamb{
+    grid-column:3!important;
+    grid-row:1!important;
+    justify-self:end!important;
+    align-self:center!important;
+    width:46px!important;
+    height:46px!important;
+    min-width:46px!important;
+    min-height:46px!important;
+    border-radius:50%!important;
+    display:grid!important;
+    place-items:center!important;
+    margin:0!important;
+    padding:0!important;
+    color:#fff!important;
+    font-size:25px!important;
+    line-height:1!important;
+    background:rgba(255,255,255,.06)!important;
+    border:1px solid rgba(255,255,255,.16)!important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 28px rgba(0,0,0,.32)!important;
+  }
+
+  .nav .socials{
+    grid-column:2!important;
+    grid-row:1!important;
+    justify-self:center!important;
+    align-self:center!important;
+    display:flex!important;
+    flex-direction:row!important;
+    flex-wrap:nowrap!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:7px!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:40px!important;
+    margin:0!important;
+    padding:0!important;
+    overflow:visible!important;
+  }
+
+  .nav .social,
+  header.nav .social{
+    width:36px!important;
+    height:36px!important;
+    min-width:36px!important;
+    min-height:36px!important;
+    border-radius:13px!important;
+    display:grid!important;
+    place-items:center!important;
+    margin:0!important;
+    padding:0!important;
+    transform:none!important;
+    background:linear-gradient(145deg,rgba(139,72,255,.26),rgba(255,255,255,.045))!important;
+    border:1px solid rgba(190,116,255,.30)!important;
+    box-shadow:0 10px 26px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.10)!important;
+  }
+
+  .nav .social svg,
+  header.nav .social svg{
+    width:18px!important;
+    height:18px!important;
+    transform:none!important;
+  }
+
+  .nav .social.ph{background:linear-gradient(135deg,#7c3aed,#b35cff)!important;}
+  .nav .social.wa{background:linear-gradient(135deg,#19c96b,#0da758)!important;}
+  .nav .social.fb{background:linear-gradient(135deg,#226fe8,#164db6)!important;}
+  .nav .social.tt{background:#08060c!important;}
+  .nav .social.ig{background:radial-gradient(circle at 28% 105%,#ffd76b 0 12%,#ff4d68 40%,#d629b7 62%,#515bd4 100%)!important;}
+
+  .nav-links,
+  #navLinks{
+    position:absolute!important;
+    top:78px!important;
+    right:12px!important;
+    left:12px!important;
+    width:auto!important;
+    max-width:none!important;
+    display:none!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    margin:0!important;
+    padding:12px!important;
+    border-radius:20px!important;
+    background:rgba(7,4,15,.985)!important;
+    border:1px solid rgba(190,116,255,.22)!important;
+    box-shadow:0 28px 90px rgba(0,0,0,.70)!important;
+    z-index:999999!important;
+  }
+
+  .nav-links.open,
+  #navLinks.open{display:grid!important;}
+
+  .nav-links a,
+  #navLinks a{
+    width:100%!important;
+    min-height:46px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border-radius:14px!important;
+    font-size:16px!important;
+    background:rgba(255,255,255,.045)!important;
+    color:#fff!important;
+  }
+
+  .hero{padding-top:34px!important;}
+
+  footer{
+    padding:28px 0 calc(34px + env(safe-area-inset-bottom))!important;
+    background:linear-gradient(180deg,rgba(8,5,16,.98),#030207)!important;
+    border-top:1px solid rgba(174,94,255,.22)!important;
+    overflow:hidden!important;
+  }
+
+  footer .container,
+  .foot{
+    width:calc(100% - 28px)!important;
+    max-width:520px!important;
+    margin-inline:auto!important;
+  }
+
+  .foot{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    justify-items:center!important;
+    align-items:center!important;
+    text-align:center!important;
+    gap:16px!important;
+    min-height:0!important;
+    padding:24px 18px!important;
+    border-radius:28px!important;
+    background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(137,73,255,.045))!important;
+    border:1px solid rgba(214,174,255,.18)!important;
+    box-shadow:0 24px 80px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08)!important;
+  }
+
+  .foot > div:first-child{
+    order:1!important;
+    width:100%!important;
+    max-width:330px!important;
+    display:grid!important;
+    grid-template-columns:70px 1fr!important;
+    align-items:center!important;
+    gap:14px!important;
+    text-align:right!important;
+    margin:0!important;
+  }
+
+  .foot .logo-img{
+    width:68px!important;
+    height:68px!important;
+    min-width:68px!important;
+    border-radius:18px!important;
+    margin:0!important;
+  }
+
+  .foot b{
+    display:block!important;
+    margin:0 0 4px!important;
+    font-size:22px!important;
+    line-height:1!important;
+    letter-spacing:.02em!important;
+    color:#fff!important;
+  }
+
+  .foot p{
+    margin:0!important;
+    font-size:14px!important;
+    line-height:1.35!important;
+    color:rgba(255,255,255,.56)!important;
+  }
+
+  .foot > .socials,
+  footer .socials{
+    order:2!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex-direction:row!important;
+    flex-wrap:nowrap!important;
+    gap:10px!important;
+    width:auto!important;
+    margin:0!important;
+    padding:0!important;
+  }
+
+  .foot .social,
+  footer .social{
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    border-radius:14px!important;
+    transform:none!important;
+    display:grid!important;
+    place-items:center!important;
+    border:1px solid rgba(190,116,255,.28)!important;
+    box-shadow:0 10px 28px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.10)!important;
+  }
+
+  .foot .social svg,
+  footer .social svg{
+    width:20px!important;
+    height:20px!important;
+    transform:none!important;
+  }
+
+  .foot > p{
+    order:3!important;
+    width:100%!important;
+    font-size:13px!important;
+    line-height:1.4!important;
+    color:rgba(255,255,255,.42)!important;
+    padding-top:4px!important;
+  }
+
+  .float-wa{
+    width:54px!important;
+    height:54px!important;
+    left:18px!important;
+    bottom:18px!important;
+    border-radius:18px!important;
+  }
+}
+
+@media (max-width: 390px){
+  .nav .container{
+    width:calc(100% - 18px)!important;
+    grid-template-columns:50px minmax(0,1fr) 44px!important;
+    gap:5px!important;
+  }
+  .nav .logo .logo-img,.nav .logo-img{width:46px!important;height:46px!important;border-radius:14px!important;}
+  .hamb,#hamb{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;font-size:23px!important;}
+  .nav .socials{gap:5px!important;}
+  .nav .social,header.nav .social{width:31px!important;height:31px!important;min-width:31px!important;border-radius:11px!important;}
+  .nav .social svg,header.nav .social svg{width:15px!important;height:15px!important;}
+  .foot{padding:22px 14px!important;}
+  .foot > div:first-child{grid-template-columns:62px 1fr!important;max-width:300px!important;}
+  .foot .logo-img{width:60px!important;height:60px!important;min-width:60px!important;}
+  .foot b{font-size:20px!important;}
+  .foot p{font-size:13px!important;}
+}
+
+
+
+/* ══════════════════════════════════════════════════════
+   FINAL CLEAN FIX — single hamburger + perfect mobile footer
+   ══════════════════════════════════════════════════════ */
+.nav{z-index:9999!important;}
+.hamb,#hamb{
+  display:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:0 0 auto!important;
+  font-size:0!important;
+  line-height:1!important;
+  color:#fff!important;
+  overflow:hidden!important;
+}
+.hamb:before,#hamb:before{
+  content:"☰"!important;
+  display:block!important;
+  font-size:27px!important;
+  line-height:1!important;
+  color:#fff!important;
+}
+.hamb:after,#hamb:after{content:none!important;display:none!important;}
+
+/* Footer reset */
+footer{
+  padding:42px 0 32px!important;
+  background:linear-gradient(180deg,#05030a,#020104)!important;
+  border-top:1px solid rgba(190,120,255,.18)!important;
+}
+footer .container{width:min(1120px,92%)!important;}
+.foot{
+  display:grid!important;
+  grid-template-columns:1fr auto 1fr!important;
+  align-items:center!important;
+  gap:22px!important;
+  padding:24px 28px!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  border-radius:28px!important;
+  background:rgba(255,255,255,.035)!important;
+  box-shadow:0 25px 80px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.07)!important;
+  text-align:initial!important;
+}
+.foot .logo{position:static!important;display:flex!important;align-items:center!important;gap:14px!important;justify-self:start!important;min-width:0!important;}
+.foot .logo-img{width:58px!important;height:58px!important;border-radius:16px!important;flex:0 0 auto!important;}
+.foot .logo b{font-size:18px!important;line-height:1!important;color:#fff!important;white-space:nowrap!important;}
+.foot .logo p{margin-top:7px!important;color:rgba(255,255,255,.56)!important;font-size:14px!important;line-height:1.25!important;}
+.foot > p{justify-self:center!important;margin:0!important;color:rgba(255,255,255,.48)!important;font-size:14px!important;white-space:nowrap!important;}
+.foot > .socials{justify-self:end!important;display:flex!important;width:auto!important;padding:0!important;gap:10px!important;order:initial!important;}
+.foot > .socials .social{width:44px!important;height:44px!important;border-radius:14px!important;}
+
+@media(max-width:760px){
+  .nav{min-height:76px!important;height:auto!important;padding:0!important;}
+  .nav .container{
+    width:calc(100% - 24px)!important;
+    min-height:76px!important;
+    padding:8px 0!important;
+    display:grid!important;
+    grid-template-columns:58px 1fr 58px!important;
+    grid-template-areas:
+      "menu socials logo"!important;
+    align-items:center!important;
+    justify-items:center!important;
+    gap:6px!important;
+  }
+  .nav .logo{grid-area:logo!important;position:static!important;justify-self:end!important;margin:0!important;display:flex!important;}
+  .nav .logo .logo-img{width:54px!important;height:54px!important;border-radius:15px!important;}
+  .nav .logo div{display:none!important;}
+  .hamb,#hamb{grid-area:menu!important;display:flex!important;width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;border-radius:16px!important;background:rgba(255,255,255,.055)!important;border:1px solid rgba(255,255,255,.14)!important;box-shadow:0 12px 34px rgba(0,0,0,.32)!important;justify-self:start!important;order:initial!important;}
+  .nav .socials{
+    grid-area:socials!important;
+    width:auto!important;
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+    gap:7px!important;
+    padding:0!important;
+    order:initial!important;
+  }
+  .nav .socials .social{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;border-radius:13px!important;}
+  .nav .socials .social svg{width:18px!important;height:18px!important;}
+  .nav-links,#navLinks{
+    position:fixed!important;
+    top:82px!important;
+    right:12px!important;
+    left:12px!important;
+    width:auto!important;
+    display:none!important;
+    flex-direction:column!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+    padding:14px!important;
+    border-radius:22px!important;
+    background:rgba(7,4,15,.98)!important;
+    border:1px solid rgba(190,120,255,.24)!important;
+    box-shadow:0 28px 90px rgba(0,0,0,.65)!important;
+    z-index:10000!important;
+  }
+  .nav-links.open,#navLinks.open{display:flex!important;}
+  .nav-links a,#navLinks a{width:100%!important;min-height:46px!important;display:flex!important;align-items:center!important;justify-content:center!important;border-radius:14px!important;background:rgba(255,255,255,.035)!important;padding:0 16px!important;font-size:15px!important;}
+
+  footer{padding:28px 0 92px!important;}
+  footer .container{width:calc(100% - 28px)!important;}
+  .foot{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+    padding:24px 18px!important;
+    border-radius:26px!important;
+    text-align:center!important;
+  }
+  .foot .logo{justify-self:center!important;flex-direction:column!important;gap:10px!important;text-align:center!important;}
+  .foot .logo-img{width:64px!important;height:64px!important;border-radius:18px!important;}
+  .foot .logo b{font-size:20px!important;}
+  .foot .logo p{font-size:15px!important;max-width:260px!important;margin:0!important;}
+  .foot > p{order:3!important;justify-self:center!important;white-space:normal!important;font-size:13px!important;line-height:1.4!important;}
+  .foot > .socials{order:2!important;justify-self:center!important;display:flex!important;gap:10px!important;}
+  .foot > .socials .social{width:46px!important;height:46px!important;}
+  .float-wa{width:56px!important;height:56px!important;left:16px!important;bottom:18px!important;z-index:9000!important;}
+}
+
+@media(max-width:390px){
+  .nav .container{grid-template-columns:52px 1fr 52px!important;width:calc(100% - 18px)!important;gap:4px!important;}
+  .hamb,#hamb{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;}
+  .hamb:before,#hamb:before{font-size:25px!important;}
+  .nav .logo .logo-img{width:50px!important;height:50px!important;}
+  .nav .socials{gap:5px!important;}
+  .nav .socials .social{width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;}
+  .nav .socials .social svg{width:16px!important;height:16px!important;}
+  .foot{padding:22px 14px!important;}
+}
+
 </style>
 </head>
 <body>
@@ -2545,14 +2993,19 @@ footer{padding:34px 0 26px!important;}
 <a class="contact-link" href="tel:0527003976"><div><span>טלפון</span><b>052-700-3976</b></div><div class="icon">☎</div></a>
 <a class="contact-link" href="mailto:liamdigital.business@gmail.com"><div><span>אימייל</span><b>liamdigital.business@gmail.com</b></div><div class="icon">✉</div></a>
 </div>
-<form class="form-card rv-left">
+<form class="form-card rv-left" action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="0769644f-3c9d-462a-b783-3ef1a9a0bb58"/>
+<input type="hidden" name="subject" value="פנייה חדשה מהאתר של LIAM DIGITAL"/>
+<input type="hidden" name="from_name" value="LIAM DIGITAL"/>
+<input type="checkbox" name="botcheck" class="hidden" style="display:none;"/>
 <h3>ספר לי בכמה מילים מה העסק צריך</h3>
 <p>לא צריך לדעת מה לבקש. מספיק לכתוב מה העסק עושה ומה מרגיש לך מסורבל.</p>
-<div class="field"><label>שם מלא</label><input placeholder="איך קוראים לך?"/></div>
-<div class="field"><label>טלפון</label><input placeholder="050-000-0000"/></div>
-<div class="field"><label>איזה סוכן מעניין אותך?</label><select><option>מערכת AI מלאה לעסק</option><option>סוכן מכירות ולידים</option><option>סוכן שירות לקוחות</option><option>סוכן שיווק וקמפיינים</option><option>סוכן דוחות ותפעול</option></select></div>
-<div class="field"><label>מה הכי ידני/מסורבל בעסק?</label><textarea placeholder="לדוגמה: לידים, שירות לקוחות, דוחות, קמפיינים, פולואפים, משימות..."></textarea></div>
-<button class="submit" type="button">שליחת פנייה מסודרת</button>
+<div class="field"><label>שם מלא</label><input type="text" name="name" placeholder="איך קוראים לך?" required/></div>
+<div class="field"><label>טלפון</label><input type="tel" name="phone" placeholder="050-000-0000" required/></div>
+<div class="field"><label>אימייל</label><input type="email" name="email" placeholder="האימייל שלך" required/></div>
+<div class="field"><label>איזה סוכן מעניין אותך?</label><select name="agent_type" required><option>מערכת AI מלאה לעסק</option><option>סוכן מכירות ולידים</option><option>סוכן שירות לקוחות</option><option>סוכן שיווק וקמפיינים</option><option>סוכן דוחות ותפעול</option></select></div>
+<div class="field"><label>מה הכי ידני/מסורבל בעסק?</label><textarea name="message" placeholder="לדוגמה: לידים, שירות לקוחות, דוחות, קמפיינים, פולואפים, משימות..." required></textarea></div>
+<button class="submit" type="submit">שליחת פנייה מסודרת</button>
 </form>
 </div>
 </section>
