@@ -2887,6 +2887,79 @@ h1,h2,h3,p,a,li,b,span{overflow-wrap:break-word;min-width:0;}
   .social{width:38px!important;height:38px!important;}
 }
 
+
+/* FIX: nav logo clipped/overlapped by menu pill */
+.nav{overflow:visible!important;}
+.nav .container{justify-content:space-between!important;gap:18px!important;flex-wrap:nowrap;}
+.logo{flex-shrink:0!important;position:relative;z-index:5;min-width:0;}
+.nav-links{flex-shrink:1;min-width:0;position:relative;z-index:1;}
+.socials{flex-shrink:0;}
+.logo-img,.logo .logo-mark,.nav .logo .logo-img{width:62px!important;height:62px!important;}
+@media(max-width:1180px){.logo-img,.logo .logo-mark,.nav .logo .logo-img{width:58px!important;height:58px!important;}}
+@media(max-width:800px){.logo-img,.logo .logo-mark,.nav .logo .logo-img{width:56px!important;height:56px!important;}}
+@media(max-width:430px){.logo-img,.logo .logo-mark,.nav .logo .logo-img{width:52px!important;height:52px!important;}}
+
+
+/* FIX: vertically center header content */
+.nav{display:flex!important;align-items:center!important;height:auto!important;min-height:88px!important;padding:8px 0!important;}
+.nav .container{height:auto!important;min-height:0!important;display:flex!important;align-items:center!important;padding:0!important;}
+.nav-links,.socials,.logo{margin-top:0!important;margin-bottom:0!important;align-self:center!important;}
+.nav-links{align-items:center!important;}
+@media(max-width:800px){.nav{min-height:74px!important;padding:6px 0!important;}}
+
+
+/* ═══ FINAL HEADER: perfectly aligned at every zoom & screen ═══ */
+header.nav{display:flex!important;align-items:center!important;position:fixed!important;top:0!important;inset-inline:0!important;height:auto!important;min-height:0!important;padding:clamp(8px,1vw,14px) 0!important;}
+header.nav .container{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:space-between!important;gap:clamp(10px,2vw,28px)!important;height:auto!important;min-height:0!important;padding:0!important;width:min(1400px,94%)!important;margin-inline:auto!important;}
+header.nav .logo,header.nav .nav-links,header.nav .socials,header.nav .hamb{position:static!important;order:0!important;margin:0!important;align-self:center!important;width:auto!important;}
+header.nav .logo{flex:0 0 auto!important;}
+header.nav .logo-img,header.nav .logo .logo-mark{width:clamp(46px,4.2vw,62px)!important;height:clamp(46px,4.2vw,62px)!important;}
+header.nav .nav-links{flex:1 1 auto!important;display:flex!important;justify-content:center!important;align-items:center!important;gap:clamp(12px,1.6vw,26px)!important;min-width:0!important;padding:8px 14px!important;}
+header.nav .nav-links a{white-space:nowrap;display:flex;align-items:center;font-size:clamp(11.5px,0.95vw,14px)!important;padding:6px 2px!important;min-height:0!important;width:auto!important;}
+header.nav .nav-links a.active:after{bottom:-14px!important;}
+header.nav .socials{flex:0 0 auto!important;display:flex!important;gap:clamp(6px,0.6vw,10px)!important;padding:0!important;justify-content:flex-end!important;}
+header.nav .social{width:clamp(32px,2.6vw,38px)!important;height:clamp(32px,2.6vw,38px)!important;min-width:0!important;min-height:0!important;}
+header.nav .social svg{width:clamp(14px,1.2vw,18px)!important;height:clamp(14px,1.2vw,18px)!important;}
+header.nav .hamb{display:none!important;}
+
+/* Mobile ≤800px: logo + hamburger row, socials row below, all centered */
+@media(max-width:800px){
+  header.nav .container{flex-wrap:wrap!important;row-gap:6px!important;}
+  header.nav .logo{order:1!important;}
+  header.nav .hamb{display:grid!important;place-items:center!important;order:2!important;width:42px!important;height:42px!important;}
+  header.nav .nav-links{order:3!important;flex:1 1 100%!important;position:absolute!important;top:100%!important;right:10px!important;left:10px!important;display:none!important;flex-direction:column!important;background:rgba(8,5,16,.97)!important;border-radius:20px!important;padding:12px!important;box-shadow:0 26px 90px rgba(0,0,0,.55)!important;}
+  header.nav .nav-links.open{display:flex!important;}
+  header.nav .nav-links a{width:100%!important;justify-content:center!important;min-height:46px!important;font-size:14px!important;}
+  header.nav .nav-links a.active:after{display:none!important;}
+  header.nav .socials{order:4!important;flex:1 1 100%!important;justify-content:center!important;padding:2px 0 4px!important;}
+  header.nav .logo-img,header.nav .logo .logo-mark{width:52px!important;height:52px!important;}
+  header.nav .social{width:38px!important;height:38px!important;}
+  header.nav .social svg{width:17px!important;height:17px!important;}
+}
+@media(max-width:380px){
+  header.nav .social{width:34px!important;height:34px!important;}
+  header.nav .logo-img,header.nav .logo .logo-mark{width:48px!important;height:48px!important;}
+}
+/* page content never hides under the fixed header */
+html{scroll-padding-top:110px!important;}
+@media(min-width:801px){.hero,.liam-home-fusion,.liam-hero-v2{padding-top:130px!important;}}
+
+
+/* Compact header at narrow/zoomed viewports — everything scales with viewport */
+@media(max-width:800px){
+  header.nav{padding:6px 0!important;}
+  header.nav .container{row-gap:4px!important;}
+  header.nav .logo-img,header.nav .logo .logo-mark{width:clamp(38px,9vw,50px)!important;height:clamp(38px,9vw,50px)!important;}
+  header.nav .hamb{width:clamp(34px,8vw,42px)!important;height:clamp(34px,8vw,42px)!important;font-size:20px!important;}
+  header.nav .socials{gap:clamp(5px,1.4vw,8px)!important;padding:0 0 4px!important;}
+  header.nav .social{width:clamp(30px,7.5vw,38px)!important;height:clamp(30px,7.5vw,38px)!important;border-radius:11px!important;}
+  header.nav .social svg{width:clamp(13px,3.4vw,17px)!important;height:clamp(13px,3.4vw,17px)!important;}
+  .float-wa{width:clamp(44px,11vw,54px)!important;height:clamp(44px,11vw,54px)!important;}
+  .float-wa svg{width:clamp(20px,5vw,26px)!important;height:clamp(20px,5vw,26px)!important;}
+  html{scroll-padding-top:96px!important;}
+  .hero,.liam-home-fusion,.liam-hero-v2{padding-top:clamp(96px,24vw,130px)!important;}
+}
+
 </style>
 </head>
 <body>
