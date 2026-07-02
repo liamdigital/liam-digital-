@@ -2834,6 +2834,59 @@ footer .container{width:min(1120px,92%)!important;}
   .foot{padding:22px 14px!important;}
 }
 
+
+/* ══════════════════════════════════════════════════════
+   FINAL: RESPONSIVE ACCURACY + BIGGER LOGO (no design change)
+   ══════════════════════════════════════════════════════ */
+
+/* Prevent any horizontal overflow on all devices */
+html,body{overflow-x:clip!important;max-width:100vw!important;}
+img,svg,video{max-width:100%!important;height:auto;}
+.logo-img,.logo .logo-mark,.social svg,.ico svg{height:auto;}
+
+/* Long Hebrew/English words never break layout */
+h1,h2,h3,p,a,li,b,span{overflow-wrap:break-word;min-width:0;}
+
+/* ---- Bigger logo (all breakpoints) ---- */
+.logo-img,.logo .logo-mark,.nav .logo .logo-img{
+  width:72px!important;height:72px!important;
+}
+.logo{gap:12px!important;}
+.contact-card .logo-img,.contact-card .logo-mark{width:110px!important;height:110px!important;}
+.screen-logo .logo-img,.screen-logo .logo-mark{width:104px!important;height:104px!important;}
+
+@media(max-width:1180px){
+  .logo-img,.logo .logo-mark,.nav .logo .logo-img{width:64px!important;height:64px!important;}
+}
+@media(max-width:800px){
+  .logo-img,.logo .logo-mark,.nav .logo .logo-img{width:58px!important;height:58px!important;}
+  .screen-logo .logo-img,.screen-logo .logo-mark{width:82px!important;height:82px!important;}
+  .contact-card .logo-img,.contact-card .logo-mark{width:92px!important;height:92px!important;}
+  /* iOS: prevent auto-zoom when tapping inputs */
+  .field input,.field textarea,.field select{font-size:16px!important;}
+  /* comfortable tap targets */
+  .nav-links a{min-height:48px;display:flex;align-items:center;justify-content:center;}
+}
+@media(max-width:430px){
+  .logo-img,.logo .logo-mark,.nav .logo .logo-img{width:54px!important;height:54px!important;}
+  .container{width:calc(100% - 20px)!important;}
+}
+
+/* Nav stays comfortable with the larger logo */
+.nav{height:auto!important;min-height:84px!important;}
+@media(max-width:800px){.nav{min-height:74px!important;}.nav-links{top:74px!important;}}
+
+/* Floating WhatsApp respects iPhone safe-area */
+.float-wa{left:max(14px,env(safe-area-inset-left))!important;bottom:max(14px,env(safe-area-inset-bottom))!important;}
+
+/* Extra-small phones (<360px) stay accurate */
+@media(max-width:360px){
+  .hero h1,.liam-home-fusion h1{font-size:36px!important;}
+  .head h2{font-size:30px!important;}
+  .socials{grid-template-columns:repeat(5,38px)!important;}
+  .social{width:38px!important;height:38px!important;}
+}
+
 </style>
 </head>
 <body>
