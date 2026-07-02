@@ -2960,6 +2960,36 @@ html{scroll-padding-top:110px!important;}
   .hero,.liam-home-fusion,.liam-hero-v2{padding-top:clamp(96px,24vw,130px)!important;}
 }
 
+
+/* MOBILE HEADER V2: one compact row — logo | socials | hamburger */
+@media(max-width:800px){
+  header.nav{padding:5px 0!important;min-height:0!important;}
+  header.nav .container{flex-wrap:nowrap!important;gap:8px!important;}
+  header.nav .logo{order:1!important;}
+  header.nav .socials{order:2!important;flex:1 1 auto!important;justify-content:center!important;padding:0!important;gap:clamp(4px,1.2vw,7px)!important;display:flex!important;width:auto!important;}
+  header.nav .hamb{order:3!important;width:38px!important;height:38px!important;font-size:19px!important;}
+  header.nav .logo-img,header.nav .logo .logo-mark{width:clamp(34px,10vw,44px)!important;height:clamp(34px,10vw,44px)!important;border-radius:12px!important;}
+  header.nav .social{width:clamp(26px,7vw,32px)!important;height:clamp(26px,7vw,32px)!important;border-radius:9px!important;}
+  header.nav .social svg{width:clamp(12px,3.2vw,15px)!important;height:clamp(12px,3.2vw,15px)!important;}
+  header.nav .nav-links{top:calc(100% + 6px)!important;}
+  html{scroll-padding-top:70px!important;}
+  .hero,.liam-home-fusion,.liam-hero-v2{padding-top:clamp(74px,18vw,100px)!important;}
+}
+@media(max-width:390px){
+  header.nav .social{width:25px!important;height:25px!important;}
+  header.nav .social svg{width:12px!important;height:12px!important;}
+  header.nav .hamb{width:34px!important;height:34px!important;}
+}
+
+
+/* Mobile order: logo RIGHT, socials CENTER, hamburger LEFT */
+@media(max-width:800px){
+  header.nav .container{flex-direction:row!important;}
+  header.nav .hamb{order:1!important;margin-inline-end:0!important;}
+  header.nav .socials{order:2!important;}
+  header.nav .logo{order:3!important;}
+}
+
 </style>
 </head>
 <body>
