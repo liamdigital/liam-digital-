@@ -199,48 +199,42 @@ html:not(.js) .rv-scale,html:not(.js) .stagger>*{opacity:1!important;transform:n
   backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);
   box-shadow:0 10px 40px rgba(0,0,0,.25);transition:background .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
 .nav.scrolled{background:rgba(5,3,10,.92);border-bottom-color:rgba(212,168,255,.22);box-shadow:0 14px 50px rgba(0,0,0,.45)}
-.nav-in{width:min(var(--maxw),94%);margin-inline:auto;display:flex;align-items:center;gap:12px;
-  padding:11px 0;min-height:68px}
-/* Keep only phone + WhatsApp in the header (full social set lives in the footer)
-   so the header never crowds — leaves room for the אזור-לקוחות + ייעוץ buttons. */
-.socials .s-ig,.socials .s-tt,.socials .s-fb{display:none}
-.logo{display:flex;align-items:center;gap:11px;flex:0 0 auto}
+/* ── Header: 3-column grid — logo (left) · socials (center) · actions (right).
+   Nav links live in a single hamburger dropdown on every device (uncluttered). */
+.nav-in{width:min(var(--maxw),94%);margin-inline:auto;display:grid;grid-template-columns:auto 1fr auto;
+  align-items:center;gap:12px;direction:ltr;padding:11px 0;min-height:68px}
+.logo{display:flex;align-items:center;gap:11px;justify-self:start}
 .logo-img{width:52px;height:52px;border-radius:15px;object-fit:cover;
   box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 30px rgba(160,86,255,.42)}
 .logo b{font:700 17px/1 var(--sys);letter-spacing:.04em}
 .logo small{display:block;font:600 10px/1 var(--heb);color:var(--dim);letter-spacing:.02em;margin-top:3px}
-.nav-links{display:flex;align-items:center;gap:4px;margin-inline:auto;padding:7px;
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:999px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-.nav-links a{padding:9px 15px;border-radius:999px;font:800 13.5px/1 var(--heb);color:rgba(255,255,255,.66);
-  transition:color .15s var(--ease),background .15s var(--ease)}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
-.nav-links a.active{color:#fff;background:linear-gradient(135deg,rgba(150,80,255,.34),rgba(122,98,255,.2));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 6px 18px rgba(120,60,255,.22)}
-.nav-cta{flex:0 0 auto}
-/* ── Clean header: a single hamburger menu on ALL screen sizes ─────────────
-   Header stays minimal (logo + "אזור לקוחות" + ☰); every nav link + "קבלת ייעוץ"
-   lives in the dropdown, so the bar never feels crowded. */
-.hamb{display:flex!important;order:5}
+.nav-socials{display:flex;align-items:center;justify-content:center;gap:9px;justify-self:center;direction:rtl}
+.nav-socials a{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:#d8c6ff;transition:.16s var(--ease)}
+@media(hover:hover){.nav-socials a:hover{transform:translateY(-2px);background:rgba(150,84,255,.18);color:#fff}}
+.nav-socials svg{width:18px;height:18px}
+.nav-right{display:flex;align-items:center;gap:10px;justify-self:end;direction:rtl}
+.nav-greet{display:none;font:800 14px/1 var(--heb);color:#fff;white-space:nowrap}
+.nav-greet b{color:var(--v-soft)}
+.hamb{display:flex;width:44px;height:44px;border-radius:13px;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:20px;cursor:pointer}
 .nav-links{display:none;position:fixed;inset-block-start:72px;inset-inline:0;margin-inline:auto;width:min(var(--maxw),92%);
   flex-direction:column;gap:6px;padding:12px;background:var(--surface);border:1px solid var(--line-2);
-  border-radius:20px;box-shadow:var(--shadow-lg);max-height:calc(100vh - 96px);overflow:auto;z-index:120}
-.nav-links.open{display:flex!important;opacity:1!important;transform:none!important;pointer-events:auto!important}
-.nav-links a{width:100%;min-height:46px;justify-content:center}
-.nav-links .portal-m,.nav-links .menu-cta{display:flex}
+  border-radius:20px;box-shadow:var(--shadow-lg);max-height:calc(100vh - 96px);overflow:auto;z-index:120;direction:rtl}
+.nav-links.open{display:flex!important}
+.nav-links a{width:100%;min-height:46px;display:flex;align-items:center;justify-content:center;
+  padding:9px 15px;border-radius:13px;font:800 14px/1 var(--heb);color:rgba(255,255,255,.72);background:rgba(255,255,255,.04);
+  transition:color .15s var(--ease),background .15s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.08)}
 .nav-links a.portal-m{color:#fff;background:linear-gradient(135deg,rgba(150,80,255,.28),rgba(122,98,255,.16))}
 .nav-links a.menu-cta{color:#1a0b2e;background:var(--grad);font-weight:800}
-.nav-cta.nav-login{display:inline-flex!important;order:3}
-.nav-cta:not(.nav-login){display:none!important}
-.socials{display:none!important}
-.socials{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+@media(max-width:760px){.nav-socials{display:none}}
+@media(max-width:560px){.nav-bot{display:none}}
 .social{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;
   background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:#d8c6ff;
   transition:transform .16s var(--ease),background .16s var(--ease),color .16s var(--ease)}
 .social svg{width:18px;height:18px}
 @media(hover:hover){.social:hover{transform:translateY(-2px);background:rgba(150,84,255,.18);color:#fff}}
-.hamb{display:none;width:44px;height:44px;border-radius:13px;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:20px}
 
 /* ── HERO ───────────────────────────────────────────────────────── */
 .hero{padding:clamp(120px,15vh,158px) 0 clamp(60px,8vh,92px);position:relative;overflow:hidden;
@@ -553,17 +547,8 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   .nav-in{min-height:60px;padding:9px 0;gap:10px}
   .logo b{font-size:15px}.logo small{display:none}
   .logo-img{width:44px;height:44px}
-  .hamb{display:flex;order:3}
-  .logo{order:1;margin-inline-end:auto}
-  .socials{order:2}
-  .socials .s-ig,.socials .s-tt,.socials .s-fb{display:none}   /* keep phone+wa in header; full set in footer */
-  .nav-links{position:fixed;top:60px;inset-inline:4%;margin:0;flex-direction:column;gap:6px;padding:12px;
-    border-radius:20px;background:rgba(8,5,17,.98);border:1px solid rgba(212,162,255,.22);
-    box-shadow:0 30px 90px rgba(0,0,0,.6);opacity:0;transform:translateY(-12px) scale(.98);pointer-events:none;
-    transition:opacity .25s var(--ease),transform .25s var(--ease)}
-  .nav-links.open{opacity:1;transform:none;pointer-events:auto}
-  .nav-links a{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;
-    border-radius:13px;font-size:15px;background:rgba(255,255,255,.04)}
+  .nav-links{inset-block-start:64px;width:92%}
+  .nav-links a{min-height:48px;font-size:15px}
   .hero{padding:clamp(90px,22vw,110px) 0 54px}
   .hero h1{font-size:clamp(34px,10vw,52px)}
   .hero::before{font-size:15vw}
@@ -663,16 +648,18 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
       <a class="portal-m" href="https://platform.liamdigital.co.il/portal">אזור לקוחות</a>
       <a class="menu-cta" href="https://wa.me/972527003976" target="_blank" rel="noopener">קבלת ייעוץ 💬</a>
     </nav>
-    <a class="btn ghost sm nav-cta nav-login" href="https://platform.liamdigital.co.il/portal">אזור לקוחות</a>
-    <a class="btn primary sm nav-cta" href="https://wa.me/972527003976" target="_blank" rel="noopener">קבלת ייעוץ</a>
-    <div class="socials" aria-label="רשתות חברתיות">
-      <a class="social s-ph" href="tel:0527003976" aria-label="חיוג טלפוני"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg></a>
-      <a class="social s-wa" href="https://wa.me/972527003976" target="_blank" rel="noopener" aria-label="וואטסאפ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l1.9.9c.5.2.5.5.5.7z"/></svg></a>
-      <a class="social s-ig" href="https://instagram.com/liamdigital.il" target="_blank" rel="noopener" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-      <a class="social s-tt" href="https://www.tiktok.com/@liam._.zandberg" target="_blank" rel="noopener" aria-label="טיקטוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2 1.6 3.6 3.5 3.9V9c-1.3 0-2.5-.4-3.5-1v6.2c0 3.1-2.5 5.6-5.6 5.6S5.3 17.3 5.3 14.2s2.5-5.6 5.6-5.6c.3 0 .6 0 .9.1v2.4c-.3-.1-.6-.2-.9-.2-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1 3.1-1.4 3.1-3.1V3h2.4z"/></svg></a>
-      <a class="social s-fb" href="https://instagram.com/liamdigital.il" target="_blank" rel="noopener" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-.7.3-1 1-1h2V3h-3c-2.2 0-3.5 1.3-3.5 3.6V9H8v3h2.5v9H14v-9h2.3l.4-3H14z"/></svg></a>
+    <div class="nav-socials" aria-label="רשתות חברתיות">
+      <a href="https://instagram.com/liamdigital.il" target="_blank" rel="noopener" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://wa.me/972527003976" target="_blank" rel="noopener" aria-label="וואטסאפ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l1.9.9c.5.2.5.5.5.7z"/></svg></a>
+      <a href="https://www.tiktok.com/@liam._.zandberg" target="_blank" rel="noopener" aria-label="טיקטוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2 1.6 3.6 3.5 3.9V9c-1.3 0-2.5-.4-3.5-1v6.2c0 3.1-2.5 5.6-5.6 5.6S5.3 17.3 5.3 14.2s2.5-5.6 5.6-5.6c.3 0 .6 0 .9.1v2.4c-.3-.1-.6-.2-.9-.2-1.7 0-3.1 1.4-3.1 3.1s1.4 3.1 3.1 3.1 3.1-1.4 3.1-3.1V3h2.4z"/></svg></a>
+      <a href="tel:0527003976" aria-label="חיוג טלפוני"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg></a>
     </div>
-    <button class="hamb" id="hamb" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="navLinks">☰</button>
+    <div class="nav-right">
+      <span class="nav-greet" id="navGreet"></span>
+      <a class="btn ghost sm nav-bot" id="navBot" href="#contact">🤖 שאל את הבוט</a>
+      <a class="btn ghost sm nav-login" id="navPortal" href="https://platform.liamdigital.co.il/portal">אזור לקוחות</a>
+      <button class="hamb" id="hamb" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </div>
   </div>
 </header>
 
@@ -968,6 +955,8 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
 #pricing .lp-feats{list-style:none;padding:0;margin:16px 0 20px;display:flex;flex-direction:column;gap:9px;flex:1}
 #pricing .lp-feats li{position:relative;padding-inline-start:24px;color:var(--muted);font-size:13.5px;line-height:1.5}
 #pricing .lp-feats li::before{content:"✓";position:absolute;inset-inline-start:0;color:var(--green);font-weight:900}
+#pricing .lp-feats li.lp-plus{padding-inline-start:0;color:var(--v-soft);font-weight:800;font-size:13px;border-bottom:1px solid var(--line);padding-bottom:9px;margin-bottom:1px}
+#pricing .lp-feats li.lp-plus::before{content:"↑";color:var(--v-soft)}
 #pricing .lp-cta{display:block;text-align:center;padding:12px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;
   border:1px solid var(--line-2);color:var(--ink);background:var(--surface-2);transition:.25s var(--ease)}
 #pricing .lp-card.pop .lp-cta{background:var(--grad);color:#1a0b2e;border:0}
@@ -986,40 +975,40 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
     </div>
     <div class="lp-grid">
       <article class="lp-card rv">
-        <h3 class="lp-name">Pilot / Founding</h3>
-        <p class="lp-tag">פיילוט מדיד של 90 יום — use case אחד, KPI אחד.</p>
-        <div class="lp-price"><b>5,900</b><span>₪ דמי הקמה</span></div>
+        <h3 class="lp-name">מקצועי</h3>
+        <p class="lp-tag">הפתרון המלא — סביבת לקוח מלאה ולוגיקת אישורים מתקדמת.</p>
+        <div class="lp-price"><b>24,900</b><span>₪ דמי הקמה</span></div>
         <div class="lp-setup">חד-פעמי · לא כולל מע״מ</div>
-        <div class="lp-monthly">ניהול חודשי (אופציונלי): <b>1,990 ₪</b>/חודש</div>
-        <ul class="lp-feats"><li>Use case אחד מוגדר</li><li>חיבור מקור לידים אחד</li><li>דשבורד בסיסי</li><li>טיוטות Gmail באישור ידני</li><li>קביעת פגישות ב-Calendar</li></ul>
-        <a class="lp-cta" href="https://platform.liamdigital.co.il/portal">צור חשבון והתחל ←</a>
-      </article>
-      <article class="lp-card rv">
-        <h3 class="lp-name">Starter</h3>
-        <p class="lp-tag">כל מה שבפיילוט + שני תרחישים ונכסים שיווקיים.</p>
-        <div class="lp-price"><b>7,900</b><span>₪ דמי הקמה</span></div>
-        <div class="lp-setup">חד-פעמי · לא כולל מע״מ</div>
-        <div class="lp-monthly">ניהול חודשי (אופציונלי): <b>2,490 ₪</b>/חודש</div>
-        <ul class="lp-feats"><li>שני תרחישים עסקיים</li><li>עברית RTL מלאה</li><li>Meta Ads או Canva לפי צורך</li><li>דפי נחיתה / טפסים</li><li>דוח חודשי</li></ul>
+        <div class="lp-monthly">ניהול חודשי (אופציונלי): <b>6,900 ₪</b>/חודש</div>
+        <ul class="lp-feats"><li class="lp-plus">כל מה שבחבילת צמיחה, ובנוסף:</li><li>סביבת לקוח מלאה</li><li>Workflows מרובים ללא הגבלה</li><li>דשבורדים מותאמים אישית</li><li>QBR רבעוני + תעדוף תמיכה</li><li>הטמעות מותאמות מול APIs</li></ul>
         <a class="lp-cta" href="https://platform.liamdigital.co.il/portal">צור חשבון והתחל ←</a>
       </article>
       <article class="lp-card pop rv">
         <span class="lp-badge">הכי פופולרי</span>
-        <h3 class="lp-name">Growth</h3>
+        <h3 class="lp-name">צמיחה</h3>
         <p class="lp-tag">ניהול מלא של תהליך הליד — ניתוב, workflows וקונקטורים.</p>
         <div class="lp-price"><b>14,900</b><span>₪ דמי הקמה</span></div>
         <div class="lp-setup">חד-פעמי · לא כולל מע״מ</div>
         <div class="lp-monthly">ניהול חודשי (אופציונלי): <b>4,290 ₪</b>/חודש</div>
-        <ul class="lp-feats"><li>עד 2–3 workflows</li><li>ניתוב וניהול lead stages</li><li>קונקטורים מרובים</li><li>אופטימיזציה דו-שבועית</li><li>Training לצוות + בסיס ידע</li></ul>
+        <ul class="lp-feats"><li class="lp-plus">כל מה שבחבילת בסיס, ובנוסף:</li><li>עד 2–3 workflows</li><li>ניתוב וניהול שלבי ליד</li><li>קונקטורים מרובים</li><li>אופטימיזציה דו-שבועית</li><li>Training לצוות + בסיס ידע</li></ul>
         <a class="lp-cta" href="https://platform.liamdigital.co.il/portal">צור חשבון והתחל ←</a>
       </article>
       <article class="lp-card rv">
-        <h3 class="lp-name">Operator Pro</h3>
-        <p class="lp-tag">סביבת לקוח מלאה, workflows מרובים ולוגיקת אישורים מתקדמת.</p>
-        <div class="lp-price"><b>24,900</b><span>₪ דמי הקמה</span></div>
+        <h3 class="lp-name">בסיס</h3>
+        <p class="lp-tag">שני תרחישים עסקיים ונכסים שיווקיים ראשונים.</p>
+        <div class="lp-price"><b>7,900</b><span>₪ דמי הקמה</span></div>
         <div class="lp-setup">חד-פעמי · לא כולל מע״מ</div>
-        <div class="lp-monthly">ניהול חודשי (אופציונלי): <b>6,900 ₪</b>/חודש</div>
-        <ul class="lp-feats"><li>סביבת לקוח מלאה</li><li>Workflows מרובים</li><li>דשבורדים מותאמים</li><li>QBR רבעוני + תעדוף תמיכה</li><li>הטמעות מול APIs</li></ul>
+        <div class="lp-monthly">ניהול חודשי (אופציונלי): <b>2,490 ₪</b>/חודש</div>
+        <ul class="lp-feats"><li class="lp-plus">כל מה שבחבילת פיילוט, ובנוסף:</li><li>שני תרחישים עסקיים</li><li>עברית RTL מלאה</li><li>Meta Ads או Canva לפי צורך</li><li>דפי נחיתה / טפסים</li><li>דוח חודשי</li></ul>
+        <a class="lp-cta" href="https://platform.liamdigital.co.il/portal">צור חשבון והתחל ←</a>
+      </article>
+      <article class="lp-card rv">
+        <h3 class="lp-name">פיילוט</h3>
+        <p class="lp-tag">נקודת פתיחה — פיילוט מדיד של 90 יום, use case אחד.</p>
+        <div class="lp-price"><b>5,900</b><span>₪ דמי הקמה</span></div>
+        <div class="lp-setup">חד-פעמי · לא כולל מע״מ</div>
+        <div class="lp-monthly">ניהול חודשי (אופציונלי): <b>1,990 ₪</b>/חודש</div>
+        <ul class="lp-feats"><li>Use case אחד מוגדר</li><li>חיבור מקור לידים אחד</li><li>דשבורד בסיסי</li><li>טיוטות Gmail באישור ידני</li><li>קביעת פגישות ב-Calendar</li></ul>
         <a class="lp-cta" href="https://platform.liamdigital.co.il/portal">צור חשבון והתחל ←</a>
       </article>
     </div>
@@ -1329,7 +1318,7 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
 .lqb-body::-webkit-scrollbar{width:6px}.lqb-body::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
 </style>
 
-<button id="lqb-launch" aria-label="פתיחת צ'אט התאמת פתרון"><span class="lqb-dot"></span>בוא נתאים לך פתרון</button>
+<button id="lqb-launch" aria-label="פתיחת צ'אט עם הבוט"><span class="lqb-dot"></span>🤖 דברו עם הבוט החכם</button>
 <div id="lqb-panel" role="dialog" aria-label="צ'אט התאמת פתרון" aria-modal="false">
   <div class="lqb-head">
     <span class="lqb-av">L</span>
@@ -1478,6 +1467,27 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   function close(){ panel.classList.remove('open'); launch.style.display='flex'; }
   launch.onclick=open; xBtn.onclick=close;
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+<script>
+/* Header bot CTA + logged-in greeting (reads the portal login via the shared
+   same-site cookie on platform.liamdigital.co.il). */
+(function(){
+  var PLATFORM='https://platform.liamdigital.co.il';
+  var navBot=document.getElementById('navBot');
+  if(navBot) navBot.addEventListener('click',function(e){ e.preventDefault(); var l=document.getElementById('lqb-launch'); if(l) l.click(); });
+  function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':String(s)); return d.innerHTML; }
+  fetch(PLATFORM+'/api/portal/me',{credentials:'include'})
+    .then(function(r){ return r.ok?r.json():null; })
+    .then(function(d){
+      if(!d||!d.ok) return;
+      var name=d.contact_name||d.business_name||'';
+      var greet=document.getElementById('navGreet'), portal=document.getElementById('navPortal');
+      if(greet && name){ greet.innerHTML='שלום, <b>'+esc(name)+'</b>'; greet.style.display='inline-flex'; }
+      if(portal){ portal.textContent='אזור אישי'; }
+      // logged in → pricing CTAs become a direct purchase action
+      document.querySelectorAll('#pricing .lp-cta').forEach(function(a){ a.textContent='רכוש עכשיו ←'; });
+    }).catch(function(){});
 })();
 </script>
 </body>
