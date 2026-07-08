@@ -1345,13 +1345,15 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   var msgs=[];                      // {role,content} conversation for the sales API
   var transcript=[];               // human-readable, sent with a lead
   var lead={name:'',phone:'',email:''};
-  var started=false, leadStage='';
+  var started=false, leadStage='', detailsLeft=false;
 
   function scroll(){ body.scrollTop=body.scrollHeight; }
   function botMsg(t){ var d=document.createElement('div'); d.className='lqb-msg lqb-bot'; d.textContent=t; body.appendChild(d); scroll(); transcript.push('צוות: '+t); }
   function userMsg(t){ var d=document.createElement('div'); d.className='lqb-msg lqb-user'; d.textContent=t; body.appendChild(d); scroll(); transcript.push('לקוח: '+t); }
   function typing(cb){ var d=document.createElement('div'); d.className='lqb-typing'; d.innerHTML='<i></i><i></i><i></i>'; body.appendChild(d); scroll();
     setTimeout(function(){ d.remove(); cb(); }, 500); }
+  function showTyping(){ var d=document.createElement('div'); d.className='lqb-typing'; d.innerHTML='<i></i><i></i><i></i>'; body.appendChild(d); scroll(); return d; }
+  function known(){ return {name:lead.name,phone:lead.phone,email:lead.email,details_left:detailsLeft}; }
 
   function leaveDetailsChip(){
     var wrap=document.createElement('div'); wrap.className='lqb-opts';
@@ -1370,13 +1372,15 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   }
 
   function askSales(){
-    typing(function(){
-      fetch(BASE+'/api/sales-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:msgs.slice(-12)})})
-        .then(function(r){return r.json();})
-        .then(function(d){ var reply=(d&&d.reply)||'סליחה, לא הצלחתי כרגע — אפשר להשאיר פרטים ונחזור אליך.';
-          botMsg(reply); msgs.push({role:'assistant',content:reply}); })
-        .catch(function(){ botMsg('בעיית תקשורת רגעית. אפשר לחייג 052-700-3976 או להשאיר פרטים ונחזור אליך.'); leaveDetailsChip(); });
-    });
+    var t=showTyping();                       // persistent typing indicator during the whole call
+    fetch(BASE+'/api/sales-chat',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({messages:msgs.slice(-12),known:known()})})
+      .then(function(r){return r.json();})
+      .then(function(d){ var reply=(d&&d.reply)||'סליחה, לא הצלחתי כרגע — אפשר להשאיר פרטים ונחזור אליך.';
+        // human-like pacing: keep "typing" a bit longer for longer replies (never fixed).
+        var pace=Math.min(300+reply.length*14, 2400);
+        setTimeout(function(){ t.remove(); botMsg(reply); msgs.push({role:'assistant',content:reply}); }, pace); })
+      .catch(function(){ t.remove(); botMsg('בעיית תקשורת רגעית. אפשר לחייג 052-700-3976 או להשאיר פרטים ונחזור אליך.'); leaveDetailsChip(); });
   }
 
   function startLead(){
@@ -1400,9 +1404,9 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
         consent:true,source:'website_sales_chat',website:'',chat_transcript:transcript.join('\n')};
       fetch(BASE+'/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body_)})
         .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
-        .then(function(res){ botMsg((res.ok&&res.d&&res.d.ok)
-            ? ('קיבלנו! ✅ נחזור אליך בהקדם'+(lead.name?', '+lead.name:'')+'. אפשר להמשיך לשאול אותי כל דבר בינתיים 🙂')
-            : 'אופס, משהו השתבש בשליחה. אפשר לחייג 052-700-3976 ונסגור הכל מהר.'); })
+        .then(function(res){ if(res.ok&&res.d&&res.d.ok){ detailsLeft=true;
+            botMsg('קיבלנו! ✅ נחזור אליך בהקדם'+(lead.name?', '+lead.name:'')+'. הנציג יקבל את כל פרטי השיחה — לא תצטרך להסביר מחדש. אפשר להמשיך לשאול אותי כל דבר בינתיים 🙂'); }
+          else { botMsg('אופס, משהו השתבש בשליחה. אפשר לחייג 052-700-3976 ונסגור הכל מהר.'); } })
         .catch(function(){ botMsg('בעיית תקשורת. אפשר לחייג 052-700-3976 או לכתוב בוואטסאפ ונמשיך משם.'); });
     });
   }
