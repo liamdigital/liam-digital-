@@ -1494,7 +1494,11 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
     var revealTimer=setTimeout(startReveal, LIAM_THINK_MS);
     var ctrl=streamSSE(BASE+'/api/sales-chat/stream',{messages:msgs.slice(-12),known:known()},{
       onToken:function(tok){ acc+=tok; if(revealed&&tw) tw.push(tok); },
-      onDone:function(obj){ streamDone=true; finalReply=(obj&&obj.reply)||acc; if(revealed&&tw) tw.finish(finalReply); },
+      onDone:function(obj){ streamDone=true; finalReply=(obj&&obj.reply)||acc;
+        if(obj&&obj.known){ if(obj.known.name&&!lead.name)lead.name=obj.known.name;
+          if(obj.known.phone&&!lead.phone)lead.phone=obj.known.phone;
+          if(obj.known.email&&!lead.email)lead.email=obj.known.email; }
+        if(revealed&&tw) tw.finish(finalReply); },
       onAbort:function(){ clearTimeout(revealTimer); if(!revealed) startReveal(); if(tw) commit(tw.stop()); },
       onError:function(){ clearTimeout(revealTimer); clearTyping(t); setBusy(false); streaming=null;
         if(!bubble){ botMsg('בעיית תקשורת רגעית. אפשר לנסות שוב, לחייג 052-700-3976, או ללחוץ "סיום שיחה" ואפתח לך חשבון ונחזור אליך.'); }
@@ -1505,20 +1509,27 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   // "End conversation" → collect details, open a real portal account, hand the transcript to a rep.
   function endConversation(){
     if(phase!=='chat'||streaming) return;
-    phase='closing'; endBtn.style.display='none'; leadStage='name';
-    typing(function(){ botMsg('מעולה, תודה על השיחה! 🙏 אני פותח/ת לך עכשיו חשבון אישי ומעביר/ה לנציג את כל מה שדיברנו כדי שנמשיך בדיוק מכאן. מה השם המלא?');
-      input.placeholder='השם המלא שלך'; input.focus(); });
+    phase='closing'; endBtn.style.display='none';
+    // Details captured during the chat are NOT re-asked — collect only what's genuinely missing.
+    if(lead.name&&lead.phone){
+      typing(function(){ botMsg('מעולה, '+lead.name+' — הפרטים שלך כבר נשמרו 🙏 פותח/ת לך חשבון אישי ומעביר/ה את הסיכום לצוות.'); finishSignup(); });
+      return;
+    }
+    if(!lead.name){ leadStage='name';
+      typing(function(){ botMsg('מעולה, תודה על השיחה! 🙏 כדי לפתוח לך חשבון אישי ולהעביר לצוות — מה השם המלא?'); input.placeholder='השם המלא שלך'; input.focus(); });
+      return;
+    }
+    leadStage='phone';
+    typing(function(){ botMsg('כמעט סיימנו, '+lead.name+' — מה מספר הטלפון?'); input.placeholder='050-000-0000'; input.focus(); });
   }
 
   function handleText(){
     var val=(input.value||'').trim(); if(!val) return; input.value=''; userMsg(val);
     if(leadStage==='name'){ lead.name=val;
-      typing(function(){ botMsg('נעים מאוד, '+val+'! מה מספר הטלפון שלך?'); input.placeholder='050-000-0000'; leadStage='phone'; input.focus(); }); return; }
-    if(leadStage==='phone'){ lead.phone=val;
-      typing(function(){ botMsg('כמעט סיימנו — לאיזה אימייל לפתוח את החשבון?'); input.placeholder='name@email.com'; leadStage='email'; input.focus(); }); return; }
-    if(leadStage==='email'){
-      if(val.indexOf('@')<1||val.indexOf('.')<0){ typing(function(){ botMsg('רגע, נראה שהאימייל לא תקין. אפשר לכתוב שוב? (למשל name@email.com)'); input.focus(); }); return; }
-      lead.email=val; leadStage=''; finishSignup(); return; }
+      if(lead.phone){ leadStage=''; typing(function(){ botMsg('תודה '+val+', הפרטים נשמרו. פותח/ת לך חשבון אישי…'); finishSignup(); }); return; }
+      typing(function(){ botMsg('נעים מאוד, '+val+'! מה מספר הטלפון?'); input.placeholder='050-000-0000'; leadStage='phone'; input.focus(); }); return; }
+    if(leadStage==='phone'){ lead.phone=val; leadStage='';
+      typing(function(){ botMsg('תודה'+(lead.name?' '+lead.name:'')+', הפרטים נשמרו. פותח/ת לך חשבון אישי…'); finishSignup(); }); return; }
     msgs.push({role:'user',content:val}); askSales();
   }
 
