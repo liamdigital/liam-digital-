@@ -1314,6 +1314,8 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
 .lqb-typing{align-self:flex-start;display:flex;gap:4px;padding:12px 14px}
 .lqb-typing i{width:7px;height:7px;border-radius:50%;background:var(--v-soft);animation:lqbBlink 1.2s infinite both}
 .lqb-typing i:nth-child(2){animation-delay:.2s}.lqb-typing i:nth-child(3){animation-delay:.4s}
+.lqb-typing-lbl{align-self:center;font-size:.82rem;color:var(--v-soft);margin-inline-start:6px;white-space:nowrap;animation:lqbFade .3s ease both}
+@keyframes lqbFade{from{opacity:0}to{opacity:.85}}
 @keyframes lqbBlink{0%,80%,100%{opacity:.25}40%{opacity:1}}
 .lqb-body::-webkit-scrollbar{width:6px}.lqb-body::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
 </style>
@@ -1352,7 +1354,11 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   function userMsg(t){ var d=document.createElement('div'); d.className='lqb-msg lqb-user'; d.textContent=t; body.appendChild(d); scroll(); transcript.push('לקוח: '+t); }
   function typing(cb){ var d=document.createElement('div'); d.className='lqb-typing'; d.innerHTML='<i></i><i></i><i></i>'; body.appendChild(d); scroll();
     setTimeout(function(){ d.remove(); cb(); }, 500); }
-  function showTyping(){ var d=document.createElement('div'); d.className='lqb-typing'; d.innerHTML='<i></i><i></i><i></i>'; body.appendChild(d); scroll(); return d; }
+  function showTyping(){ var d=document.createElement('div'); d.className='lqb-typing'; d.innerHTML='<i></i><i></i><i></i>'; body.appendChild(d); scroll();
+    // After 2s of waiting, reassure the user the system is working (never a frozen screen).
+    d._t=setTimeout(function(){ var s=document.createElement('span'); s.className='lqb-typing-lbl'; s.textContent='🤖 מכין עבורך את ההמלצה…'; d.appendChild(s); scroll(); }, 2000);
+    return d; }
+  function clearTyping(d){ if(d){ if(d._t) clearTimeout(d._t); d.remove(); } }
   function known(){ return {name:lead.name,phone:lead.phone,email:lead.email,details_left:detailsLeft}; }
 
   function leaveDetailsChip(){
@@ -1379,8 +1385,8 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
       .then(function(d){ var reply=(d&&d.reply)||'סליחה, לא הצלחתי כרגע — אפשר להשאיר פרטים ונחזור אליך.';
         // human-like pacing: keep "typing" a bit longer for longer replies (never fixed).
         var pace=Math.min(300+reply.length*14, 2400);
-        setTimeout(function(){ t.remove(); botMsg(reply); msgs.push({role:'assistant',content:reply}); }, pace); })
-      .catch(function(){ t.remove(); botMsg('בעיית תקשורת רגעית. אפשר לחייג 052-700-3976 או להשאיר פרטים ונחזור אליך.'); leaveDetailsChip(); });
+        setTimeout(function(){ clearTyping(t); botMsg(reply); msgs.push({role:'assistant',content:reply}); }, pace); })
+      .catch(function(){ clearTyping(t); botMsg('בעיית תקשורת רגעית. אפשר לחייג 052-700-3976 או להשאיר פרטים ונחזור אליך.'); leaveDetailsChip(); });
   }
 
   function startLead(){
