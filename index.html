@@ -1435,6 +1435,7 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   // Human typing pace: reveal the streamed reply gradually (~LIAM_CPS chars/sec) so it feels
   // like a real person typing over ~half a minute, then shows the full answer. Tune LIAM_CPS.
   var LIAM_CPS = 6;
+  var LIAM_THINK_MS = 10000;   // deliberate pause before each reply reveals (feels like a person reading & thinking)
   function typewriter(render, commit){
     var queue='', shown='', done=false, timer=null, full=null;
     function tick(){
@@ -1473,8 +1474,8 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   }
 
   function askSales(){
-    var t=showTyping();                       // dots until the first token streams in
-    var bubble=null, acc='';
+    var t=showTyping();                       // dots stay visible during the ~10s "thinking" pause
+    var bubble=null, acc='', revealed=false, streamDone=false, finalReply=null, tw=null;
     function ensureBubble(){ if(!bubble){ clearTyping(t); bubble=document.createElement('div');
       bubble.className='lqb-msg lqb-bot lqb-stream'; body.appendChild(bubble); setBusy(true); } }
     function render(text,isFinal){ ensureBubble();
@@ -1482,14 +1483,19 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
       else bubble.textContent=text; scroll(); }
     function commit(text){ setBusy(false); streaming=null;
       if(text){ transcript.push('צוות: '+text); msgs.push({role:'assistant',content:text}); } persist(); scroll(); input.focus(); }
-    var tw=typewriter(render,commit);         // paces the reveal to a human typing cadence
+    // Hold the reply for a deliberate ~10s (feels like a person reading & thinking); tokens that
+    // arrive earlier are buffered in `acc`. After the pause, reveal at the human typing cadence.
+    function startReveal(){ if(revealed) return; revealed=true;
+      tw=typewriter(render,commit); if(acc) tw.push(acc);
+      if(streamDone) tw.finish(finalReply!=null?finalReply:acc); }
+    var revealTimer=setTimeout(startReveal, LIAM_THINK_MS);
     var ctrl=streamSSE(BASE+'/api/sales-chat/stream',{messages:msgs.slice(-12),known:known()},{
-      onToken:function(tok){ acc+=tok; tw.push(tok); },
-      onDone:function(obj){ tw.finish((obj&&obj.reply)||acc); },
-      onAbort:function(){ commit(tw.stop()); },
-      onError:function(){ clearTyping(t); setBusy(false); streaming=null;
+      onToken:function(tok){ acc+=tok; if(revealed&&tw) tw.push(tok); },
+      onDone:function(obj){ streamDone=true; finalReply=(obj&&obj.reply)||acc; if(revealed&&tw) tw.finish(finalReply); },
+      onAbort:function(){ clearTimeout(revealTimer); if(!revealed) startReveal(); if(tw) commit(tw.stop()); },
+      onError:function(){ clearTimeout(revealTimer); clearTyping(t); setBusy(false); streaming=null;
         if(!bubble){ botMsg('בעיית תקשורת רגעית. אפשר לנסות שוב, לחייג 052-700-3976, או ללחוץ "סיום שיחה" ואפתח לך חשבון ונחזור אליך.'); }
-        else commit(tw.stop()); }
+        else if(tw) commit(tw.stop()); }
     });
     streaming={abort:function(){ ctrl.abort(); }};
   }
