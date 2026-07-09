@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
 <title>LIAM DIGITAL | מערכות AI ואוטומציה שמגדילות עסקים</title>
 <meta name="description" content="LIAM DIGITAL — סטודיו לבניית סוכני AI, אוטומציות ומערכות חכמות לעסקים. חוסכים זמן, מייעלים תהליכים ומחברים את הכלים שלכם למערכת אחת שעובדת. קבלו ייעוץ ללא התחייבות."/>
 <meta name="keywords" content="סוכני AI, אוטומציות עסקיות, מערכות AI לעסקים, צ'אטבוטים, אינטגרציות, CRM, אוטומציות שיווק, Google Ads, Meta Ads, אתרים, דפי נחיתה"/>
@@ -1343,6 +1346,7 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
 (function(){
   window.LIAM_API_BASE = window.LIAM_API_BASE || 'https://platform.liamdigital.co.il';
   var BASE = window.LIAM_API_BASE.replace(/\/$/,'');
+  console.log('%c[LIAM] build 2026-07-09-stream-2 — sales chat uses /api/sales-chat/stream (SSE)','color:#7c3aed;font-weight:bold');
   var launch=document.getElementById('lqb-launch'), panel=document.getElementById('lqb-panel'),
       body=document.getElementById('lqb-body'), foot=document.getElementById('lqb-foot'),
       input=document.getElementById('lqb-input'), send=document.getElementById('lqb-send'),
@@ -1419,17 +1423,19 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
 
   function askSales(){
     var t=showTyping();                       // dots until the first token streams in
-    var bubble=null, acc='';
+    var bubble=null, acc='', nTok=0;
+    var url=BASE+'/api/sales-chat/stream';
+    console.log('%c[LIAM] STREAM START','color:#7c3aed;font-weight:bold', url);   // TEMP debug
     function ensureBubble(){ if(!bubble){ clearTyping(t); bubble=document.createElement('div');
       bubble.className='lqb-msg lqb-bot lqb-stream'; body.appendChild(bubble); setStopMode(true); } }
     function finish(full){ setStopMode(false); streaming=null;
       if(bubble){ bubble.classList.remove('lqb-stream'); bubble.innerHTML=mdToHtml(full); }
       if(full){ transcript.push('צוות: '+full); msgs.push({role:'assistant',content:full}); } scroll(); }
-    streaming=streamSSE(BASE+'/api/sales-chat/stream',{messages:msgs.slice(-12),known:known()},{
-      onToken:function(tok){ ensureBubble(); acc+=tok; bubble.textContent=acc; scroll(); },
-      onDone:function(obj){ ensureBubble(); finish((obj&&obj.reply)||acc); },
-      onAbort:function(){ finish(acc); },
-      onError:function(){ clearTyping(t); setStopMode(false); streaming=null;
+    streaming=streamSSE(url,{messages:msgs.slice(-12),known:known()},{
+      onToken:function(tok){ ensureBubble(); nTok++; console.log('[LIAM] token #'+nTok, JSON.stringify(tok)); acc+=tok; bubble.textContent=acc; scroll(); },
+      onDone:function(obj){ ensureBubble(); console.log('%c[LIAM] STREAM DONE','color:#16a34a;font-weight:bold', obj&&obj.metrics, 'tokens='+nTok); finish((obj&&obj.reply)||acc); },
+      onAbort:function(){ console.warn('[LIAM] STREAM ABORT (stop clicked) — kept',nTok,'tokens'); finish(acc); },
+      onError:function(){ console.error('[LIAM] STREAM ERROR after',nTok,'tokens'); clearTyping(t); setStopMode(false); streaming=null;
         if(!bubble){ botMsg('בעיית תקשורת רגעית. אפשר לחייג 052-700-3976 או להשאיר פרטים ונחזור אליך.'); leaveDetailsChip(); }
         else finish(acc); }
     });
