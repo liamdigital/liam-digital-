@@ -1392,7 +1392,7 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   function clearTyping(d){ if(d){ if(d._t) clearTimeout(d._t); d.remove(); } }
   function known(){ return {name:lead.name,phone:lead.phone,email:lead.email}; }
   // best-effort: persist every turn server-side so the whole conversation shows in the dashboard
-  function persist(){ try{ fetch(BASE+'/api/sales-chat/session',{method:'POST',headers:{'Content-Type':'application/json'},
+  function persist(){ try{ fetch(BASE+'/api/sales-chat/session',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',
       body:JSON.stringify({session_id:sessionId,transcript:transcript.join('\n'),name:lead.name,phone:lead.phone,email:lead.email})}).catch(function(){}); }catch(e){} }
 
   var streaming=null;               // AbortController while a reply is streaming
@@ -1409,7 +1409,7 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   // Read a POST Server-Sent-Events stream frame-by-frame. Returns an AbortController.
   function streamSSE(url,payload,h){
     var ctrl=new AbortController();
-    fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',
+    fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',
         body:JSON.stringify(payload),signal:ctrl.signal})
       .then(function(resp){
         if(!resp.ok||!resp.body){ h.onError&&h.onError(); return; }
@@ -1543,14 +1543,14 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
     var body_={full_name:lead.name,business_name:'',phone:lead.phone,email:lead.email,
       service_interest:'צ׳אט מכירה — צוות LIAM DIGITAL',message:'פנייה מהצ׳אט המכירתי באתר',
       consent:true,source:'website_sales_chat',website:'',chat_transcript:transcript.join('\n')};
-    fetch(BASE+'/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body_)}).catch(function(){});
+    fetch(BASE+'/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify(body_)}).catch(function(){});
     botMsg('קיבלנו את הפרטים! ✅ נחזור אליך בהקדם'+(lead.name?', '+lead.name:'')+'. הנציג יקבל את כל השיחה.');
     newChatChip();
   }
 
   function finishSignup(){
     typing(function(){ botMsg('פותח/ת לך חשבון… ✨');
-      fetch(BASE+'/api/sales-chat/signup',{method:'POST',headers:{'Content-Type':'application/json'},
+      fetch(BASE+'/api/sales-chat/signup',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',
         body:JSON.stringify({session_id:sessionId,full_name:lead.name,phone:lead.phone,email:lead.email,transcript:transcript.join('\n')})})
         .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
         .then(function(res){ if(res.ok&&res.d&&res.d.ok){ showAccountCard(res.d); } else { fallbackLead(); } })
