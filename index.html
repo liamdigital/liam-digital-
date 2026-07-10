@@ -1451,7 +1451,7 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
     [/google ads|גוגל|פרסום/i,'אנחנו מקימים ומנהלים פרסום ממומן בגוגל, מחובר לטופס ולמערכת הפניות.'],
     [/מחיר|עולה|עלות|תקציב/,'המחיר נבנה לפי הפתרון שמתאים לעסק. נשמח לקחת פרטים ולחזור אליך עם הצעה מותאמת.'],
     [/כלים קיימים|להחליף|חיבור/,'הגישה שלנו היא לחבר את הכלים שאתם כבר עובדים איתם למערכת אחת, במקום להחליף הכל.'],
-    [/בוט|chatgpt|רובוט/i,'אני מצוות LIAM DIGITAL, כאן כדי להבין מה אתה צריך ולהעביר אותך לנציג.']
+    [/בוט|chatgpt|רובוט/i,'כן, אני הבוט החכם של LIAM DIGITAL. אני כאן כדי להבין מה אתה צריך ולהעביר אותך לנציג.']
   ];
   function answerFor(t){
     if(DEEP.test(t) || t.split(/\s+/).length>25) return DEFLECT;
@@ -1463,7 +1463,7 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   function ask(shortForm){
     if(finished) return;
     if(!lead.field){ step='field'; return typing(function(){
-      bot(shortForm?'אז נחזור רגע — מה תחום העסק שלך?':'היי! אני מצוות LIAM DIGITAL 👋 מה תחום העסק שלך?');
+      bot(shortForm?'אז נחזור רגע — מה תחום העסק שלך?':'היי! אני הבוט החכם של LIAM DIGITAL 👋 מה תחום העסק שלך?');
       input.placeholder='למשל: מסעדה, קליניקה, חנות'; showInput(true); input.focus(); }); }
     if(!lead.service){ step='service'; return typing(function(){
       bot('במה אתה מעוניין?'); input.placeholder='בחר/י או כתוב/י'; showInput(true);
