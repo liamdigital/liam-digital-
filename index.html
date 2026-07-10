@@ -2,6 +2,17 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8"/>
+<!-- Google tag (gtag.js) — GA4 property liamdigital.co.il (G-VGBC73FC7T) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VGBC73FC7T"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-VGBC73FC7T');
+/* Fires a GA4 lead conversion. Mark 'generate_lead' as a Key Event in GA4,
+   then import it as a conversion in Google Ads (Goals → Conversions → GA4). */
+function liamTrackLead(src){try{gtag('event','generate_lead',{currency:'ILS',lead_source:src||'website'});}catch(e){}}
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 <meta http-equiv="Pragma" content="no-cache"/>
@@ -1247,6 +1258,7 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
       var data=await res.json().catch(function(){return {};});
       console.log('[LIAM lead form] response', res.status, data);
       if(res.ok && data.ok){
+        if(!data.duplicate) liamTrackLead('contact_form');
         form.innerHTML='<div style="text-align:center;padding:24px 0">'
           +'<div style="width:66px;height:66px;border-radius:50%;background:rgba(34,197,94,.14);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--green)">✓</div>'
           +'<h3>הפנייה נשלחה! 🎉</h3>'
@@ -1324,29 +1336,6 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
 .lqb-msg code{background:rgba(127,127,127,.16);padding:1px 5px;border-radius:5px;font-size:.9em}
 @keyframes lqbBlink{0%,80%,100%{opacity:.25}40%{opacity:1}}
 .lqb-body::-webkit-scrollbar{width:6px}.lqb-body::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:3px}
-/* "end conversation" button in the chat header (always available during a chat) */
-.lqb-end{margin-inline-start:auto;background:rgba(200,143,255,.12);border:1px solid var(--line-2);color:var(--v-soft);
-  border-radius:10px;padding:6px 12px;font-family:var(--heb);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:.18s}
-.lqb-end:hover{background:rgba(200,143,255,.22);border-color:var(--v-soft)}
-.lqb-head .lqb-x{margin-inline-start:6px}
-/* "searching for an available representative" waiting screen */
-.lqb-wait{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:34px 24px;text-align:center}
-.lqb-wait .lw-ring{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#1a0b2e;font-size:30px;position:relative}
-.lqb-wait .lw-ring::before,.lqb-wait .lw-ring::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(200,143,255,.55);animation:lwPulse 2.2s ease-out infinite}
-.lqb-wait .lw-ring::after{animation-delay:1.1s}
-@keyframes lwPulse{0%{transform:scale(1);opacity:.75}100%{transform:scale(1.9);opacity:0}}
-.lqb-wait h4{margin:0;font-family:var(--sys);font-size:16px;color:var(--ink)}
-.lqb-wait p{margin:0;color:var(--muted);font-size:13px;line-height:1.65;max-width:250px}
-.lqb-wait .lw-dots{display:flex;gap:5px}
-.lqb-wait .lw-dots i{width:8px;height:8px;border-radius:50%;background:var(--v-soft);animation:lqbBlink 1.2s infinite both}
-.lqb-wait .lw-dots i:nth-child(2){animation-delay:.2s}.lqb-wait .lw-dots i:nth-child(3){animation-delay:.4s}
-/* account-created card shown when the chat ends */
-.lqb-acct{align-self:stretch;background:var(--surface);border:1px solid rgba(52,211,153,.42);border-radius:16px;padding:15px;box-shadow:var(--glow)}
-.lqb-acct .ah{font-family:var(--sys);color:var(--green);font-size:15px;font-weight:800}
-.lqb-acct .ap{color:var(--muted);font-size:12.5px;line-height:1.6;margin:6px 0 4px}
-.lqb-acct .row{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted);margin-top:8px;border-top:1px solid var(--line);padding-top:8px}
-.lqb-acct .row span:last-child{color:var(--ink);font-weight:700;font-family:var(--sys);direction:ltr;text-align:left}
-.lqb-acct a.go{display:inline-block;margin-top:12px;background:var(--grad);color:#1a0b2e;font-weight:800;text-decoration:none;border-radius:11px;padding:9px 15px;font-size:13px}
 </style>
 
 <button id="lqb-launch" aria-label="שיחה עם צוות LIAM DIGITAL"><span class="lqb-dot"></span>💬 דברו עם צוות LIAM DIGITAL</button>
@@ -1354,7 +1343,6 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
   <div class="lqb-head">
     <span class="lqb-av">L</span>
     <div><b>צוות LIAM DIGITAL</b><small>כאן לכל שאלה — נשמח לעזור לך לבחור</small></div>
-    <button class="lqb-end" id="lqb-end" style="display:none">✓ סיום שיחה</button>
     <button class="lqb-x" id="lqb-x" aria-label="סגירה">×</button>
   </div>
   <div class="lqb-body" id="lqb-body"></div>
@@ -1365,168 +1353,157 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
 </div>
 
 <script>
-/* LIAM DIGITAL — website LEAD-CAPTURE bot. Fully deterministic: no model, no latency,
-   perfect Hebrew, zero hallucination, zero cost. Three questions (business → service →
-   goal), then name + phone (+ optional email), then the lead is handed to the platform
-   (/api/sales-chat/signup dedupes by phone and stores the transcript). It never gives
-   free consulting — complex asks get a polite hand-off line. */
+/* LIAM DIGITAL — website SALES team chat. Free-form AI sales conversation via the
+   platform's /api/sales-chat (NVIDIA), with lead capture → /api/leads. */
 (function(){
   window.LIAM_API_BASE = window.LIAM_API_BASE || 'https://platform.liamdigital.co.il';
   var BASE = window.LIAM_API_BASE.replace(/\/$/,'');
-  console.log('%c[LIAM] lead-capture bot 2026-07-10 — deterministic, no model','color:#7c3aed;font-weight:bold');
-
+  console.log('%c[LIAM] build 2026-07-09-stream-3-paced — human typing pace (~'+'6 cps)','color:#7c3aed;font-weight:bold');
   var launch=document.getElementById('lqb-launch'), panel=document.getElementById('lqb-panel'),
       body=document.getElementById('lqb-body'), foot=document.getElementById('lqb-foot'),
       input=document.getElementById('lqb-input'), send=document.getElementById('lqb-send'),
-      endBtn=document.getElementById('lqb-end'), xBtn=document.getElementById('lqb-x');
-  if(endBtn) endBtn.style.display='none';
-
-  var SERVICES=['מערכת AI','אוטומציות','CRM','אתר או דף נחיתה','Google Ads','פתרון אחר'];
-  var GOALS=['יותר לקוחות','חיסכון בזמן','שיפור תהליך המכירה','ניהול לידים','נוכחות דיגיטלית טובה יותר'];
-  var CLOSING='מעולה, קיבלתי את הפרטים שלך. נציג של LIAM DIGITAL יחזור אליך בהקדם כדי להבין את הצורך ולהציע את הפתרון המתאים לעסק שלך.';
-  var DEFLECT='הייעוץ המלא וההתאמה האישית ניתנים במסגרת השירות ללקוחות LIAM DIGITAL. אשמח לקחת את הפרטים שלך כדי שנוכל לבדוק מה הפתרון המתאים לעסק.';
-  var DECLINE='אין בעיה, ותודה שפנית. אנחנו כאן אם תרצה — אפשר לחזור אלינו בכל שלב.';
-
-  var lead, transcript, sessionId, step, started, finished, emailAsked, phoneTries;
-  function reset(){
-    lead={name:'',phone:'',email:'',field:'',service:'',goal:''};
-    transcript=[]; step=''; started=false; finished=false; emailAsked=false; phoneTries=0;
-    sessionId='sc_'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
-  }
-  reset();
+      xBtn=document.getElementById('lqb-x');
+  var msgs=[];                      // {role,content} conversation for the sales API
+  var transcript=[];               // human-readable, sent with a lead
+  var lead={name:'',phone:'',email:''};
+  var started=false, leadStage='', detailsLeft=false;
 
   function scroll(){ body.scrollTop=body.scrollHeight; }
-  function bot(t){ var d=document.createElement('div'); d.className='lqb-msg lqb-bot'; d.textContent=t; body.appendChild(d); scroll(); transcript.push('צוות: '+t); }
-  function me(t){ var d=document.createElement('div'); d.className='lqb-msg lqb-user'; d.textContent=t; body.appendChild(d); scroll(); transcript.push('לקוח: '+t); }
+  function botMsg(t){ var d=document.createElement('div'); d.className='lqb-msg lqb-bot'; d.textContent=t; body.appendChild(d); scroll(); transcript.push('צוות: '+t); }
+  function userMsg(t){ var d=document.createElement('div'); d.className='lqb-msg lqb-user'; d.textContent=t; body.appendChild(d); scroll(); transcript.push('לקוח: '+t); }
   function typing(cb){ var d=document.createElement('div'); d.className='lqb-typing'; d.innerHTML='<i></i><i></i><i></i>'; body.appendChild(d); scroll();
-    setTimeout(function(){ d.remove(); cb(); }, 550); }
-  function showInput(on){ foot.style.display=on?'flex':'none'; }
-  function chips(list, cb){
+    setTimeout(function(){ d.remove(); cb(); }, 500); }
+  function showTyping(){ var d=document.createElement('div'); d.className='lqb-typing'; d.innerHTML='<i></i><i></i><i></i>'; body.appendChild(d); scroll();
+    // After 2s of waiting, reassure the user the system is working (never a frozen screen).
+    d._t=setTimeout(function(){ var s=document.createElement('span'); s.className='lqb-typing-lbl'; s.textContent='🤖 מכין עבורך את ההמלצה…'; d.appendChild(s); scroll(); }, 2000);
+    return d; }
+  function clearTyping(d){ if(d){ if(d._t) clearTimeout(d._t); d.remove(); } }
+  function known(){ return {name:lead.name,phone:lead.phone,email:lead.email,details_left:detailsLeft}; }
+
+  var streaming=null;               // AbortController while a reply is streaming
+  // Minimal, XSS-safe Markdown → HTML (escape first, then a small whitelist of inline marks).
+  function mdToHtml(s){
+    s=String(s==null?'':s);
+    s=s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
+    s=s.replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/(^|[^*])\*([^*]+)\*/g,'$1<i>$2</i>');
+    s=s.replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+    s=s.replace(/^\s*[-•]\s+(.*)$/gm,'• $1');
+    return s.replace(/\n/g,'<br>');
+  }
+  // Read a POST Server-Sent-Events stream frame-by-frame. Returns an AbortController.
+  function streamSSE(url,payload,h){
+    var ctrl=new AbortController();
+    fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',
+        body:JSON.stringify(payload),signal:ctrl.signal})
+      .then(function(resp){
+        if(!resp.ok||!resp.body){ h.onError&&h.onError(); return; }
+        var reader=resp.body.getReader(), dec=new TextDecoder(), buf='';
+        (function pump(){ return reader.read().then(function(res){
+          if(res.done){ h.onDone&&h.onDone(null); return; }
+          buf+=dec.decode(res.value,{stream:true}); var i;
+          while((i=buf.indexOf('\n\n'))>=0){ var frame=buf.slice(0,i); buf=buf.slice(i+2);
+            var ev='message', data='';
+            frame.split('\n').forEach(function(l){ if(l.indexOf('event:')===0) ev=l.slice(6).trim();
+              else if(l.indexOf('data:')===0) data+=l.slice(5).trim(); });
+            if(!data) continue; var obj; try{ obj=JSON.parse(data); }catch(e){ continue; }
+            if(ev==='token'){ h.onToken&&h.onToken(obj.t||''); }
+            else if(ev==='done'){ h.onDone&&h.onDone(obj); } }
+          return pump();
+        }); })();
+      })
+      .catch(function(e){ if(e&&e.name==='AbortError'){ h.onAbort&&h.onAbort(); } else { h.onError&&h.onError(); } });
+    return ctrl;
+  }
+  function setStopMode(on){ send.textContent=on?'⏹ עצור':'שליחה'; send.classList.toggle('stopping',!!on); }
+
+  // Human typing pace: reveal the streamed reply gradually (~LIAM_CPS chars/sec) so it feels
+  // like a real person typing over ~half a minute, then shows the full answer. Tune LIAM_CPS.
+  var LIAM_CPS = 6;
+  function typewriter(render, commit){
+    var queue='', shown='', done=false, timer=null, full=null;
+    function tick(){
+      if(queue.length){ var n=1+(Math.random()<0.3?1:0); shown+=queue.slice(0,n); queue=queue.slice(n);
+        render(shown,false); timer=setTimeout(tick,1000/LIAM_CPS); }
+      else if(done){ timer=null; var fin=(full!=null?full:shown); render(fin,true); commit(fin); }
+      else { timer=setTimeout(tick,50); } }
+    return {
+      push:function(t){ queue+=t; if(!timer) timer=setTimeout(tick,0); },
+      finish:function(f){ done=true; full=(f!=null?f:null); if(!timer) timer=setTimeout(tick,0); },
+      stop:function(){ if(timer){clearTimeout(timer);timer=null;} shown+=queue; queue=''; render(shown,true); return shown; } };
+  }
+
+  function leaveDetailsChip(){
     var wrap=document.createElement('div'); wrap.className='lqb-opts';
-    list.forEach(function(label){
-      var b=document.createElement('button'); b.className='lqb-opt'; b.textContent=label;
-      b.onclick=function(){ wrap.remove(); me(label); cb(label); };
-      wrap.appendChild(b);
-    });
-    body.appendChild(wrap); scroll();
-  }
-  function persist(){ try{ fetch(BASE+'/api/sales-chat/session',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',
-    body:JSON.stringify({session_id:sessionId,transcript:transcript.join('\n'),name:lead.name,phone:lead.phone,email:lead.email})}).catch(function(){}); }catch(e){} }
-
-  /* ── extraction (mirrors the server-side state engine) ── */
-  var PHONE_RE=/(?:\+?972[-.\s]?|0)5\d(?:[-.\s]?\d){7}/;
-  var EMAIL_RE=/[^@\s]+@[^@\s]+\.[^@\s]{2,}/;
-  var NAME_RE=/(?:קוראים לי|שמי|השם שלי)\s+([֐-׿]{2,}(?:\s+[֐-׿]{2,})?)/;
-  var INTENT=/(רוצה|מעוניין|מעוניינת|צריך|צריכה|מחפש|מחפשת|לבנות|להקים|נדרש)/;
-  var SERVICE_KW=[[/אוטומצ/,'אוטומציות'],[/crm|ניהול לקוחות/i,'CRM'],
-                  [/google ads|גוגל אדס|פרסום ממומן|קמפיין/i,'Google Ads'],
-                  [/מערכת ai|סוכן ai|בינה מלאכותית|צ'אטבוט|צאטבוט/i,'מערכת AI'],
-                  [/דף נחיתה|אתר/,'אתר או דף נחיתה']];
-  var GOAL_KW=[[/יותר לקוחות|עוד לקוחות/,'יותר לקוחות'],[/לחסוך|חיסכון בזמן/,'חיסכון בזמן'],
-               [/תהליך המכירה|מכירות/,'שיפור תהליך המכירה'],[/לידים|פניות/,'ניהול לידים'],
-               [/נוכחות|נראות|מיתוג/,'נוכחות דיגיטלית טובה יותר']];
-  var REFUSE=/(לא רוצה|לא מעוניין|לא מעוניינת|בלי פרטים|לא עכשיו|לא משאיר|לא אשאיר|אל תבקש|לא נותן)/;
-  var QUESTION=/\?|^(מה|איך|למה|האם|כמה|מתי|איפה|מי)\b/;
-  var DEEP=/(אסטרטגי|תוכנית עבודה|ניתוח|מדריך|תכנית|איך בדיוק|צעד אחר צעד|פתרון טכני)/;
-
-  function normPhone(t){ var m=(t||'').match(PHONE_RE); if(!m) return '';
-    var d=m[0].replace(/[^\d+]/g,''); if(d.indexOf('+972')===0) d='0'+d.slice(4); else if(d.indexOf('972')===0) d='0'+d.slice(3);
-    return (d.length===10 && d.indexOf('05')===0)?d:''; }
-  function absorb(t){
-    if(!lead.phone) lead.phone=normPhone(t);
-    if(!lead.email){ var e=(t||'').match(EMAIL_RE); if(e) lead.email=e[0]; }
-    if(!lead.name){ var n=(t||'').match(NAME_RE); if(n) lead.name=n[1].trim(); }
-    if(INTENT.test(t)){                       // only infer interest when it is actually stated
-      if(!lead.service) SERVICE_KW.some(function(p){ if(p[0].test(t)){ lead.service=p[1]; return true; } });
-      if(!lead.goal) GOAL_KW.some(function(p){ if(p[0].test(t)){ lead.goal=p[1]; return true; } });
-    }
+    var b=document.createElement('button'); b.className='lqb-opt go'; b.textContent='📞 השאירו פרטים ונחזור אליכם';
+    b.onclick=function(){ wrap.remove(); startLead(); };
+    wrap.appendChild(b); body.appendChild(wrap); scroll();
   }
 
-  /* ── short, site-grounded answers. Anything deep → polite hand-off, never free consulting. ── */
-  var FAQ=[
-    [/מה זה סוכן|סוכן ai|מה זה ai|בינה מלאכותית/i,'סוכן AI הוא תוכנה חכמה שמבצעת משימות באופן עצמאי — קוראת מידע, מבינה הקשר ופועלת לפי החוקים שהגדרתם.'],
-    [/אוטומצ/,'אוטומציה לוקחת משימות ידניות חוזרות — קליטת פניות, מעקב, דוחות — והופכת אותן לתהליך שרץ לבד.'],
-    [/crm|ניהול לקוחות/i,'CRM היא מערכת לניהול לקוחות שמתחברת לאוטומציות, כך שכל פנייה נשמרת ומטופלת.'],
-    [/דף נחיתה|אתר/,'אנחנו בונים אתרים ודפי נחיתה שמחוברים לתהליך שמייצר פניות ומרכז אותן במקום אחד.'],
-    [/google ads|גוגל|פרסום/i,'אנחנו מקימים ומנהלים פרסום ממומן בגוגל, מחובר לטופס ולמערכת הפניות.'],
-    [/מחיר|עולה|עלות|תקציב/,'המחיר נבנה לפי הפתרון שמתאים לעסק. נשמח לקחת פרטים ולחזור אליך עם הצעה מותאמת.'],
-    [/כלים קיימים|להחליף|חיבור/,'הגישה שלנו היא לחבר את הכלים שאתם כבר עובדים איתם למערכת אחת, במקום להחליף הכל.'],
-    [/בוט|chatgpt|רובוט/i,'כן, אני הבוט החכם של LIAM DIGITAL. אני כאן כדי להבין מה אתה צריך ולהעביר אותך לנציג.']
-  ];
-  function answerFor(t){
-    if(DEEP.test(t) || t.split(/\s+/).length>25) return DEFLECT;
-    for(var i=0;i<FAQ.length;i++){ if(FAQ[i][0].test(t)) return FAQ[i][1]; }
-    return DEFLECT;
-  }
-
-  /* ── flow: ≤3 questions, then details. Never re-asks what is already known. ── */
-  function ask(shortForm){
-    if(finished) return;
-    if(!lead.field){ step='field'; return typing(function(){
-      bot(shortForm?'אז נחזור רגע — מה תחום העסק שלך?':'היי! אני הבוט החכם של LIAM DIGITAL 👋 מה תחום העסק שלך?');
-      input.placeholder='למשל: מסעדה, קליניקה, חנות'; showInput(true); input.focus(); }); }
-    if(!lead.service){ step='service'; return typing(function(){
-      bot('במה אתה מעוניין?'); input.placeholder='בחר/י או כתוב/י'; showInput(true);
-      chips(SERVICES, function(v){ lead.service=v; persist(); ask(); }); }); }
-    if(!lead.goal){ step='goal'; return typing(function(){
-      bot('ומה המטרה המרכזית שלך כרגע?'); input.placeholder='בחר/י או כתוב/י'; showInput(true);
-      chips(GOALS, function(v){ lead.goal=v; persist(); ask(); }); }); }
-    if(!lead.name){ step='name'; return typing(function(){
-      bot('מעולה. מה השם המלא שלך?'); input.placeholder='שם מלא'; showInput(true); input.focus(); }); }
-    if(!lead.phone){ step='phone'; return typing(function(){
-      bot('ומה מספר הטלפון?'); input.placeholder='050-0000000'; showInput(true); input.focus(); }); }
-    if(!lead.email && !emailAsked){ step='email'; emailAsked=true; return typing(function(){
-      bot('רוצה להשאיר גם אימייל? זה לא חובה.'); input.placeholder='אימייל'; showInput(true);
-      chips(['דלג'], function(){ submit(); }); input.focus(); }); }
-    submit();
-  }
-
-  function submit(){
-    if(finished) return; finished=true; step=''; showInput(false);
-    var summary='\n[תחום: '+(lead.field||'—')+' | שירות: '+(lead.service||'—')+' | מטרה: '+(lead.goal||'—')+']';
-    persist();
+  function start(){
+    if(started) return; started=true;
+    foot.style.display='flex'; input.placeholder='כתבו לנו…';
     typing(function(){
-      fetch(BASE+'/api/sales-chat/signup',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',
-        body:JSON.stringify({session_id:sessionId,full_name:lead.name,phone:lead.phone,email:lead.email,
-          transcript:transcript.join('\n')+summary})})
-        .then(function(r){ return r.ok; }).catch(function(){ return false; })
-        .then(function(ok){
-          if(!ok){ fetch(BASE+'/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',
-            body:JSON.stringify({full_name:lead.name,business_name:lead.field,phone:lead.phone,email:lead.email,
-              service_interest:lead.service,message:'מטרה: '+lead.goal,consent:true,source:'website_lead_bot',
-              website:'',chat_transcript:transcript.join('\n')+summary})}).catch(function(){}); }
-          bot(CLOSING);
-        });
+      botMsg('היי! אנחנו צוות LIAM DIGITAL 👋 נשמח להבין מה העסק שלך צריך ולהמליץ לך על הפתרון הנכון. במה נוכל לעזור?');
+      leaveDetailsChip(); input.focus();
     });
   }
 
-  function decline(){ if(finished) return; finished=true; step=''; showInput(false); persist();
-    typing(function(){ bot(DECLINE); }); }
+  function askSales(){
+    var t=showTyping();                       // dots until the first token streams in
+    var bubble=null, acc='';
+    function ensureBubble(){ if(!bubble){ clearTyping(t); bubble=document.createElement('div');
+      bubble.className='lqb-msg lqb-bot lqb-stream'; body.appendChild(bubble); setStopMode(true); } }
+    function render(text,isFinal){ ensureBubble();
+      if(isFinal){ bubble.classList.remove('lqb-stream'); bubble.innerHTML=mdToHtml(text); }
+      else bubble.textContent=text; scroll(); }
+    function commit(text){ setStopMode(false); streaming=null;
+      if(text){ transcript.push('צוות: '+text); msgs.push({role:'assistant',content:text}); } scroll(); }
+    var tw=typewriter(render,commit);         // paces the reveal to a human typing cadence
+    var ctrl=streamSSE(BASE+'/api/sales-chat/stream',{messages:msgs.slice(-12),known:known()},{
+      onToken:function(tok){ acc+=tok; tw.push(tok); },
+      onDone:function(obj){ tw.finish((obj&&obj.reply)||acc); },
+      onAbort:function(){ commit(tw.stop()); },
+      onError:function(){ clearTyping(t); setStopMode(false); streaming=null;
+        if(!bubble){ botMsg('בעיית תקשורת רגעית. אפשר לחייג 052-700-3976 או להשאיר פרטים ונחזור אליך.'); leaveDetailsChip(); }
+        else commit(tw.stop()); }
+    });
+    streaming={abort:function(){ ctrl.abort(); }};
+  }
+  function stopStreaming(){ if(streaming){ streaming.abort(); } }
 
-  function onText(){
-    var t=(input.value||'').trim(); if(!t||finished) return; input.value=''; me(t);
-    absorb(t);
-    if(REFUSE.test(t)){ persist(); return decline(); }
-    if(QUESTION.test(t)){ persist(); return typing(function(){ bot(answerFor(t)); ask(true); }); }
-    if(step==='field'){ if(!lead.field) lead.field=t; }
-    else if(step==='service'){ var sv=null; SERVICE_KW.some(function(p){ if(p[0].test(t)){ sv=p[1]; return true; } }); lead.service=sv||'פתרון אחר'; }
-    else if(step==='goal'){ var gl=null; GOAL_KW.some(function(p){ if(p[0].test(t)){ gl=p[1]; return true; } }); lead.goal=gl||t; }
-    else if(step==='name'){ if(!lead.name) lead.name=t; }
-    else if(step==='phone'){
-      var p=normPhone(t) || (t.replace(/\D/g,'').length>=9 ? t : '');
-      if(!p){ phoneTries++; persist();
-        if(phoneTries<2) return typing(function(){ bot('נראה שהמספר לא תקין. אפשר לכתוב שוב? למשל 050-0000000'); input.focus(); });
-        return decline(); }
-      lead.phone=p; }
-    else if(step==='email'){ var e=t.match(EMAIL_RE); if(e) lead.email=e[0]; persist(); return submit(); }
-    persist(); ask();
+  function startLead(){
+    typing(function(){ botMsg('בשמחה! מה השם המלא?'); input.placeholder='השם המלא שלך'; leadStage='name'; input.focus(); });
   }
 
-  function onSend(){ onText(); }
+  function handleText(){
+    var val=(input.value||'').trim(); if(!val) return; input.value=''; userMsg(val);
+    if(leadStage==='name'){ lead.name=val;
+      typing(function(){ botMsg('נעים מאוד, '+val+'! מה מספר הטלפון?'); input.placeholder='050-000-0000'; leadStage='phone'; input.focus(); }); return; }
+    if(leadStage==='phone'){ lead.phone=val;
+      typing(function(){ botMsg('מעולה. ואימייל? (אפשר לכתוב "דלג")'); input.placeholder='האימייל שלך / דלג'; leadStage='email'; input.focus(); }); return; }
+    if(leadStage==='email'){ if(val!=='דלג'&&val.indexOf('@')>-1) lead.email=val; leadStage=''; submitLead(); return; }
+    msgs.push({role:'user',content:val}); askSales();
+  }
+
+  function submitLead(){
+    typing(function(){ botMsg('שולח את הפרטים… 📨');
+      var body_={full_name:lead.name,business_name:'',phone:lead.phone,email:lead.email,
+        service_interest:'צ׳אט מכירה — צוות LIAM DIGITAL',message:'פנייה מהצ׳אט המכירתי באתר',
+        consent:true,source:'website_sales_chat',website:'',chat_transcript:transcript.join('\n')};
+      fetch(BASE+'/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body_)})
+        .then(function(r){return r.json().then(function(d){return {ok:r.ok,d:d};});})
+        .then(function(res){ if(res.ok&&res.d&&res.d.ok){ detailsLeft=true; liamTrackLead('sales_chat');
+            botMsg('קיבלנו! ✅ נחזור אליך בהקדם'+(lead.name?', '+lead.name:'')+'. הנציג יקבל את כל פרטי השיחה — לא תצטרך להסביר מחדש. אפשר להמשיך לשאול אותי כל דבר בינתיים 🙂'); }
+          else { botMsg('אופס, משהו השתבש בשליחה. אפשר לחייג 052-700-3976 ונסגור הכל מהר.'); } })
+        .catch(function(){ botMsg('בעיית תקשורת. אפשר לחייג 052-700-3976 או לכתוב בוואטסאפ ונמשיך משם.'); });
+    });
+  }
+
+  function onSend(){ if(streaming){ stopStreaming(); return; } handleText(); }
   send.onclick=onSend;
   input.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); onSend(); } });
-  function open(){ panel.classList.add('open'); launch.style.display='none';
-    if(!started){ started=true; ask(); } }
+  function open(){ panel.classList.add('open'); launch.style.display='none'; start(); }
   function close(){ panel.classList.remove('open'); launch.style.display='flex'; }
   launch.onclick=open; xBtn.onclick=close;
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
