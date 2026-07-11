@@ -685,9 +685,9 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
     <div class="hero-grid">
       <div class="hero-copy">
         <span class="home-badge"><i></i> ליעם דיגיטל · סטודיו מערכות AI לעסקים</span>
-        <a id="promoBanner" href="#pricing" style="display:none;align-items:center;flex-wrap:wrap;gap:7px 11px;margin:14px 0 4px;padding:11px 18px;border-radius:14px;background:linear-gradient(100deg,#3B0764 0%,#5B21B6 55%,#7C3AED 100%);border:1px solid rgba(212,175,55,.5);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 0 22px rgba(250,204,21,.30),0 12px 34px rgba(59,7,100,.45);line-height:1.45;max-width:100%">
-          <span id="promoBannerText"><span style="color:#FACC15;font-weight:900">◆</span> מבצע השקה — <b style="color:#FACC15;font-weight:900;white-space:nowrap">30% הנחה</b> ל־5 הלקוחות הראשונים!</span>
-          <span id="promoBannerCount" style="background:rgba(250,204,21,.12);border:1px solid rgba(250,204,21,.45);color:#FDE68A;padding:3px 11px;border-radius:999px;font-size:.72em;font-weight:700;white-space:nowrap"></span>
+        <a id="promoBanner" href="#pricing" style="display:none;align-items:center;flex-wrap:wrap;gap:6px 11px;margin:14px 0 4px;padding:11px 18px;border-radius:14px;background:linear-gradient(100deg,#3B0764 0%,#5B21B6 55%,#7C3AED 100%);border:1px solid rgba(212,175,55,.30);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 0 15px rgba(212,175,55,.15),0 12px 30px rgba(59,7,100,.42);line-height:1.45;max-width:100%">
+          <span id="promoBannerText">מבצע השקה — <b style="color:#D4AF37;font-weight:900;white-space:nowrap">30% הנחה</b> ל־5 הלקוחות הראשונים!</span>
+          <span id="promoBannerCount" style="background:rgba(212,175,55,.10);border:1px solid rgba(212,175,55,.28);color:#D4AF37;padding:2px 9px;border-radius:999px;font-size:.63em;font-weight:700;letter-spacing:.01em;white-space:nowrap"></span>
         </a>
         <h1>מערכות AI ואוטומציה<br><span>שמגדילות עסקים.</span></h1>
         <p class="hero-sub">אנחנו בונים <b>סוכני AI, אוטומציות ומערכות חכמות</b> שחוסכות זמן, מייעלות תהליכים ומאפשרות לעסק לעבוד בצורה יעילה יותר — בלי להחליף את הכלים שאתם כבר עובדים איתם.</p>
@@ -1466,19 +1466,19 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
     var b=document.getElementById('promoBanner');
     if(b){
       var t=document.getElementById('promoBannerText');
-      if(t) t.innerHTML='<span style="color:#FACC15;font-weight:900">◆</span> מבצע השקה — <b style="color:#FACC15;font-weight:900;white-space:nowrap">'+pct+'% הנחה</b> ל־'+p.max+' הלקוחות הראשונים!';
+      if(t) t.innerHTML='מבצע השקה — <b style="color:#D4AF37;font-weight:900;white-space:nowrap">'+pct+'% הנחה</b> ל־'+p.max+' הלקוחות הראשונים!';
       var cnt=document.getElementById('promoBannerCount');
       if(cnt) cnt.textContent='נותרו '+p.remaining+' מקומות';
       b.style.display='inline-flex';
     }
     document.querySelectorAll('#pricing .lp-card').forEach(function(card){
       var pb=card.querySelector('.lp-price b');
-      if(pb){ var o=num(pb.textContent); if(o){ pb.innerHTML='<s style="opacity:.45;font-weight:700">'+fmt(o)+'</s> <span style="color:#2dd4bf">'+fmt(Math.round(o*f))+'</span>'; } }
+      if(pb){ var o=num(pb.textContent); if(o){ pb.innerHTML='<s style="opacity:.45;font-weight:700">'+fmt(o)+'</s> <span style="color:#D4AF37">'+fmt(Math.round(o*f))+'</span>'; } }
       var mb=card.querySelector('.lp-monthly b');
       if(mb){ var m=num(mb.textContent); if(m){ mb.innerHTML='<s style="opacity:.45">'+fmt(m)+' ₪</s> '+fmt(Math.round(m*f))+' ₪'; } }
       var badge=document.createElement('div');
-      badge.textContent='✨ '+pct+'% הנחת השקה — כולל '+pct+'% הנחה על הניהול החודשי לכל החיים';
-      badge.style.cssText='margin-top:8px;display:inline-block;background:linear-gradient(95deg,#2dd4bf,#22d3ee 55%,#38bdf8);color:#06121f;font-weight:800;font-size:.74rem;padding:5px 11px;border-radius:999px;line-height:1.3';
+      badge.textContent=pct+'% הנחת השקה — כולל '+pct+'% הנחה על הניהול החודשי לכל החיים';
+      badge.style.cssText='margin-top:8px;display:inline-block;background:linear-gradient(100deg,#3B0764,#7C3AED);border:1px solid rgba(212,175,55,.30);color:#fff;font-weight:700;font-size:.72rem;padding:5px 12px;border-radius:999px;line-height:1.35';
       var setup=card.querySelector('.lp-setup');
       if(setup&&setup.parentNode) setup.parentNode.insertBefore(badge, setup.nextSibling);
     });
