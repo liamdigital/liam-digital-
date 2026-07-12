@@ -1473,7 +1473,7 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
     }
     document.querySelectorAll('#pricing .lp-card').forEach(function(card){
       var pb=card.querySelector('.lp-price b');
-      if(pb){ var o=num(pb.textContent); if(o){ pb.innerHTML='<s style="opacity:.4;font-weight:600;font-size:.56em">'+fmt(o)+'</s> <span style="color:#D4AF37">'+fmt(Math.round(o*f))+'</span>'; } }
+      if(pb){ var o=num(pb.textContent); if(o){ pb.innerHTML='<s style="font-weight:600;font-size:.55em;color:#a99fc0;-webkit-text-fill-color:#a99fc0;opacity:.9">'+fmt(o)+'</s> <span style="color:#D4AF37;-webkit-text-fill-color:#D4AF37">'+fmt(Math.round(o*f))+'</span>'; } }
       var mb=card.querySelector('.lp-monthly b');
       if(mb){ var m=num(mb.textContent); if(m){ mb.innerHTML='<s style="opacity:.4;font-size:.88em">'+fmt(m)+' ₪</s> <b style="color:#D4AF37;font-weight:700">'+fmt(Math.round(m*f))+' ₪</b>'; } }
       var badge=document.createElement('div');
