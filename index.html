@@ -1473,12 +1473,13 @@ footer{padding:clamp(48px,6vw,72px) 0 clamp(28px,3vw,40px);
     }
     document.querySelectorAll('#pricing .lp-card').forEach(function(card){
       var pb=card.querySelector('.lp-price b');
-      if(pb){ var o=num(pb.textContent); if(o){ pb.innerHTML='<s style="opacity:.45;font-weight:700">'+fmt(o)+'</s> <span style="color:#D4AF37">'+fmt(Math.round(o*f))+'</span>'; } }
+      if(pb){ var o=num(pb.textContent); if(o){ pb.innerHTML='<s style="opacity:.4;font-weight:600;font-size:.56em">'+fmt(o)+'</s> <span style="color:#D4AF37">'+fmt(Math.round(o*f))+'</span>'; } }
       var mb=card.querySelector('.lp-monthly b');
-      if(mb){ var m=num(mb.textContent); if(m){ mb.innerHTML='<s style="opacity:.45">'+fmt(m)+' ₪</s> '+fmt(Math.round(m*f))+' ₪'; } }
+      if(mb){ var m=num(mb.textContent); if(m){ mb.innerHTML='<s style="opacity:.4;font-size:.88em">'+fmt(m)+' ₪</s> <b style="color:#D4AF37;font-weight:700">'+fmt(Math.round(m*f))+' ₪</b>'; } }
       var badge=document.createElement('div');
-      badge.textContent=pct+'% הנחת השקה — כולל '+pct+'% הנחה על הניהול החודשי לכל החיים';
-      badge.style.cssText='margin-top:8px;display:inline-block;background:linear-gradient(100deg,#3B0764,#7C3AED);border:1px solid rgba(212,175,55,.30);color:#fff;font-weight:700;font-size:.72rem;padding:5px 12px;border-radius:999px;line-height:1.35';
+      badge.style.cssText='margin-top:9px';
+      badge.innerHTML='<span style="display:inline-block;background:rgba(212,175,55,.09);border:1px solid rgba(212,175,55,.38);color:#D4AF37;font-weight:800;font-size:.66rem;padding:3px 10px;border-radius:999px">✨ '+pct+'% הנחת השקה</span>'
+        +'<div style="margin-top:5px;font-size:.64rem;color:#a99fc0;line-height:1.45">+ '+pct+'% על הניהול החודשי — <b style="color:#c9b6e6">לכל החיים</b></div>';
       var setup=card.querySelector('.lp-setup');
       if(setup&&setup.parentNode) setup.parentNode.insertBefore(badge, setup.nextSibling);
     });
