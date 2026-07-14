@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>עוזר AI לדודו אוטמזגין · LIAM DIGITAL</title>
+<link rel="icon" href="https://liamdigital.co.il/favicon1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Heebo:wght@400;500;700;800&family=Rubik:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf6f2; --panel:#ffffff; --panel2:#f8f2ec; --ink:#2a2033; --muted:#77697c; --line:#ece2d9;
+    --brand:#7c5cff; --brand2:#a06bf5; --rose:#d9648e; --green:#12a67f;
+    --brandT:rgba(124,92,255,.12); --brandL:rgba(124,92,255,.32); --greenT:rgba(18,166,127,.15);
+    --roseT:rgba(217,100,142,.14);
+    --chat-bg:#ece3db; --dots:rgba(42,32,51,.05); --bubble-ai:#ffffff; --bubble-user:#efe7ff; --ink-user:#3a2b63;
+    --shadow:0 24px 60px rgba(60,40,80,.16); --shadow-sm:0 6px 18px rgba(60,40,80,.10);
+    --font:"Heebo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    --display:"Rubik","Heebo",system-ui,sans-serif;
+    --serif:"Cinzel",Georgia,"Times New Roman",serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#150e1b; --panel:#241a2f; --panel2:#2c2038; --ink:#f2ecf6; --muted:#a99fb4; --line:#33273f;
+      --brand:#ad8bff; --brand2:#c6abff; --rose:#f090ac; --green:#37d3a8;
+      --brandT:rgba(173,139,255,.15); --brandL:rgba(173,139,255,.4); --greenT:rgba(55,214,168,.16);
+      --roseT:rgba(240,144,172,.16);
+      --chat-bg:#100b16; --dots:rgba(255,255,255,.04); --bubble-ai:#2b2038; --bubble-user:#3a2a54; --ink-user:#efeafc;
+      --shadow:0 24px 60px rgba(0,0,0,.5); --shadow-sm:0 6px 18px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#faf6f2; --panel:#ffffff; --panel2:#f8f2ec; --ink:#2a2033; --muted:#77697c; --line:#ece2d9;
+    --brand:#7c5cff; --brand2:#a06bf5; --rose:#d9648e; --green:#12a67f;
+    --brandT:rgba(124,92,255,.12); --brandL:rgba(124,92,255,.32); --greenT:rgba(18,166,127,.15);
+    --roseT:rgba(217,100,142,.14);
+    --chat-bg:#ece3db; --dots:rgba(42,32,51,.05); --bubble-ai:#ffffff; --bubble-user:#efe7ff; --ink-user:#3a2b63;
+    --shadow:0 24px 60px rgba(60,40,80,.16); --shadow-sm:0 6px 18px rgba(60,40,80,.10);
+  }
+  :root[data-theme="dark"]{
+    --bg:#150e1b; --panel:#241a2f; --panel2:#2c2038; --ink:#f2ecf6; --muted:#a99fb4; --line:#33273f;
+    --brand:#ad8bff; --brand2:#c6abff; --rose:#f090ac; --green:#37d3a8;
+    --brandT:rgba(173,139,255,.15); --brandL:rgba(173,139,255,.4); --greenT:rgba(55,214,168,.16);
+    --roseT:rgba(240,144,172,.16);
+    --chat-bg:#100b16; --dots:rgba(255,255,255,.04); --bubble-ai:#2b2038; --bubble-user:#3a2a54; --ink-user:#efeafc;
+    --shadow:0 24px 60px rgba(0,0,0,.5); --shadow-sm:0 6px 18px rgba(0,0,0,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    direction:rtl; font-family:var(--font); color:var(--ink); line-height:1.6;
+    background:
+      radial-gradient(900px 500px at 85% -8%,var(--brandT),transparent 60%),
+      radial-gradient(700px 460px at -6% 108%,var(--roseT),transparent 55%),
+      var(--bg);
+    -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column; align-items:center;
+    padding:clamp(16px,4vw,40px) 16px calc(32px + env(safe-area-inset-bottom));
+    min-height:100vh; min-height:100svh;
+  }
+  .wrap{width:100%; max-width:420px; display:flex; flex-direction:column; gap:18px}
+
+  .brand{display:flex; align-items:center; justify-content:space-between; gap:10px}
+  .brand .logo{display:flex; align-items:center; gap:9px; font-family:var(--display); font-weight:800; letter-spacing:-.01em; font-size:1rem}
+  .brand .logo img{width:28px; height:28px; border-radius:8px; display:block; box-shadow:0 3px 10px var(--brandL)}
+  .brand .logo .fallback{width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,var(--brand2),var(--brand)); box-shadow:0 3px 10px var(--brandL)}
+  .brand .logo span{color:var(--muted); font-weight:600}
+  .eyebrow{font-family:var(--font); font-size:.68rem; font-weight:700; letter-spacing:.14em; color:var(--muted);
+    border:1px solid var(--line); border-radius:999px; padding:5px 11px; white-space:nowrap; background:var(--panel)}
+
+  .lede{text-align:center; padding:2px 4px}
+  .lede .client{font-family:var(--serif); font-weight:600; font-size:clamp(1.15rem,5.5vw,1.5rem);
+    letter-spacing:.16em; color:var(--ink); margin-bottom:2px; padding-inline-start:.16em}
+  .lede h1{font-family:var(--display); font-size:clamp(1.15rem,4.6vw,1.45rem); font-weight:700; letter-spacing:-.01em;
+    text-wrap:balance; line-height:1.3; margin-top:8px}
+  .lede h1 em{font-style:normal; color:var(--brand)}
+  .lede p{color:var(--muted); font-size:.92rem; margin-top:8px; text-wrap:balance}
+
+  .phone{width:100%; background:var(--panel); border:1px solid var(--line); border-radius:30px; overflow:hidden; box-shadow:var(--shadow)}
+  .topbar{display:flex; align-items:center; gap:11px; padding:13px 15px; border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,var(--brandT),var(--panel))}
+  .avatar{width:44px; height:44px; border-radius:50%; flex:0 0 44px; display:grid; place-items:center; font-size:1.35rem;
+    background:radial-gradient(circle at 35% 30%,#ffdcea,#f2a7c2); box-shadow:0 3px 10px var(--roseT)}
+  .who{flex:1; min-width:0}
+  .who .name{font-family:var(--serif); font-weight:600; font-size:.82rem; letter-spacing:.13em; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .who .status{font-family:var(--font); font-size:.74rem; color:var(--green); display:flex; align-items:center; gap:5px; margin-top:3px}
+  .who .status .dot{width:7px; height:7px; border-radius:50%; background:var(--green); animation:pulse 2.2s infinite}
+  .aibadge{font-family:var(--font); font-size:.64rem; font-weight:800; letter-spacing:.12em; color:var(--brand);
+    border:1px solid var(--brandL); border-radius:999px; padding:3px 9px}
+
+  .chat{background:var(--chat-bg); background-image:radial-gradient(var(--dots) 1px,transparent 1px); background-size:22px 22px;
+    padding:16px 13px 8px; height:clamp(400px,58vh,540px); overflow-y:auto; display:flex; flex-direction:column; gap:9px;
+    -webkit-overflow-scrolling:touch; scroll-behavior:smooth}
+  .row{display:flex; opacity:0; transform:translateY(10px); animation:pop .4s cubic-bezier(.22,.7,.3,1) forwards}
+  .row.user{justify-content:flex-start}
+  .row.ai{justify-content:flex-end}
+  .bubble{max-width:84%; padding:9px 13px; border-radius:16px; font-size:.92rem; box-shadow:var(--shadow-sm);
+    white-space:pre-wrap; word-wrap:break-word; overflow-wrap:break-word}
+  .row.user .bubble{background:var(--bubble-user); color:var(--ink-user); border-bottom-right-radius:5px}
+  .row.ai .bubble{background:var(--bubble-ai); color:var(--ink); border-bottom-left-radius:5px}
+  .bubble .t{display:block; font-size:.62rem; color:var(--muted); margin-top:4px; text-align:start; font-variant-numeric:tabular-nums}
+  .bubble b{font-weight:800}
+  .bubble ul{margin:6px 2px 2px; padding-inline-start:16px; display:flex; flex-direction:column; gap:2px}
+
+  .typing{display:flex; gap:4px; padding:12px 15px; background:var(--bubble-ai); border-radius:16px; border-bottom-left-radius:5px; box-shadow:var(--shadow-sm)}
+  .typing span{width:7px; height:7px; border-radius:50%; background:var(--muted); opacity:.5; animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s} .typing span:nth-child(3){animation-delay:.4s}
+
+  .leadcard{align-self:center; width:95%; margin:6px 0 2px; background:var(--panel); border:1px solid var(--line);
+    border-radius:16px; padding:14px 15px; box-shadow:var(--shadow-sm); opacity:0; transform:translateY(10px);
+    animation:pop .5s cubic-bezier(.22,.7,.3,1) forwards}
+  .leadcard .hd{display:flex; align-items:center; gap:8px; font-weight:800; color:var(--green); font-size:.9rem; margin-bottom:9px}
+  .leadcard .hd .chk{width:20px; height:20px; border-radius:50%; background:var(--greenT); display:grid; place-items:center; font-size:.7rem}
+  .leadcard dl{display:grid; grid-template-columns:auto 1fr; gap:5px 12px; font-size:.85rem}
+  .leadcard dt{color:var(--muted)} .leadcard dd{font-weight:600; text-align:start}
+  .leadcard .foot{margin-top:10px; padding-top:9px; border-top:1px dashed var(--line); font-size:.78rem; color:var(--muted)}
+
+  .composer{display:flex; align-items:center; gap:10px; padding:11px 13px; border-top:1px solid var(--line); background:var(--panel)}
+  .composer .fake{flex:1; height:38px; border-radius:999px; background:var(--panel2); border:1px solid var(--line); display:flex; align-items:center; padding:0 15px; color:var(--muted); font-size:.85rem}
+  .composer .send{width:38px; height:38px; border-radius:50%; flex:0 0 38px; background:linear-gradient(135deg,var(--brand2),var(--brand)); display:grid; place-items:center}
+  .composer .send svg{width:18px; height:18px; fill:#fff; transform:scaleX(-1)}
+
+  .controls{display:flex; justify-content:center}
+  .replay{appearance:none; border:1px solid var(--line); background:var(--panel); color:var(--muted); font-family:var(--font);
+    font-size:.82rem; font-weight:600; padding:9px 17px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:7px; transition:.2s}
+  .replay:hover{color:var(--ink); border-color:var(--brand)}
+  .replay svg{width:14px; height:14px; fill:currentColor}
+
+  .cta{background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:20px; text-align:center; box-shadow:var(--shadow-sm)}
+  .cta h2{font-family:var(--display); font-size:1.12rem; font-weight:800; letter-spacing:-.01em; text-wrap:balance}
+  .cta p{color:var(--muted); font-size:.9rem; margin:6px 0 15px; text-wrap:balance}
+  .cta a{display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-family:var(--display); font-weight:800; font-size:.98rem; color:#fff;
+    background:linear-gradient(135deg,var(--brand2),var(--brand)); padding:13px 24px; border-radius:999px; box-shadow:0 10px 26px var(--brandL); transition:.2s}
+  .cta a:hover{filter:brightness(1.06); transform:translateY(-1px)}
+  .cta a svg{width:17px; height:17px; fill:#fff}
+
+  .signoff{text-align:center; font-size:.74rem; color:var(--muted); line-height:1.7}
+  .signoff .marks{font-family:var(--serif); letter-spacing:.14em; color:var(--ink); font-size:.8rem}
+  .signoff .by{font-family:var(--display); font-weight:800; color:var(--brand); letter-spacing:.02em}
+
+  a:focus-visible,.replay:focus-visible{outline:2px solid var(--brand); outline-offset:3px}
+  @keyframes pop{to{opacity:1; transform:translateY(0)}}
+  @keyframes blink{0%,60%,100%{opacity:.3; transform:translateY(0)}30%{opacity:1; transform:translateY(-3px)}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--greenT)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  @media (prefers-reduced-motion:reduce){
+    .row,.leadcard{animation:none; opacity:1; transform:none}
+    .who .status .dot,.typing span{animation:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">
+      <img src="https://liamdigital.co.il/favicon1.png" alt="LIAM DIGITAL" onerror="this.outerHTML='&lt;span class=&quot;fallback&quot;&gt;&lt;/span&gt;'">
+      <b>LIAM</b>&nbsp;<span>DIGITAL</span>
+    </div>
+    <div class="eyebrow">דמו · הדמיה</div>
+  </div>
+
+  <div class="lede">
+    <div class="client">DUDU&nbsp;&nbsp;OUTMEZGINE</div>
+    <h1>עוזר AI שעונה ללקוחות שלכם <em>לבד — 24/7</em></h1>
+    <p>ככה הודעה שנכנסת בוואטסאפ הופכת להזמנה מסודרת, ומגיעה אליכם כליד מוכן — בלי לענות ידנית לכל אחד.</p>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <div class="avatar">🧁</div>
+      <div class="who">
+        <div class="name">DUDU OUTMEZGINE</div>
+        <div class="status"><span class="dot"></span> עוזר AI · מגיב עכשיו</div>
+      </div>
+      <div class="aibadge">AI</div>
+    </div>
+    <div class="chat" id="chat" aria-live="polite"></div>
+    <div class="composer">
+      <div class="fake">כתבו הודעה…</div>
+      <div class="send" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="replay" id="replay" type="button"><svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg> הפעל את השיחה מחדש</button>
+  </div>
+
+  <div class="cta">
+    <h2>רוצים לראות את זה עובד על העסק שלכם?</h2>
+    <p>שיחה קצרה של 10 דקות, ואני מראה דמו חי מותאם לדודו אוטמזגין — בלי התחייבות.</p>
+    <a href="https://liamdigital.co.il" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.2 0-2.4-.2-3.5-.6a1 1 0 0 0-1 .2l-2.2 2.2a15 15 0 0 1-6.6-6.6l2.2-2.2a1 1 0 0 0 .2-1C8.7 6.4 8.5 5.2 8.5 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1 17 17 0 0 0 17 17 1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z"/></svg>
+      דברו עם ליעם
+    </a>
+  </div>
+
+  <div class="signoff">
+    הוכן במיוחד עבור <span class="marks">DUDU OUTMEZGINE</span><br>
+    על ידי <span class="by">LIAM DIGITAL</span> · הדמיה להמחשה בלבד
+  </div>
+</div>
+
+<script>
+(function(){
+  var chat=document.getElementById('chat'), replay=document.getElementById('replay');
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var script=[
+    {who:'user',t:'09:41',html:'היי 🙂 אילו עוגות זמינות להזמנה השבוע?'},
+    {who:'ai',t:'09:41',html:'היי! 🧁 השבוע אצלנו:\n<ul><li>אינגליש קייק אגוזים</li><li>פאבלובה פירות יער</li><li>טארט לימון-מרנג</li><li>עוגת שוקולד בלגי</li></ul>רוצה פרטים על טעם, או להזמין?'},
+    {who:'user',t:'09:42',html:'צריכה עוגת יום הולדת לשבת, בערך ל-12 איש'},
+    {who:'ai',t:'09:42',html:'כיף! 🎉 כמה פרטים ואני מסדר הכול:\n• איזה טעם מתאים לכם?\n• איסוף עצמי או משלוח?\n• כיתוב על העוגה?'},
+    {who:'user',t:'09:44',html:'שוקולד בלגי, משלוח לתל אביב, כיתוב "מזל טוב דניאל"'},
+    {who:'ai',t:'09:44',html:'מושלם 🙌 סיכמתי:\n<b>עוגת שוקולד בלגי</b> ל-12, משלוח לת״א ליום שבת, כיתוב "מזל טוב דניאל".\nמשלוחים לת״א יוצאים בין 9:00–13:00. מעביר את הפרטים לצוות לאישור זמינות ומחיר — ותקבלי הודעה. 💜'},
+    {lead:true},
+    {who:'ai',t:'09:44',html:'ובינתיים — תרצי שאשלח לך את התפריט המלא לאירועים? 🎂'}
+  ];
+  function timeRow(m){var r=document.createElement('div');r.className='row '+m.who;
+    r.innerHTML='<div class="bubble">'+m.html+'<span class="t">'+m.t+'</span></div>';return r;}
+  function leadRow(){var d=document.createElement('div');d.className='leadcard';
+    d.innerHTML='<div class="hd"><span class="chk">✓</span> ליד חדש נשמר במערכת</div>'+
+      '<dl><dt>פנייה</dt><dd>הזמנת יום הולדת</dd><dt>מוצר</dt><dd>עוגת שוקולד בלגי · 12 מנות</dd>'+
+      '<dt>אספקה</dt><dd>משלוח · תל אביב · שבת</dd><dt>כיתוב</dt><dd>"מזל טוב דניאל"</dd>'+
+      '<dt>סטטוס</dt><dd>ממתין לאישור צוות</dd></dl>'+
+      '<div class="foot">📤 הועבר אוטומטית לצוות DUDU OUTMEZGINE</div>';return d;}
+  function typing(){var r=document.createElement('div');r.className='row ai';
+    r.style.opacity='1';r.style.transform='none';r.style.animation='none';
+    r.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';return r;}
+  function scroll(){chat.scrollTop=chat.scrollHeight;}
+  var timers=[]; function at(ms,fn){timers.push(setTimeout(fn,ms));}
+  function play(){
+    timers.forEach(clearTimeout); timers=[]; chat.innerHTML='';
+    if(reduce){script.forEach(function(m){chat.appendChild(m.lead?leadRow():timeRow(m));});scroll();return;}
+    var t=340;
+    script.forEach(function(m){
+      if(m.lead){at(t,function(){chat.appendChild(leadRow());scroll();});t+=950;}
+      else if(m.who==='ai'){
+        at(t,function(){var tp=typing();tp.id='tp';chat.appendChild(tp);scroll();});t+=950;
+        at(t,function(){var tp=document.getElementById('tp');if(tp)tp.remove();chat.appendChild(timeRow(m));scroll();});t+=560;
+      } else {at(t,function(){chat.appendChild(timeRow(m));scroll();});t+=780;}
+    });
+  }
+  replay.addEventListener('click',play); play();
+})();
+</script>
+</body>
+</html>
