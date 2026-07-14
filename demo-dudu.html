@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>דמו · עוזר AI לדודו אוטמזגין — LIAM DIGITAL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#faf6f2; --bg2:#f2e9e1; --panel:#ffffff; --panel2:#f8f2ec;
+    --ink:#2a2033; --muted:#726778; --line:#ece2d9;
+    --brand:#7c5cff; --brand2:#a06bf5; --rose:#e0749a; --green:#12a67f;
+    --chat-bg:#ece3db; --bubble-ai:#ffffff; --bubble-user:#efe7ff; --ink-user:#3a2b63;
+    --shadow:0 24px 60px rgba(60,40,80,.18); --shadow-sm:0 6px 20px rgba(60,40,80,.10);
+    --r:22px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#150e1b; --bg2:#1d1425; --panel:#241a2f; --panel2:#2c2038;
+      --ink:#f2ecf6; --muted:#a89eb3; --line:#33273f;
+      --brand:#ad8bff; --brand2:#c6abff; --rose:#f090ac; --green:#37d3a8;
+      --chat-bg:#100b16; --bubble-ai:#2b2038; --bubble-user:#3a2a54; --ink-user:#efeafc;
+      --shadow:0 24px 60px rgba(0,0,0,.5); --shadow-sm:0 6px 20px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#faf6f2; --bg2:#f2e9e1; --panel:#ffffff; --panel2:#f8f2ec;
+    --ink:#2a2033; --muted:#726778; --line:#ece2d9;
+    --brand:#7c5cff; --brand2:#a06bf5; --rose:#e0749a; --green:#12a67f;
+    --chat-bg:#ece3db; --bubble-ai:#ffffff; --bubble-user:#efe7ff; --ink-user:#3a2b63;
+    --shadow:0 24px 60px rgba(60,40,80,.18); --shadow-sm:0 6px 20px rgba(60,40,80,.10);
+  }
+  :root[data-theme="dark"]{
+    --bg:#150e1b; --bg2:#1d1425; --panel:#241a2f; --panel2:#2c2038;
+    --ink:#f2ecf6; --muted:#a89eb3; --line:#33273f;
+    --brand:#ad8bff; --brand2:#c6abff; --rose:#f090ac; --green:#37d3a8;
+    --chat-bg:#100b16; --bubble-ai:#2b2038; --bubble-user:#3a2a54; --ink-user:#efeafc;
+    --shadow:0 24px 60px rgba(0,0,0,.5); --shadow-sm:0 6px 20px rgba(0,0,0,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{min-height:100%}
+  body{
+    direction:rtl;
+    font-family:"Assistant","Heebo","Rubik",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    background:
+      radial-gradient(900px 500px at 85% -8%,color-mix(in srgb,var(--brand) 14%,transparent),transparent 60%),
+      radial-gradient(700px 460px at -6% 108%,color-mix(in srgb,var(--rose) 12%,transparent),transparent 55%),
+      var(--bg);
+    color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column; align-items:center;
+    padding:clamp(18px,4vw,40px) 16px 40px;
+  }
+  .wrap{width:100%; max-width:430px; display:flex; flex-direction:column; gap:20px}
+
+  /* Brand header */
+  .brand{display:flex; align-items:center; justify-content:space-between; gap:12px}
+  .brand .logo{display:flex; align-items:center; gap:9px; font-weight:800; letter-spacing:-.02em; font-size:1.05rem}
+  .brand .logo .mark{
+    width:26px;height:26px;border-radius:8px;flex:0 0 26px;
+    background:linear-gradient(135deg,var(--brand2),var(--brand));
+    box-shadow:0 4px 14px color-mix(in srgb,var(--brand) 45%,transparent);
+  }
+  .brand .logo b{background:linear-gradient(90deg,var(--brand2),var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .brand .logo span{color:var(--muted);font-weight:600}
+  .eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap;background:var(--panel)}
+
+  .lede{text-align:center;padding:2px 6px}
+  .lede h1{font-size:clamp(1.35rem,5vw,1.7rem);font-weight:800;letter-spacing:-.02em;text-wrap:balance;line-height:1.25}
+  .lede h1 em{font-style:normal;color:var(--rose)}
+  .lede p{color:var(--muted);font-size:.95rem;margin-top:7px;text-wrap:balance}
+
+  /* Phone */
+  .phone{
+    background:var(--panel);border:1px solid var(--line);border-radius:34px;overflow:hidden;
+    box-shadow:var(--shadow); position:relative;
+  }
+  .topbar{
+    display:flex;align-items:center;gap:11px;padding:14px 16px;
+    background:linear-gradient(180deg,color-mix(in srgb,var(--brand) 12%,var(--panel)),var(--panel));
+    border-bottom:1px solid var(--line);
+  }
+  .avatar{
+    width:42px;height:42px;border-radius:50%;flex:0 0 42px;display:grid;place-items:center;font-size:1.3rem;
+    background:radial-gradient(circle at 35% 30%,#ffd9e6,#f7a9c4);box-shadow:0 3px 10px rgba(224,116,154,.4);
+  }
+  .who{flex:1;min-width:0}
+  .who .name{font-weight:800;font-size:1.02rem;letter-spacing:-.01em}
+  .who .status{font-size:.76rem;color:var(--green);display:flex;align-items:center;gap:5px;margin-top:1px}
+  .who .status .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 var(--green);animation:pulse 2.2s infinite}
+  .aibadge{font-size:.66rem;font-weight:700;letter-spacing:.1em;color:var(--brand);border:1px solid color-mix(in srgb,var(--brand) 40%,var(--line));border-radius:999px;padding:3px 8px}
+
+  .chat{
+    background:var(--chat-bg);
+    background-image:radial-gradient(color-mix(in srgb,var(--ink) 4%,transparent) 1px,transparent 1px);
+    background-size:22px 22px;
+    padding:18px 14px 8px;height:clamp(430px,64vh,560px);overflow-y:auto;
+    display:flex;flex-direction:column;gap:9px;scroll-behavior:smooth;
+  }
+  .row{display:flex;opacity:0;transform:translateY(10px);animation:pop .4s var(--e,cubic-bezier(.22,.7,.3,1)) forwards}
+  .row.user{justify-content:flex-start}     /* customer on the right in RTL -> flex-start = right */
+  .row.ai{justify-content:flex-end}
+  .bubble{
+    max-width:82%;padding:9px 13px;border-radius:16px;font-size:.92rem;position:relative;
+    box-shadow:var(--shadow-sm);white-space:pre-wrap;word-wrap:break-word;
+  }
+  .row.user .bubble{background:var(--bubble-user);color:var(--ink-user);border-bottom-right-radius:5px}
+  .row.ai .bubble{background:var(--bubble-ai);color:var(--ink);border-bottom-left-radius:5px}
+  .bubble .t{display:block;font-size:.62rem;color:var(--muted);margin-top:4px;text-align:start;font-variant-numeric:tabular-nums}
+  .bubble b{font-weight:800}
+  .bubble ul{margin:6px 4px 2px;padding-inline-start:16px;display:flex;flex-direction:column;gap:2px}
+  .bubble li{font-size:.9rem}
+
+  /* typing indicator */
+  .typing{display:flex;gap:4px;padding:12px 15px;background:var(--bubble-ai);border-radius:16px;border-bottom-left-radius:5px;box-shadow:var(--shadow-sm)}
+  .typing span{width:7px;height:7px;border-radius:50%;background:var(--muted);opacity:.5;animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+
+  /* lead card handed to the business */
+  .leadcard{
+    align-self:center;width:94%;margin:6px 0 2px;background:var(--panel);border:1px solid var(--line);
+    border-radius:16px;padding:14px 15px;box-shadow:var(--shadow-sm);opacity:0;transform:translateY(10px);
+    animation:pop .5s cubic-bezier(.22,.7,.3,1) forwards;
+  }
+  .leadcard .hd{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--green);font-size:.9rem;margin-bottom:9px}
+  .leadcard .hd .chk{width:20px;height:20px;border-radius:50%;background:color-mix(in srgb,var(--green) 18%,transparent);display:grid;place-items:center;font-size:.7rem}
+  .leadcard dl{display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:.85rem}
+  .leadcard dt{color:var(--muted)}
+  .leadcard dd{font-weight:600;text-align:start}
+  .leadcard .foot{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+
+  .composer{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--line);background:var(--panel)}
+  .composer .fake{flex:1;height:38px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;padding:0 15px;color:var(--muted);font-size:.85rem}
+  .composer .send{width:38px;height:38px;border-radius:50%;flex:0 0 38px;background:linear-gradient(135deg,var(--brand2),var(--brand));display:grid;place-items:center;box-shadow:0 4px 12px color-mix(in srgb,var(--brand) 40%,transparent)}
+  .composer .send svg{width:18px;height:18px;fill:#fff;transform:scaleX(-1)}
+
+  .controls{display:flex;justify-content:center}
+  .replay{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--muted);
+    font-family:inherit;font-size:.82rem;font-weight:600;padding:8px 16px;border-radius:999px;cursor:pointer;
+    display:flex;align-items:center;gap:7px;transition:.2s}
+  .replay:hover{color:var(--ink);border-color:var(--brand)}
+  .replay svg{width:14px;height:14px;fill:currentColor}
+
+  /* CTA */
+  .cta{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px 20px 22px;text-align:center;box-shadow:var(--shadow-sm)}
+  .cta h2{font-size:1.15rem;font-weight:800;letter-spacing:-.01em;text-wrap:balance}
+  .cta p{color:var(--muted);font-size:.9rem;margin:6px 0 15px;text-wrap:balance}
+  .cta a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;font-size:.98rem;color:#fff;
+    background:linear-gradient(135deg,var(--brand2),var(--brand));padding:13px 24px;border-radius:999px;
+    box-shadow:0 10px 26px color-mix(in srgb,var(--brand) 40%,transparent);transition:.2s}
+  .cta a:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  .cta a svg{width:17px;height:17px;fill:#fff}
+  .foot-note{text-align:center;font-size:.72rem;color:var(--muted);opacity:.85;line-height:1.5}
+  .foot-note b{color:var(--brand)}
+
+  a:focus-visible,.replay:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+  @keyframes pop{to{opacity:1;transform:translateY(0)}}
+  @keyframes blink{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--green) 60%,transparent)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  @media (prefers-reduced-motion:reduce){
+    .row,.leadcard{animation:none;opacity:1;transform:none}
+    .who .status .dot,.typing span{animation:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <div class="logo"><span class="mark"></span><b>LIAM</b>&nbsp;DIGITAL</div>
+    <div class="eyebrow">דמו · הדמיה</div>
+  </div>
+
+  <div class="lede">
+    <h1>עוזר ה-AI של <em>דודו אוטמזגין</em>, עונה לבד — 24/7</h1>
+    <p>ככה נראית הודעה שנכנסת בוואטסאפ, מטופלת מקצה לקצה, ומגיעה אליכם כליד מסודר. בלי לענות ידנית לכל אחד.</p>
+  </div>
+
+  <div class="phone">
+    <div class="topbar">
+      <div class="avatar">🧁</div>
+      <div class="who">
+        <div class="name">דודו אוטמזגין</div>
+        <div class="status"><span class="dot"></span> עוזר AI · מגיב עכשיו</div>
+      </div>
+      <div class="aibadge">AI</div>
+    </div>
+
+    <div class="chat" id="chat" aria-live="polite"></div>
+
+    <div class="composer">
+      <div class="fake">כתבו הודעה…</div>
+      <div class="send" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="replay" id="replay"><svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg> הפעל את השיחה מחדש</button>
+  </div>
+
+  <div class="cta">
+    <h2>רוצים לראות את זה עובד על העסק שלכם?</h2>
+    <p>שיחה קצרה של 10 דקות, ואני מראה דמו חי מותאם לדודו אוטמזגין — בלי התחייבות.</p>
+    <a href="https://liamdigital.co.il" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.2 0-2.4-.2-3.5-.6a1 1 0 0 0-1 .2l-2.2 2.2a15 15 0 0 1-6.6-6.6l2.2-2.2a1 1 0 0 0 .2-1C8.7 6.4 8.5 5.2 8.5 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1 17 17 0 0 0 17 17 1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z"/></svg>
+      דברו עם ליעם
+    </a>
+  </div>
+
+  <div class="foot-note">
+    הדמו הוכן במיוחד עבור <b>דודו אוטמזגין</b> על ידי <b>LIAM DIGITAL</b> · הדמיה להמחשה בלבד.
+  </div>
+</div>
+
+<script>
+(function(){
+  var chat = document.getElementById('chat');
+  var replay = document.getElementById('replay');
+  var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  // Conversation script — tailored to a boutique patisserie with online orders + delivery.
+  var script = [
+    {who:'user', t:'09:41', html:'היי 🙂 אילו עוגות זמינות להזמנה השבוע?'},
+    {who:'ai', t:'09:41', html:'היי! 🧁 השבוע אצלנו:\n<ul><li>אינגליש קייק אגוזים</li><li>פאבלובה פירות יער</li><li>טארט לימון-מרנג</li><li>עוגת שוקולד בלגי</li></ul>רוצה פרטים על טעם מסוים, או להזמין?'},
+    {who:'user', t:'09:42', html:'צריכה עוגת יום הולדת לשבת, בערך ל-12 איש'},
+    {who:'ai', t:'09:42', html:'כיף! 🎉 כמה פרטים קטנים ואני מסדר הכול:\n• איזה טעם מתאים לכם?\n• איסוף עצמי או משלוח?\n• כיתוב על העוגה?'},
+    {who:'user', t:'09:44', html:'שוקולד בלגי, משלוח לתל אביב, כיתוב "מזל טוב דניאל"'},
+    {who:'ai', t:'09:44', html:'מושלם 🙌 סיכמתי:\n<b>עוגת שוקולד בלגי</b> ל-12, משלוח לת״א ליום שבת, כיתוב "מזל טוב דניאל".\nמשלוחים לת״א יוצאים בין 9:00–13:00. אני מעביר את הפרטים לצוות לאישור זמינות ומחיר — ותקבלי הודעה. 💜'},
+    {lead:true},
+    {who:'ai', t:'09:44', html:'ובינתיים — תרצי שאשלח לך את התפריט המלא לאירועים? 🎂'}
+  ];
+
+  function timeRow(m){
+    var row = document.createElement('div');
+    row.className = 'row ' + m.who;
+    row.innerHTML = '<div class="bubble">'+m.html+'<span class="t">'+m.t+'</span></div>';
+    return row;
+  }
+  function leadRow(){
+    var d = document.createElement('div');
+    d.className = 'leadcard';
+    d.innerHTML =
+      '<div class="hd"><span class="chk">✓</span> ליד חדש נשמר במערכת</div>'+
+      '<dl>'+
+        '<dt>לקוחה</dt><dd>הזמנת יום הולדת</dd>'+
+        '<dt>מוצר</dt><dd>עוגת שוקולד בלגי · 12 מנות</dd>'+
+        '<dt>אספקה</dt><dd>משלוח · תל אביב · שבת</dd>'+
+        '<dt>כיתוב</dt><dd>"מזל טוב דניאל"</dd>'+
+        '<dt>סטטוס</dt><dd>ממתין לאישור צוות</dd>'+
+      '</dl>'+
+      '<div class="foot">📤 הועבר אוטומטית לצוות דודו אוטמזגין</div>';
+    return d;
+  }
+  function typing(){
+    var row = document.createElement('div');
+    row.className = 'row ai'; row.style.animation='none'; row.style.opacity='1'; row.style.transform='none';
+    row.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+    return row;
+  }
+  function scroll(){ chat.scrollTop = chat.scrollHeight; }
+
+  var timers = [];
+  function clearAll(){ timers.forEach(clearTimeout); timers=[]; chat.innerHTML=''; }
+  function at(ms, fn){ timers.push(setTimeout(fn, ms)); }
+
+  function play(){
+    clearAll();
+    if(reduce){
+      script.forEach(function(m){ chat.appendChild(m.lead ? leadRow() : timeRow(m)); });
+      scroll(); return;
+    }
+    var t = 320;
+    script.forEach(function(m){
+      if(m.who === 'ai' && !m.lead){
+        at(t, function(){ var tp=typing(); tp.id='tp'; chat.appendChild(tp); scroll(); });
+        t += 950;
+        at(t, function(){ var tp=document.getElementById('tp'); if(tp) tp.remove(); chat.appendChild(timeRow(m)); scroll(); });
+        t += 520;
+      } else if(m.lead){
+        at(t, function(){ chat.appendChild(leadRow()); scroll(); });
+        t += 900;
+      } else {
+        at(t, function(){ chat.appendChild(timeRow(m)); scroll(); });
+        t += 760;
+      }
+    });
+  }
+
+  replay.addEventListener('click', play);
+  play();
+})();
+</script>
+</body>
+</html>
