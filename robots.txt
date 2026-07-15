@@ -6,4 +6,7 @@ Allow: /
 Disallow: /demo-dudu.html
 Disallow: /demos/
 
+# Internal tools
+Disallow: /seo-dashboard.html
+
 Sitemap: https://liamdigital.co.il/sitemap.xml

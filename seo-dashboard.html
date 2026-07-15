@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<meta name="theme-color" content="#050310"/>
+<title>מרכז שליטה SEO · LIAM DIGITAL</title>
+<link rel="icon" type="image/png" href="/favicon1.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@500;700;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#050310;--ink:#f7f4ff;--muted:rgba(240,236,255,.68);--dim:rgba(230,224,255,.46);
+  --v1:#a855f7;--v2:#7c6cff;--v-soft:#c88fff;
+  --done:#34d399;--todo:#fbbf24;--crit:#fb7185;
+  --line:rgba(210,178,255,.14);--line-2:rgba(210,178,255,.26);
+  --surface:linear-gradient(160deg,rgba(24,17,44,.86),rgba(9,6,18,.94) 62%);
+  --surface-2:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  --grad-text:linear-gradient(180deg,#ffffff 0%,#efe2ff 36%,#bd82ff 68%,#8a5bff 100%);
+  --heb:'Heebo','Rubik',system-ui,sans-serif;--sys:'Space Grotesk',var(--heb);
+  --maxw:1120px;--r:20px;
+}
+html{scroll-behavior:smooth;color-scheme:dark;-webkit-text-size-adjust:100%}
+html,body{max-width:100vw;overflow-x:clip}
+body{margin:0;font-family:var(--heb);color:var(--ink);line-height:1.6;
+  background:
+    radial-gradient(1100px 560px at 82% -6%,rgba(148,84,255,.20),transparent 62%),
+    radial-gradient(900px 520px at 4% 22%,rgba(104,92,255,.13),transparent 58%),
+    linear-gradient(180deg,#070512 0%,#05030c 46%,#040309 100%);
+  background-attachment:fixed;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+::selection{background:rgba(168,85,247,.35)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(7,5,16,.72);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900}
+.logo b{font-size:16px;letter-spacing:.3px}
+.logo small{display:block;font-size:11px;color:var(--dim);font-weight:600}
+.back{font-size:13px;color:var(--muted);border:1px solid var(--line-2);padding:8px 15px;border-radius:12px;transition:.2s}
+.back:hover{background:rgba(255,255,255,.05);color:var(--ink)}
+
+/* head */
+.top{padding:34px 0 10px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;border:1px solid var(--line-2);background:rgba(168,85,247,.08);font-size:12.5px;font-weight:700;color:var(--v-soft);font-family:var(--sys);letter-spacing:.5px}
+.top h1{font-size:clamp(26px,5vw,40px);font-weight:900;margin:16px 0 6px;letter-spacing:-.5px}
+.top p{color:var(--muted);margin:0;max-width:640px}
+.updated{font-size:12.5px;color:var(--dim);margin-top:8px;font-variant-numeric:tabular-nums}
+
+/* progress hero */
+.hero-grid{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:26px 28px;margin:24px 0 8px}
+.ring{position:relative;width:132px;height:132px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .pct b{font-size:30px;font-weight:900;font-family:var(--sys);font-variant-numeric:tabular-nums;line-height:1}
+.ring .pct span{font-size:11px;color:var(--dim);margin-top:3px}
+.hero-txt h2{margin:0 0 8px;font-size:20px;font-weight:800}
+.hero-txt p{margin:0;color:var(--muted);font-size:14.5px}
+.hero-txt .count{color:var(--v-soft);font-weight:800}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:16px 0 8px}
+.kpi{background:var(--surface-2);border:1px solid var(--line);border-radius:16px;padding:18px}
+.kpi b{display:block;font-size:28px;font-weight:900;font-family:var(--sys);background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.kpi span{display:block;color:var(--muted);font-size:13px;margin-top:7px}
+
+/* sections */
+section{padding:30px 0 4px}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin:0 0 6px}
+.sec-h h2{font-size:22px;font-weight:900;margin:0;letter-spacing:-.3px}
+.sec-h .n{font-family:var(--sys);color:var(--dim);font-size:14px;font-weight:600}
+.sec-sub{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+
+/* task list */
+.group-label{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;letter-spacing:.4px;color:var(--dim);margin:20px 0 10px;text-transform:uppercase;font-family:var(--sys)}
+.group-label .dot{width:9px;height:9px;border-radius:50%}
+.task{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:10px;transition:border-color .2s,opacity .25s}
+.task:hover{border-color:var(--line-2)}
+.task.done{opacity:.55}
+.task.done .t-title{text-decoration:line-through;text-decoration-color:var(--dim)}
+.chk{flex:none;width:24px;height:24px;margin-top:1px;border-radius:7px;border:2px solid var(--line-2);background:transparent;cursor:pointer;display:grid;place-items:center;transition:.15s;padding:0}
+.chk:hover{border-color:var(--v-soft)}
+.chk svg{width:14px;height:14px;stroke:#0a0518;stroke-width:3.4;fill:none;opacity:0;transition:.15s}
+.task.done .chk{background:var(--done);border-color:var(--done)}
+.task.done .chk svg{opacity:1}
+.chk:focus-visible{outline:2px solid var(--v-soft);outline-offset:2px}
+.t-body{flex:1;min-width:0}
+.t-top{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:3px}
+.t-title{font-weight:800;font-size:15.5px}
+.badge{font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;font-family:var(--sys);letter-spacing:.3px;white-space:nowrap}
+.b-crit{background:rgba(251,113,133,.14);color:#ff9db0;border:1px solid rgba(251,113,133,.3)}
+.b-high{background:rgba(251,191,36,.13);color:#ffcf6b;border:1px solid rgba(251,191,36,.28)}
+.b-med{background:rgba(168,85,247,.13);color:var(--v-soft);border:1px solid var(--line-2)}
+.t-desc{color:var(--muted);font-size:13.5px;line-height:1.55}
+.t-desc code{background:rgba(255,255,255,.07);padding:1px 6px;border-radius:6px;font-size:12px;font-family:ui-monospace,monospace;color:#e9d9ff;direction:ltr;display:inline-block}
+.t-link{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font-size:13px;font-weight:800;color:var(--v-soft);border:1px solid var(--line-2);padding:6px 13px;border-radius:10px;transition:.2s}
+.t-link:hover{background:rgba(168,85,247,.1);transform:translateY(-1px)}
+
+/* done list */
+.done-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.done-item{display:flex;gap:11px;align-items:flex-start;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+.done-item .v{flex:none;width:20px;height:20px;border-radius:50%;background:rgba(52,211,153,.16);display:grid;place-items:center;margin-top:1px}
+.done-item .v svg{width:11px;height:11px;stroke:var(--done);stroke-width:3.2;fill:none}
+.done-item p{margin:0;font-size:13.8px}
+.done-item p small{display:block;color:var(--dim);font-size:12px;margin-top:2px}
+
+/* table */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th,td{text-align:right;padding:14px 18px;font-size:14px;border-bottom:1px solid var(--line)}
+th{font-size:12px;letter-spacing:.4px;color:var(--dim);font-weight:800;font-family:var(--sys);text-transform:uppercase;background:rgba(255,255,255,.02)}
+tr:last-child td{border-bottom:none}
+td .pg{font-weight:800;color:var(--v-soft)}
+td .kw{color:var(--muted)}
+td a.pg:hover{text-decoration:underline}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.road-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.road-card .ico{font-size:23px;margin-bottom:9px}
+.road-card h3{margin:0 0 6px;font-size:16px;font-weight:800}
+.road-card p{margin:0;color:var(--muted);font-size:13.5px}
+
+/* reset btn + footer */
+.reset{display:inline-flex;align-items:center;gap:6px;margin:22px 0 4px;font-size:12.5px;color:var(--dim);background:none;border:1px solid var(--line);padding:7px 14px;border-radius:10px;cursor:pointer;font-family:var(--heb);transition:.2s}
+.reset:hover{color:var(--muted);border-color:var(--line-2)}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:26px 0;text-align:center;color:var(--dim);font-size:13px}
+
+@media(max-width:720px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .hero-grid{grid-template-columns:1fr;text-align:center;justify-items:center}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="nav-in">
+  <a class="logo" href="/" aria-label="LIAM DIGITAL"><span><b>LIAM DIGITAL</b><small>מרכז שליטה SEO</small></span></a>
+  <a class="back" href="/">← חזרה לאתר</a>
+</div></header>
+
+<div class="wrap">
+  <div class="top">
+    <span class="eyebrow">◆ SEO COMMAND CENTER</span>
+    <h1>מרכז שליטה קידום אורגני</h1>
+    <p>כל מה שקשור ל-SEO של liamdigital.co.il במקום אחד — מה כבר מוטמע באתר, ומה נשאר לך לעשות כדי לטפס בגוגל.</p>
+    <div class="updated">עודכן: 15 ביולי 2026 · ליעם דיגיטל</div>
+  </div>
+
+  <div class="hero-grid">
+    <div class="ring">
+      <svg width="132" height="132" viewBox="0 0 132 132">
+        <circle cx="66" cy="66" r="58" fill="none" stroke="rgba(210,178,255,.12)" stroke-width="11"/>
+        <circle id="ringFill" cx="66" cy="66" r="58" fill="none" stroke="url(#g)" stroke-width="11" stroke-linecap="round" stroke-dasharray="364.4" stroke-dashoffset="364.4"/>
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c88fff"/><stop offset="1" stop-color="#7b4dff"/></linearGradient></defs>
+      </svg>
+      <div class="pct"><b id="pctNum">0%</b><span>הושלם</span></div>
+    </div>
+    <div class="hero-txt">
+      <h2>הצד הטכני מוכן — עכשיו תורך 🚀</h2>
+      <p>כל ה-SEO שאפשר לעשות בקוד — <b class="count">בוצע והוטמע</b>. הדירוג בגוגל תלוי עכשיו ב-<b class="count" id="doneCount">0</b> מתוך <b class="count" id="totalCount">0</b> הפעולות הידניות למטה. סמן כל משימה כשתסיים — ההתקדמות נשמרת אצלך בדפדפן.</p>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><b>4</b><span>עמודים ממוקדי SEO</span></div>
+    <div class="kpi"><b>8</b><span>סוגי Structured Data</span></div>
+    <div class="kpi"><b>12</b><span>מילות מפתח מטרה</span></div>
+    <div class="kpi"><b>100%</b><span>תשתית טכנית מוכנה</span></div>
+  </div>
+
+  <!-- TASKS -->
+  <section>
+    <div class="sec-h"><h2>המשימות שלך</h2><span class="n" id="taskProgress"></span></div>
+    <p class="sec-sub">מסודר לפי סדר עדיפות. התחל מלמעלה — אלה הפעולות שבאמת מזיזות את הדירוג. שום דבר כאן לא נשלח או מתפרסם אוטומטית; הכל בשליטתך.</p>
+
+    <div class="group-label"><span class="dot" style="background:var(--crit)"></span>קריטי · לעשות עכשיו</div>
+    <div id="grp-crit"></div>
+
+    <div class="group-label"><span class="dot" style="background:var(--todo)"></span>חשוב · השבוע</div>
+    <div id="grp-high"></div>
+
+    <div class="group-label"><span class="dot" style="background:var(--v1)"></span>מומלץ · כשמתפנה</div>
+    <div id="grp-med"></div>
+
+    <button class="reset" id="resetBtn">↺ איפוס סימונים</button>
+  </section>
+
+  <!-- DONE -->
+  <section>
+    <div class="sec-h"><h2>מה כבר מוטמע באתר</h2></div>
+    <p class="sec-sub">כל אלה כבר בקוד ופעילים ברגע שהאתר מתפרסם — לא צריך לגעת בהם.</p>
+    <div class="done-grid" id="doneGrid"></div>
+  </section>
+
+  <!-- KEYWORDS -->
+  <section>
+    <div class="sec-h"><h2>מפת מילות המפתח</h2></div>
+    <p class="sec-sub">איזה עמוד תוכנן לתפוס אילו חיפושים בגוגל.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>עמוד</th><th>מילות חיפוש מטרה</th></tr></thead>
+      <tbody>
+        <tr><td><a class="pg" href="/" target="_blank">עמוד הבית</a></td><td class="kw">מערכות AI לעסקים · סוכני AI · אוטומציה לעסקים · צ'אטבוט לעסק</td></tr>
+        <tr><td><a class="pg" href="/ai-lawyers.html" target="_blank">AI לעורכי דין</a></td><td class="kw">סוכן AI לעורכי דין · אוטומציה למשרד עו״ד · צ'אטבוט לעו״ד · ניהול לידים לעורכי דין</td></tr>
+        <tr><td><a class="pg" href="/ai-accountants.html" target="_blank">AI לרואי חשבון</a></td><td class="kw">סוכן AI לרואי חשבון · אוטומציה למשרד רו״ח · צ'אטבוט ליועץ מס</td></tr>
+        <tr><td><a class="pg" href="/ai-clinics.html" target="_blank">AI למרפאות</a></td><td class="kw">סוכן AI למרפאות · צ'אטבוט לקביעת תורים · תזכורות תורים אוטומטיות</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section>
+    <div class="sec-h"><h2>צעדים הבאים לצמיחה</h2></div>
+    <p class="sec-sub">אחרי שהבסיס עובד — ככה ממשיכים לטפס לאורך זמן.</p>
+    <div class="road">
+      <div class="road-card"><div class="ico">✍️</div><h3>בלוג ומאמרים</h3><p>מאמר לכל שאלה שלקוח מחפש ("כמה עולה סוכן AI?", "AI למשרד עו״ד") תופס חיפושי long-tail בלי תחרות.</p></div>
+      <div class="road-card"><div class="ico">🏢</div><h3>עמודי נישה נוספים</h3><p>מרחיבים פעילות? נוסיף עמוד ייעודי לכל תחום חדש — בדיוק כמו שלושת העמודים הקיימים.</p></div>
+      <div class="road-card"><div class="ico">🔗</div><h3>קישורים נכנסים</h3><p>אזכורים ממדריכי עסקים, שותפים ולקוחות מחזקים את הסמכות של הדומיין בעיני גוגל.</p></div>
+      <div class="road-card"><div class="ico">📊</div><h3>מעקב חודשי</h3><p>בודקים ב-Search Console אילו חיפושים מביאים תנועה — ומחדדים את התוכן בהתאם.</p></div>
+    </div>
+  </section>
+</div>
+
+<footer>© 2026 LIAM DIGITAL · מרכז שליטה SEO פנימי · לא מאונדקס בגוגל</footer>
+
+<script>
+const TASKS = [
+  {id:'deploy',p:'crit',t:'לפרסם את האתר המעודכן',b:'קריטי',
+   d:'כל השיפורים נמצאים בברנץ׳ <code>claude/seo-organic-search-38cnq9</code>. מזג אותו ל-<code>main</code> ב-GitHub — ו-GitHub Pages יבנה מחדש את האתר תוך דקות. בלי זה שום שינוי לא חי.'},
+  {id:'gsc',p:'crit',t:'Google Search Console — להגיש Sitemap',b:'קריטי',
+   d:'האימות כבר קיים באתר. היכנס → Sitemaps → הוסף <code>sitemap.xml</code>. אחר כך הדבק כל אחת מ-4 הכתובות ב-URL Inspection ולחץ "Request Indexing". ככה גוגל מוצא את העמודים תוך ימים במקום שבועות.',
+   l:'https://search.google.com/search-console'},
+  {id:'gbp',p:'crit',t:'Google Business Profile — לפתוח/לאמת',b:'קריטי',
+   d:'הכי משפיע על חיפוש מקומי בישראל. פרופיל עסקי חינמי גורם לעסק להופיע במפות ובחיפושים כמו "אוטומציה לעסקים לידי". מלא תחום, אזור שירות, קישור לאתר וטלפון.',
+   l:'https://business.google.com/'},
+  {id:'reviews',p:'high',t:'לאסוף ביקורות גוגל',b:'גבוה',
+   d:'בקש מ-5 לקוחות מרוצים ביקורת קצרה בפרופיל העסקי. ביקורות הן מהאותות החזקים ביותר לדירוג מקומי — וגם משכנעות לקוחות חדשים.'},
+  {id:'rich',p:'high',t:'לאמת את ה-Structured Data',b:'גבוה',
+   d:'הרץ את 4 העמודים ב-Rich Results Test של גוגל כדי לוודא שה-Schema (FAQ, שירות, מחירים) נקרא נכון ויכול להופיע כתוצאה עשירה.',
+   l:'https://search.google.com/test/rich-results'},
+  {id:'speed',p:'high',t:'לבדוק מהירות טעינה',b:'גבוה',
+   d:'מהירות היא גורם דירוג. בדוק את עמוד הבית ב-PageSpeed Insights — היעד ציון ירוק במובייל. אם משהו כבד, נטפל בו.',
+   l:'https://pagespeed.web.dev/'},
+  {id:'links',p:'high',t:'לבנות קישורים נכנסים ראשונים',b:'גבוה',
+   d:'הוסף את liamdigital.co.il לפרופיל LinkedIn של החברה, למדריכי עסקים ישראליים ולכל שותף. כל קישור איכותי מחזק את הסמכות בעיני גוגל.'},
+  {id:'bing',p:'med',t:'Bing Webmaster Tools',b:'בינוני',
+   d:'מייבא אוטומטית מ-Search Console. שווה 5 דקות — תופס גם תנועה מ-Bing ומחיפושי AI שמסתמכים עליו.',
+   l:'https://www.bing.com/webmasters'},
+  {id:'ga4',p:'med',t:'לסמן generate_lead כ-Key Event',b:'בינוני',
+   d:'ב-GA4 (הקוד כבר באתר) סמן את אירוע <code>generate_lead</code> כ-Key Event, כדי לראות בדיוק כמה לידים מגיעים מחיפוש אורגני.',
+   l:'https://analytics.google.com/'}
+];
+
+const DONE = [
+  ['Title ותיאור ממוקדים','לכל 4 העמודים'],
+  ['Canonical + hreflang','he-IL · x-default'],
+  ['תיוג גיאוגרפי','geo.region = IL'],
+  ['Open Graph + Twitter Cards','שיתוף יפה ברשתות'],
+  ['ProfessionalService Schema','מחירים · שעות · קטלוג שירותים'],
+  ['WebSite Schema','זיהוי מותג בגוגל'],
+  ['FAQPage Schema','תוצאות עשירות בחיפוש'],
+  ['robots.txt','הנחיית סריקה + הפניה ל-sitemap'],
+  ['sitemap.xml','4 כתובות עם lastmod'],
+  ['3 עמודי נישה','עו״ד · רו״ח · מרפאות'],
+  ['Service + Breadcrumb Schema','בכל עמוד נישה'],
+  ['קישורים פנימיים','עמוד הבית ↔ עמודי נישה']
+];
+
+const KEY='liam_seo_dash_v1';
+let state=JSON.parse(localStorage.getItem(KEY)||'{}');
+
+function chkSvg(){return '<svg viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4.5"/></svg>';}
+
+function render(){
+  ['crit','high','med'].forEach(p=>{
+    document.getElementById('grp-'+p).innerHTML = TASKS.filter(t=>t.p===p).map(t=>{
+      const on=!!state[t.id];
+      const bc=p==='crit'?'b-crit':p==='high'?'b-high':'b-med';
+      const link=t.l?`<a class="t-link" href="${t.l}" target="_blank" rel="noopener">פתח כלי ↗</a>`:'';
+      return `<div class="task${on?' done':''}" data-id="${t.id}">
+        <button class="chk" aria-label="סמן כבוצע" aria-pressed="${on}">${chkSvg()}</button>
+        <div class="t-body"><div class="t-top"><span class="t-title">${t.t}</span><span class="badge ${bc}">${t.b}</span></div>
+        <div class="t-desc">${t.d}</div>${link}</div></div>`;
+    }).join('');
+  });
+  document.querySelectorAll('.task').forEach(el=>{
+    el.querySelector('.chk').addEventListener('click',()=>{
+      const id=el.dataset.id; state[id]=!state[id];
+      localStorage.setItem(KEY,JSON.stringify(state)); render();
+    });
+  });
+  const total=TASKS.length, done=TASKS.filter(t=>state[t.id]).length;
+  const pct=Math.round(done/total*100);
+  document.getElementById('pctNum').textContent=pct+'%';
+  document.getElementById('doneCount').textContent=done;
+  document.getElementById('totalCount').textContent=total;
+  document.getElementById('taskProgress').textContent=done+' / '+total+' הושלמו';
+  const C=364.4;
+  document.getElementById('ringFill').style.strokeDashoffset=C-(C*pct/100);
+}
+
+document.getElementById('doneGrid').innerHTML=DONE.map(([a,b])=>
+  `<div class="done-item"><span class="v"><svg viewBox="0 0 16 16"><polyline points="3,8.5 6.5,12 13,4.5"/></svg></span><p>${a}<small>${b}</small></p></div>`).join('');
+
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  if(confirm('לאפס את כל הסימונים?')){state={};localStorage.setItem(KEY,'{}');render();}
+});
+
+render();
+</script>
+</body>
+</html>
