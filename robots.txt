@@ -1,0 +1,9 @@
+# robots.txt — LIAM DIGITAL (https://liamdigital.co.il)
+User-agent: *
+Allow: /
+
+# Client demo pages are not for organic indexing
+Disallow: /demo-dudu.html
+Disallow: /demos/
+
+Sitemap: https://liamdigital.co.il/sitemap.xml
