@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>LIAM DIGITAL · לסוכני ביטוח — שלא תאבד אף פנייה</title>
+<meta name="description" content="מערכת בעברית לסוכנויות ביטוח: כל פנייה מקבלת מענה ראשוני מסודר תוך דקות, follow-up אוטומטי וקביעת שיחה — עם אישור שלך לפני כל יציאה. פיילוט 90 יום מדיד."/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:title" content="לסוכני ביטוח — שלא תאבד אף פנייה | LIAM DIGITAL"/>
+<meta property="og:description" content="מענה מהיר לכל ליד, follow-up אוטומטי, שליטה מלאה. פיילוט 90 יום מדיד."/>
+<meta property="og:type" content="website"/>
+<link rel="icon" href="favicon1.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Rubik:wght@500;700;900&family=Space+Grotesk:wght@500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0a0812;--bg2:#120b21;--card:#171029;--line:rgba(255,255,255,.09);--txt:#f4f0ff;--muted:#b9aee0;--pur:#7C3AED;--pur2:#5B21B6;--gold:#D4AF37;--ok:#22c55e;--rad:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Heebo','Rubik',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,92vw);margin-inline:auto}
+section{padding:clamp(46px,7vh,84px) 0;position:relative}
+h1,h2{font-weight:900;letter-spacing:-.02em;line-height:1.12}
+h2{font-size:clamp(24px,4.4vw,38px);margin-bottom:14px}
+.eyebrow{display:inline-block;font-family:'Sora','Space Grotesk','Heebo',sans-serif;font-size:13px;font-weight:800;color:var(--gold);letter-spacing:.12em;margin-bottom:12px;text-transform:uppercase}
+p.lead{color:var(--muted);font-size:clamp(15px,1.9vw,18px);max-width:60ch}
+.grad{background:linear-gradient(100deg,#c4b5fd,#a78bfa 40%,#7C3AED);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,8,18,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav img{height:30px;width:auto;display:block}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:15px;padding:13px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn.wa{background:linear-gradient(100deg,#25D366,#128C7E);color:#fff;box-shadow:0 10px 30px rgba(37,211,102,.28)}
+.btn.wa:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--txt)}
+.nav .btn{padding:9px 16px;font-size:14px}
+/* hero */
+.hero{background:radial-gradient(120% 90% at 80% -10%,rgba(124,58,237,.28),transparent 60%),radial-gradient(90% 80% at 0% 0%,rgba(91,33,182,.22),transparent 55%),var(--bg);padding-top:clamp(40px,6vh,64px)}
+.hero h1{font-size:clamp(30px,6.6vw,58px);margin:10px 0 18px}
+.hero .lead{font-size:clamp(16px,2.1vw,20px)}
+.hero .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.trust{list-style:none;display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px}
+.trust li{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;font-weight:700}
+.trust li::before{content:"✓";display:grid;place-items:center;flex:0 0 20px;width:20px;height:20px;border-radius:50%;background:rgba(34,197,94,.16);color:var(--ok);font-size:12px;font-weight:900}
+/* cards */
+.grid{display:grid;gap:16px}
+@media(min-width:640px){.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:22px}
+.card h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+.card .ic{font-size:24px;margin-bottom:10px;display:block}
+/* problem band */
+.band{background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.stat-row{display:grid;gap:14px;margin-top:8px}
+@media(min-width:640px){.stat-row{grid-template-columns:repeat(3,1fr)}}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:20px;text-align:center}
+.stat b{display:block;font-size:15px;color:var(--gold);font-weight:800;margin-bottom:6px}
+.stat span{color:var(--muted);font-size:14px}
+/* process */
+.steps{counter-reset:s;display:grid;gap:14px;margin-top:8px}
+@media(min-width:640px){.steps{grid-template-columns:repeat(5,1fr)}}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--rad);padding:18px 16px;position:relative}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(100deg,var(--pur),var(--pur2));color:#fff;font-weight:900;font-size:15px;margin-bottom:10px}
+.step h4{font-size:15px;font-weight:800;margin-bottom:4px}
+.step p{color:var(--muted);font-size:13.5px}
+/* approval highlight */
+.approve{background:linear-gradient(100deg,rgba(124,58,237,.14),rgba(212,175,55,.08));border:1px solid rgba(212,175,55,.3);border-radius:22px;padding:clamp(22px,4vw,36px)}
+.approve .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.14);color:var(--ok);border:1px solid rgba(34,197,94,.3);font-weight:800;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:14px}
+/* honest note */
+.note{background:var(--card);border:1px dashed rgba(212,175,55,.4);border-radius:var(--rad);padding:22px}
+.note b{color:var(--gold)}
+/* demo */
+.demo{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:8px}
+.demo-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.demo-bar i{width:11px;height:11px;border-radius:50%;background:#463a63;display:block}
+.demo-body{padding:20px}
+.msg{max-width:82%;padding:12px 15px;border-radius:16px;margin-bottom:12px;font-size:14.5px}
+.msg.in{background:#221a38;border:1px solid var(--line);border-top-right-radius:4px}
+.msg.out{background:linear-gradient(100deg,var(--pur2),var(--pur));margin-inline-start:auto;border-top-left-radius:4px;color:#fff}
+.msg .tag{display:block;font-size:11px;color:var(--muted);margin-bottom:3px;font-weight:700}
+.msg.out .tag{color:rgba(255,255,255,.8)}
+.approve-chip{display:inline-flex;gap:8px;align-items:center;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.32);color:var(--ok);font-weight:800;font-size:13px;padding:8px 14px;border-radius:12px;margin-top:4px}
+/* pilot */
+.pilot{background:linear-gradient(100deg,var(--bg2),var(--card));border:1px solid var(--line);border-radius:22px;padding:clamp(24px,4vw,40px);text-align:center}
+.pilot .price{font-size:clamp(26px,5vw,40px);font-weight:900;margin:6px 0}
+.pilot .price small{font-size:.5em;color:var(--muted);font-weight:700}
+.pilot ul{list-style:none;display:inline-grid;gap:8px;text-align:start;margin:16px 0 22px}
+.pilot li{display:flex;gap:9px;color:var(--muted);font-size:15px}
+.pilot li::before{content:"✓";color:var(--ok);font-weight:900}
+/* faq */
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 20px;margin-bottom:10px}
+details summary{cursor:pointer;list-style:none;font-weight:800;padding:18px 0;display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";color:var(--gold);font-size:22px;font-weight:400;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 0 18px;font-size:15px}
+/* final cta */
+.final{background:radial-gradient(100% 120% at 50% 0%,rgba(124,58,237,.3),transparent 60%),var(--bg2);text-align:center}
+.final h2{font-size:clamp(26px,5vw,44px)}
+/* footer */
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px;text-align:center}
+.sticky-wa{position:fixed;inset-inline:0;bottom:0;z-index:60;padding:10px 4vw calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,rgba(10,8,18,.9) 30%);display:flex;justify-content:center}
+.sticky-wa .btn{width:min(560px,100%);justify-content:center;font-size:16px}
+@media(min-width:900px){.sticky-wa{display:none}}
+.mt{margin-top:34px}
+.center{text-align:center}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="https://liamdigital.co.il" aria-label="LIAM DIGITAL"><img src="data:image/png;base64,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" alt="LIAM DIGITAL"/></a>
+    <a class="btn wa" href="https://wa.me/972527003976?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%9C%D7%A1%D7%95%D7%9B%D7%A0%D7%99%20%D7%91%D7%99%D7%98%D7%95%D7%97" target="_blank" rel="noopener">דברו איתי בוואטסאפ</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">לסוכני ולסוכנויות ביטוח</span>
+    <h1>כל פנייה מקבלת מענה.<br><span class="grad">שום ליד לא נופל בין הכיסאות.</span></h1>
+    <p class="lead">ליד שנכנס ב-22:00 או בזמן שאתה בפגישה — לרוב מחכה שעות, ועד שחוזרים אליו הוא כבר דיבר עם סוכן אחר. אנחנו בונים לסוכנויות ביטוח מערכת בעברית שנותנת לכל פנייה <b>מענה ראשוני מסודר תוך דקות</b>, מבצעת follow-up ומקדמת לקביעת שיחה — <b>עם אישור שלך לפני כל יציאה</b>.</p>
+    <div class="cta-row">
+      <a class="btn wa" href="https://wa.me/972527003976?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%9C%D7%A1%D7%95%D7%9B%D7%A0%D7%99%20%D7%91%D7%99%D7%98%D7%95%D7%97" target="_blank" rel="noopener">דברו איתי בוואטסאפ ←</a>
+      <a class="btn ghost" href="#pilot">איך עובד פיילוט 90 יום</a>
+    </div>
+    <ul class="trust">
+      <li>מענה מהיר לכל ליד</li><li>follow-up אוטומטי</li><li>פחות עבודה ידנית</li><li>approval-first · שליטה מלאה</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="band">
+  <div class="wrap">
+    <span class="eyebrow">הבעיה</span>
+    <h2>אתה לא מפסיד לקוחות ממעט לידים.<br class="grad"> אתה מפסיד אותם מלידים שלא נענו בזמן.</h2>
+    <p class="lead">בסוכנות ביטוח כל פנייה שווה עמלה — ומהירות התגובה קובעת אם היא נסגרת אצלך או אצל מישהו אחר. בפועל, חלק גדול מהפניות נכנס דווקא כשאי אפשר לענות: בערב, בסופ״ש, או באמצע פגישה.</p>
+    <div class="stat-row mt">
+      <div class="stat"><b>פניות אחרי שעות</b><span>נכנסות בערב ובשישי-שבת — וממתינות עד הבוקר</span></div>
+      <div class="stat"><b>Follow-up שלא קורה</b><span>ליד שלא נסגר בשיחה הראשונה פשוט נשכח</span></div>
+      <div class="stat"><b>עבודה ידנית</b><span>סיווג, הקלדה ל-CRM ותיאום גוזלים שעות מהמכירה</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT HAPPENS TODAY -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">מה קורה היום בסוכנות</span>
+    <h2>הזרם הנוכחי — ואיפה נופל הזמן</h2>
+    <div class="grid c2 mt">
+      <div class="card"><span class="ic">📥</span><h3>הפנייה נכנסת</h3><p>מטופס, מפייסבוק, מפורטל לידים או בטלפון — לכל אחד ערוץ אחר, בלי מקום אחד שמרכז הכל.</p></div>
+      <div class="card"><span class="ic">⏳</span><h3>ומחכה</h3><p>אתה בפגישה / בנהיגה / זה ערב. אף אחד לא עונה. הליד מתקרר, ולפעמים פונה למתחרה.</p></div>
+      <div class="card"><span class="ic">🤷</span><h3>מי מטפל?</h3><p>בסוכנות עם כמה נציגים לא תמיד ברור מי לוקח את הפנייה — וחלק נופל בין הכיסאות.</p></div>
+      <div class="card"><span class="ic">🔁</span><h3>ובלי מעקב</h3><p>מי שלא נסגר בפעם הראשונה לא מקבל follow-up מסודר. שם נמצאות עסקאות שלמות.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW LIAM SOLVES -->
+<section class="band">
+  <div class="wrap">
+    <span class="eyebrow">איך LIAM DIGITAL פותרת</span>
+    <h2>שכבת סדר לטיפול בפניות — בשליטתך</h2>
+    <p class="lead">לא בוט שפועל לבד. מערכת שמסדרת את התהליך מקצה לקצה, ומשאירה את ההחלטה אצלך.</p>
+    <div class="grid c3 mt">
+      <div class="card"><span class="ic">⚡</span><h3>מענה ראשוני מיידי</h3><p>כל פנייה מקבלת תשובה ראשונה מסודרת תוך דקות — כולל הצעת שעה פנויה מהיומן — גם כשאתה סגור.</p></div>
+      <div class="card"><span class="ic">🗂️</span><h3>סיווג וניתוב</h3><p>הפנייה מסווגת (רכב / דירה / חיים / עסקי) ומנותבת לנציג הנכון, בלי שתיפול בין הכיסאות.</p></div>
+      <div class="card"><span class="ic">🔔</span><h3>Follow-up אוטומטי</h3><p>רצף מעקב מסודר לכל ליד שלא נסגר — כל הודעה כטיוטה שאתה מאשר לפני שליחה.</p></div>
+      <div class="card"><span class="ic">📅</span><h3>קביעת שיחה</h3><p>הליד מקודם לתיאום שיחה/פגישה מהיומן שלך — פחות הלוך-ושוב.</p></div>
+      <div class="card"><span class="ic">🧾</span><h3>סדר במקום אחד</h3><p>דשבורד שמרכז את כל הפניות, הסטטוס, ומה לא נענה תוך 24 שעות.</p></div>
+      <div class="card"><span class="ic">🇮🇱</span><h3>עברית מלאה, RTL</h3><p>נבנה לישראל — שעות עסקים מקומיות, מטבע, ושפה טבעית. לא תרגום.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW THE PROCESS WORKS -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">איך התהליך עובד</span>
+    <h2>מהפנייה לפגישה — 5 שלבים</h2>
+    <div class="steps mt">
+      <div class="step"><h4>פנייה נכנסת</h4><p>מכל ערוץ, למקום אחד</p></div>
+      <div class="step"><h4>מענה ראשוני</h4><p>טיוטה מסודרת תוך דקות</p></div>
+      <div class="step"><h4>אתה מאשר</h4><p>שום מסר לא יוצא בלי אישורך</p></div>
+      <div class="step"><h4>follow-up</h4><p>מעקב עד שנסגר</p></div>
+      <div class="step"><h4>קביעת שיחה</h4><p>הליד מקודם ליומן</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="band">
+  <div class="wrap">
+    <span class="eyebrow">Use Cases אמיתיים</span>
+    <h2>איפה זה הכי מחזיר לסוכנות</h2>
+    <div class="grid c3 mt">
+      <div class="card"><span class="ic">🚗</span><h3>בקשות הצעה לרכב/צי</h3><p>נפח גבוה של בקשות שדורשות מענה מהיר — מענה ראשוני אוטומטי לכל אחת, באישורך.</p></div>
+      <div class="card"><span class="ic">🌙</span><h3>לידים אחרי שעות</h3><p>פנייה ב-22:00 מקבלת מענה מסודר והצעת שעה, ואתה מאשר בבוקר — במקום לאבד אותה.</p></div>
+      <div class="card"><span class="ic">🏢</span><h3>ביטוח עסקי / אחריות</h3><p>לידים יקרים שצריכים סינון וקביעת שיחה מהירה לפני שהם מתקררים.</p></div>
+      <div class="card"><span class="ic">👥</span><h3>סוכנות עם כמה נציגים</h3><p>ניתוב אוטומטי לנציג הנכון + מעקב שכל פנייה טופלה.</p></div>
+      <div class="card"><span class="ic">📊</span><h3>פנסיה / פיננסים</h3><p>מחזור מכירה ארוך → רצפי follow-up ששומרים לידים חמים לאורך זמן.</p></div>
+      <div class="card"><span class="ic">💬</span><h3>פניות מפייסבוק/וואטסאפ</h3><p>הודעות שנערמות בלי מענה — מקבלות מענה ראשוני וסינון מסודר.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROVAL FIRST -->
+<section>
+  <div class="wrap">
+    <div class="approve">
+      <span class="pill">● Approval-First</span>
+      <h2>מהירות בלי לאבד שליטה</h2>
+      <p class="lead">החשש הכי גדול מ-AI בעסק שהמוניטין בו הוא הכל — שהמערכת תשלח משהו לא נכון ללקוח. אצלנו זה בנוי הפוך: <b>כל מסר שיוצא ללקוח הוא טיוטה שאתה מאשר לפני שליחה.</b> אתה מרוויח את המהירות — ושומר על השליטה המלאה. גם בפרטיות: שקיפות, אישור אנושי, ובהתאם לתיקון 13 לחוק הגנת הפרטיות.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="band">
+  <div class="wrap">
+    <span class="eyebrow">הדגמה</span>
+    <h2>ככה זה נראה בפועל</h2>
+    <p class="lead">פנייה נכנסת → המערכת מכינה מענה ראשוני → אתה מאשר → נשלח.</p>
+    <div class="demo mt">
+      <div class="demo-bar"><i></i><i></i><i></i><span style="color:var(--muted);font-size:12px;margin-inline-start:8px">LIAM · טיפול בפנייה</span></div>
+      <div class="demo-body">
+        <div class="msg in"><span class="tag">ליד חדש · 22:14</span>היי, קיבלתי הצעה לביטוח רכב ורציתי לבדוק מחיר. אפשר?</div>
+        <div class="msg out"><span class="tag">טיוטת מענה — ממתין לאישורך</span>היי! שמח לעזור 🙂 כדי להכין הצעה מדויקת — מה שנת הרכב והדגם? בינתיים אני שומר לך שתי שעות פנויות מחר: 10:00 או 16:30. מה נוח?</div>
+        <span class="approve-chip">✓ אשר ושלח &nbsp;·&nbsp; ✎ ערוך</span>
+      </div>
+    </div>
+    <p class="center mt"><a class="btn ghost" href="https://wa.me/972527003976?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%9C%D7%A1%D7%95%D7%9B%D7%A0%D7%99%20%D7%91%D7%99%D7%98%D7%95%D7%97" target="_blank" rel="noopener">רוצה סיור חי במערכת? כתוב לי</a></p>
+  </div>
+</section>
+
+<!-- PILOT -->
+<section id="pilot">
+  <div class="wrap">
+    <div class="pilot">
+      <span class="eyebrow">פיילוט 90 יום</span>
+      <h2>מתחילים קטן ומדיד</h2>
+      <div class="price">₪5,900 <small>הקמה</small> &nbsp;+&nbsp; ₪1,990 <small>/ חודש</small></div>
+      <p class="lead center" style="margin-inline:auto">use case אחד, KPI אחד, 90 יום. מודדים לפני/אחרי — זמן תגובה ופניות שלא נפלו. אם עובד, מרחיבים; אם לא, נפרדים כידידים.</p>
+      <ul>
+        <li>הגדרת המקרה והיעד יחד איתך</li>
+        <li>חיבור מקור הלידים שלך</li>
+        <li>מענה ראשוני + follow-up — approval-first</li>
+        <li>דשבורד ומדידה שקופה</li>
+        <li>ליווי אישי לאורך הפיילוט</li>
+      </ul>
+      <div><a class="btn wa" href="https://wa.me/972527003976?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%9C%D7%A1%D7%95%D7%9B%D7%A0%D7%99%20%D7%91%D7%99%D7%98%D7%95%D7%97" target="_blank" rel="noopener">לתאם שיחת היכרות ←</a></div>
+    </div>
+    <div class="note mt">
+      <p><b>שקיפות מלאה:</b> אנחנו בתחילת הדרך ועדיין <b>לא מפרסמים המלצות או Case Study של לקוח</b> — כי לא ניצור הוכחה שאין מאחוריה תוצאה אמיתית. מה שאנחנו כן מציעים במקום: <b>פיילוט מדיד</b> שבו אתה רואה את התוצאה על הנתונים של הסוכנות שלך, ולא על סיפור של מישהו אחר. בלי הבטחות למספרים — התחייבות לתהליך מדיד.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band">
+  <div class="wrap">
+    <span class="eyebrow">שאלות והתנגדויות</span>
+    <h2>מה שסוכנים שואלים אותי</h2>
+    <div class="mt">
+      <details><summary>יש לי כבר CRM / מערכת של החברה</summary><p>מעולה — אנחנו לא מחליפים אותו. אנחנו מוודאים שכל פנייה מגיעה אליו מהר ומקבלת מענה ראשוני. ה-CRM שומר; אנחנו דואגים שלא ייפול כלום לפני כן.</p></details>
+      <details><summary>אני עונה לכל הפניות בעצמי</summary><p>בטח. השאלה היא מה קורה כשאתה בפגישה, בנהיגה או ב-22:00 — שם נופלות העסקאות, ושם המערכת נכנסת, באישורך.</p></details>
+      <details><summary>אני פוחד שהמערכת תשלח משהו לא נכון ללקוח</summary><p>בדיוק בגלל זה זה approval-first: שום הודעה לא יוצאת ללקוח בלי שאתה מאשר. מהירות בלי לאבד שליטה.</p></details>
+      <details><summary>זה עובד עם וואטסאפ?</summary><p>הפנייה יכולה להיכנס דרך וואטסאפ ואתה עונה, באישורך. הדגש שלנו הוא קליטה, סדר, מענה ראשוני וקביעת פגישה — לא שליחה המונית לא-מבוקרת.</p></details>
+      <details><summary>ומה עם פרטיות ורגולציה?</summary><p>שקיפות, אישור אנושי לפני כל יציאה, בלי רשימות אישיות לא-ציבוריות — בהתאם לתיקון 13 לחוק הגנת הפרטיות.</p></details>
+      <details><summary>זה יקר?</summary><p>פיילוט מדיד. אם תוך 90 יום אתה לא רואה שפניות מקבלות מענה מהיר יותר — לא מרחיבים. שווה להשוות לעמלה של לקוח אחד שלא פספסת.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>שנבדוק כמה פניות אתה מפספס?</h2>
+    <p class="lead center" style="margin:12px auto 0">שיחת היכרות קצרה, בלי התחייבות. אני אראה לך איך זה נראה על התהליך שלך.</p>
+    <p class="mt"><a class="btn wa" href="https://wa.me/972527003976?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%9C%D7%A1%D7%95%D7%9B%D7%A0%D7%99%20%D7%91%D7%99%D7%98%D7%95%D7%97" target="_blank" rel="noopener">דברו איתי בוואטסאפ ←</a></p>
+    <p style="color:var(--muted);font-size:13px;margin-top:16px">או בטלפון: <a href="tel:0527003976" style="color:var(--gold);font-weight:700">052-700-3976</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">LIAM DIGITAL · מערכות AI ואוטומציה לעסקים · <a href="https://liamdigital.co.il" style="color:var(--muted)">liamdigital.co.il</a><br/>המחירים לפני מע״מ · הדף מיועד לסוכנויות ביטוח בישראל</div>
+</footer>
+
+<div class="sticky-wa"><a class="btn wa" href="https://wa.me/972527003976?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%9C%D7%A1%D7%95%D7%9B%D7%A0%D7%99%20%D7%91%D7%99%D7%98%D7%95%D7%97" target="_blank" rel="noopener">דברו איתי בוואטסאפ ←</a></div>
+
+</body>
+</html>
