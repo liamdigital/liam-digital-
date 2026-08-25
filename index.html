@@ -113,7 +113,7 @@ svg{display:block}
 /* ══ hero ══ */
 .hero{position:relative;padding:clamp(30px,4.6vw,54px) 0 clamp(24px,3vw,36px);text-align:center}
 .ghost{position:absolute;top:clamp(2px,2vw,18px);left:50%;transform:translateX(-50%);
-  width:min(700px,124vw);color:#000;opacity:.045;z-index:0;pointer-events:none}
+  width:min(700px,96vw);color:#000;opacity:.045;z-index:0;pointer-events:none}
 
 .coming{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;
   gap:clamp(10px,1.8vw,18px);margin:0}
@@ -157,7 +157,7 @@ h1{position:relative;z-index:2;margin:0;font-family:var(--disp);font-weight:700;
 .scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(#000,transparent)}
 
 /* ══ ticker — inverted bar ══ */
-.ticker{background:#000;color:var(--mg);overflow:hidden;position:relative;z-index:2;padding:9px 0}
+.ticker{background:#000;color:var(--mg);overflow:hidden;position:relative;z-index:2;padding:9px 0;direction:ltr}
 .tick-row{display:flex;width:max-content;animation:slide 38s linear infinite}
 .tick-row>div{display:flex;align-items:center;flex:none}
 .tick-row b{font-weight:600;font-size:clamp(12px,1.15vw,15px);padding-inline:clamp(12px,1.5vw,22px);white-space:nowrap}
@@ -295,6 +295,40 @@ footer{background:var(--black);color:rgba(221,95,241,.6);padding:22px 0 30px;pos
 @media(max-width:400px){
   .nav-social{display:none}
   .nav-in{grid-template-columns:auto 1fr}
+}
+
+/* ══ phone: scale the type up — desktop is unaffected ══ */
+@media(max-width:620px){
+  body{font-size:16px}
+  .ghost{opacity:.022;width:88vw}
+  .nav-cta{font-size:13.5px;padding:10px 16px}
+  .coming{gap:12px}
+  .coming .txt{font-size:20px;letter-spacing:.2em;text-indent:.2em}
+  .coming .rule{max-width:30px}
+  .mark{width:118px}
+  h1{font-size:clamp(58px,15.5vw,112px);line-height:.84}
+  .sub{font-size:16.5px;line-height:1.66;max-width:34ch}
+  .btn{height:52px;font-size:16px;padding:0 24px}
+  .scroll-hint{font-size:10.5px}
+  .tick-row b{font-size:15px}
+  .tick-row b.en{font-size:13px}
+  .eyebrow{font-size:11.5px}
+  h2{font-size:clamp(38px,9.6vw,56px)}
+  .lede{font-size:15.5px;max-width:36ch}
+  .m-idx{font-size:11.5px}
+  .m-name h3{font-size:34px}
+  .role{font-size:12.5px}
+  .member p{font-size:15px;line-height:1.62}
+  .tag{font-size:11px}
+  .step .n{font-size:34px}
+  .step h4{font-size:26px}
+  .step p{font-size:14.5px;max-width:30ch}
+  label{font-size:13px}
+  input{height:50px;font-size:16px}
+  form .btn{height:54px;font-size:16px}
+  .note{font-size:12.5px}
+  .foot-l{font-size:13px}
+  .portal{font-size:13px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
